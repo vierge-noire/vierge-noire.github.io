@@ -1,0 +1,1269 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@3.10.10
+3 info using node@v6.9.4
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly install loadAllDepsIntoIdealTree
+19 silly fetchNamedPackageData @babel/core
+20 silly mapToRegistry name @babel/core
+21 silly mapToRegistry scope (from package name) @babel
+22 verbose mapToRegistry no registry URL found in name for scope @babel
+23 silly mapToRegistry using default registry
+24 silly mapToRegistry registry http://registry.npmjs.org/
+25 silly mapToRegistry data Result {
+25 silly mapToRegistry   raw: '@babel/core',
+25 silly mapToRegistry   scope: '@babel',
+25 silly mapToRegistry   escapedName: '@babel%2fcore',
+25 silly mapToRegistry   name: '@babel/core',
+25 silly mapToRegistry   rawSpec: '',
+25 silly mapToRegistry   spec: 'latest',
+25 silly mapToRegistry   type: 'tag' }
+26 silly mapToRegistry uri http://registry.npmjs.org/@babel%2fcore
+27 silly fetchNamedPackageData @babel/preset-env
+28 silly mapToRegistry name @babel/preset-env
+29 silly mapToRegistry scope (from package name) @babel
+30 verbose mapToRegistry no registry URL found in name for scope @babel
+31 silly mapToRegistry using default registry
+32 silly mapToRegistry registry http://registry.npmjs.org/
+33 silly mapToRegistry data Result {
+33 silly mapToRegistry   raw: '@babel/preset-env',
+33 silly mapToRegistry   scope: '@babel',
+33 silly mapToRegistry   escapedName: '@babel%2fpreset-env',
+33 silly mapToRegistry   name: '@babel/preset-env',
+33 silly mapToRegistry   rawSpec: '',
+33 silly mapToRegistry   spec: 'latest',
+33 silly mapToRegistry   type: 'tag' }
+34 silly mapToRegistry uri http://registry.npmjs.org/@babel%2fpreset-env
+35 silly fetchNamedPackageData @rollup/plugin-babel
+36 silly mapToRegistry name @rollup/plugin-babel
+37 silly mapToRegistry scope (from package name) @rollup
+38 verbose mapToRegistry no registry URL found in name for scope @rollup
+39 silly mapToRegistry using default registry
+40 silly mapToRegistry registry http://registry.npmjs.org/
+41 silly mapToRegistry data Result {
+41 silly mapToRegistry   raw: '@rollup/plugin-babel',
+41 silly mapToRegistry   scope: '@rollup',
+41 silly mapToRegistry   escapedName: '@rollup%2fplugin-babel',
+41 silly mapToRegistry   name: '@rollup/plugin-babel',
+41 silly mapToRegistry   rawSpec: '',
+41 silly mapToRegistry   spec: 'latest',
+41 silly mapToRegistry   type: 'tag' }
+42 silly mapToRegistry uri http://registry.npmjs.org/@rollup%2fplugin-babel
+43 silly fetchNamedPackageData @rollup/plugin-commonjs
+44 silly mapToRegistry name @rollup/plugin-commonjs
+45 silly mapToRegistry scope (from package name) @rollup
+46 verbose mapToRegistry no registry URL found in name for scope @rollup
+47 silly mapToRegistry using default registry
+48 silly mapToRegistry registry http://registry.npmjs.org/
+49 silly mapToRegistry data Result {
+49 silly mapToRegistry   raw: '@rollup/plugin-commonjs',
+49 silly mapToRegistry   scope: '@rollup',
+49 silly mapToRegistry   escapedName: '@rollup%2fplugin-commonjs',
+49 silly mapToRegistry   name: '@rollup/plugin-commonjs',
+49 silly mapToRegistry   rawSpec: '',
+49 silly mapToRegistry   spec: 'latest',
+49 silly mapToRegistry   type: 'tag' }
+50 silly mapToRegistry uri http://registry.npmjs.org/@rollup%2fplugin-commonjs
+51 silly fetchNamedPackageData @rollup/plugin-node-resolve
+52 silly mapToRegistry name @rollup/plugin-node-resolve
+53 silly mapToRegistry scope (from package name) @rollup
+54 verbose mapToRegistry no registry URL found in name for scope @rollup
+55 silly mapToRegistry using default registry
+56 silly mapToRegistry registry http://registry.npmjs.org/
+57 silly mapToRegistry data Result {
+57 silly mapToRegistry   raw: '@rollup/plugin-node-resolve',
+57 silly mapToRegistry   scope: '@rollup',
+57 silly mapToRegistry   escapedName: '@rollup%2fplugin-node-resolve',
+57 silly mapToRegistry   name: '@rollup/plugin-node-resolve',
+57 silly mapToRegistry   rawSpec: '',
+57 silly mapToRegistry   spec: 'latest',
+57 silly mapToRegistry   type: 'tag' }
+58 silly mapToRegistry uri http://registry.npmjs.org/@rollup%2fplugin-node-resolve
+59 silly fetchNamedPackageData babel-eslint
+60 silly mapToRegistry name babel-eslint
+61 silly mapToRegistry using default registry
+62 silly mapToRegistry registry http://registry.npmjs.org/
+63 silly mapToRegistry data Result {
+63 silly mapToRegistry   raw: 'babel-eslint',
+63 silly mapToRegistry   scope: null,
+63 silly mapToRegistry   escapedName: 'babel-eslint',
+63 silly mapToRegistry   name: 'babel-eslint',
+63 silly mapToRegistry   rawSpec: '',
+63 silly mapToRegistry   spec: 'latest',
+63 silly mapToRegistry   type: 'tag' }
+64 silly mapToRegistry uri http://registry.npmjs.org/babel-eslint
+65 silly fetchNamedPackageData babel-plugin-transform-html-import-to-string
+66 silly mapToRegistry name babel-plugin-transform-html-import-to-string
+67 silly mapToRegistry using default registry
+68 silly mapToRegistry registry http://registry.npmjs.org/
+69 silly mapToRegistry data Result {
+69 silly mapToRegistry   raw: 'babel-plugin-transform-html-import-to-string',
+69 silly mapToRegistry   scope: null,
+69 silly mapToRegistry   escapedName: 'babel-plugin-transform-html-import-to-string',
+69 silly mapToRegistry   name: 'babel-plugin-transform-html-import-to-string',
+69 silly mapToRegistry   rawSpec: '',
+69 silly mapToRegistry   spec: 'latest',
+69 silly mapToRegistry   type: 'tag' }
+70 silly mapToRegistry uri http://registry.npmjs.org/babel-plugin-transform-html-import-to-string
+71 silly fetchNamedPackageData colors
+72 silly mapToRegistry name colors
+73 silly mapToRegistry using default registry
+74 silly mapToRegistry registry http://registry.npmjs.org/
+75 silly mapToRegistry data Result {
+75 silly mapToRegistry   raw: 'colors',
+75 silly mapToRegistry   scope: null,
+75 silly mapToRegistry   escapedName: 'colors',
+75 silly mapToRegistry   name: 'colors',
+75 silly mapToRegistry   rawSpec: '',
+75 silly mapToRegistry   spec: 'latest',
+75 silly mapToRegistry   type: 'tag' }
+76 silly mapToRegistry uri http://registry.npmjs.org/colors
+77 silly fetchNamedPackageData core-js
+78 silly mapToRegistry name core-js
+79 silly mapToRegistry using default registry
+80 silly mapToRegistry registry http://registry.npmjs.org/
+81 silly mapToRegistry data Result {
+81 silly mapToRegistry   raw: 'core-js',
+81 silly mapToRegistry   scope: null,
+81 silly mapToRegistry   escapedName: 'core-js',
+81 silly mapToRegistry   name: 'core-js',
+81 silly mapToRegistry   rawSpec: '',
+81 silly mapToRegistry   spec: 'latest',
+81 silly mapToRegistry   type: 'tag' }
+82 silly mapToRegistry uri http://registry.npmjs.org/core-js
+83 silly fetchNamedPackageData fitty
+84 silly mapToRegistry name fitty
+85 silly mapToRegistry using default registry
+86 silly mapToRegistry registry http://registry.npmjs.org/
+87 silly mapToRegistry data Result {
+87 silly mapToRegistry   raw: 'fitty',
+87 silly mapToRegistry   scope: null,
+87 silly mapToRegistry   escapedName: 'fitty',
+87 silly mapToRegistry   name: 'fitty',
+87 silly mapToRegistry   rawSpec: '',
+87 silly mapToRegistry   spec: 'latest',
+87 silly mapToRegistry   type: 'tag' }
+88 silly mapToRegistry uri http://registry.npmjs.org/fitty
+89 silly fetchNamedPackageData glob
+90 silly mapToRegistry name glob
+91 silly mapToRegistry using default registry
+92 silly mapToRegistry registry http://registry.npmjs.org/
+93 silly mapToRegistry data Result {
+93 silly mapToRegistry   raw: 'glob',
+93 silly mapToRegistry   scope: null,
+93 silly mapToRegistry   escapedName: 'glob',
+93 silly mapToRegistry   name: 'glob',
+93 silly mapToRegistry   rawSpec: '',
+93 silly mapToRegistry   spec: 'latest',
+93 silly mapToRegistry   type: 'tag' }
+94 silly mapToRegistry uri http://registry.npmjs.org/glob
+95 silly fetchNamedPackageData gulp
+96 silly mapToRegistry name gulp
+97 silly mapToRegistry using default registry
+98 silly mapToRegistry registry http://registry.npmjs.org/
+99 silly mapToRegistry data Result {
+99 silly mapToRegistry   raw: 'gulp',
+99 silly mapToRegistry   scope: null,
+99 silly mapToRegistry   escapedName: 'gulp',
+99 silly mapToRegistry   name: 'gulp',
+99 silly mapToRegistry   rawSpec: '',
+99 silly mapToRegistry   spec: 'latest',
+99 silly mapToRegistry   type: 'tag' }
+100 silly mapToRegistry uri http://registry.npmjs.org/gulp
+101 silly fetchNamedPackageData gulp-autoprefixer
+102 silly mapToRegistry name gulp-autoprefixer
+103 silly mapToRegistry using default registry
+104 silly mapToRegistry registry http://registry.npmjs.org/
+105 silly mapToRegistry data Result {
+105 silly mapToRegistry   raw: 'gulp-autoprefixer',
+105 silly mapToRegistry   scope: null,
+105 silly mapToRegistry   escapedName: 'gulp-autoprefixer',
+105 silly mapToRegistry   name: 'gulp-autoprefixer',
+105 silly mapToRegistry   rawSpec: '',
+105 silly mapToRegistry   spec: 'latest',
+105 silly mapToRegistry   type: 'tag' }
+106 silly mapToRegistry uri http://registry.npmjs.org/gulp-autoprefixer
+107 silly fetchNamedPackageData gulp-clean-css
+108 silly mapToRegistry name gulp-clean-css
+109 silly mapToRegistry using default registry
+110 silly mapToRegistry registry http://registry.npmjs.org/
+111 silly mapToRegistry data Result {
+111 silly mapToRegistry   raw: 'gulp-clean-css',
+111 silly mapToRegistry   scope: null,
+111 silly mapToRegistry   escapedName: 'gulp-clean-css',
+111 silly mapToRegistry   name: 'gulp-clean-css',
+111 silly mapToRegistry   rawSpec: '',
+111 silly mapToRegistry   spec: 'latest',
+111 silly mapToRegistry   type: 'tag' }
+112 silly mapToRegistry uri http://registry.npmjs.org/gulp-clean-css
+113 silly fetchNamedPackageData gulp-connect
+114 silly mapToRegistry name gulp-connect
+115 silly mapToRegistry using default registry
+116 silly mapToRegistry registry http://registry.npmjs.org/
+117 silly mapToRegistry data Result {
+117 silly mapToRegistry   raw: 'gulp-connect',
+117 silly mapToRegistry   scope: null,
+117 silly mapToRegistry   escapedName: 'gulp-connect',
+117 silly mapToRegistry   name: 'gulp-connect',
+117 silly mapToRegistry   rawSpec: '',
+117 silly mapToRegistry   spec: 'latest',
+117 silly mapToRegistry   type: 'tag' }
+118 silly mapToRegistry uri http://registry.npmjs.org/gulp-connect
+119 silly fetchNamedPackageData gulp-eslint
+120 silly mapToRegistry name gulp-eslint
+121 silly mapToRegistry using default registry
+122 silly mapToRegistry registry http://registry.npmjs.org/
+123 silly mapToRegistry data Result {
+123 silly mapToRegistry   raw: 'gulp-eslint',
+123 silly mapToRegistry   scope: null,
+123 silly mapToRegistry   escapedName: 'gulp-eslint',
+123 silly mapToRegistry   name: 'gulp-eslint',
+123 silly mapToRegistry   rawSpec: '',
+123 silly mapToRegistry   spec: 'latest',
+123 silly mapToRegistry   type: 'tag' }
+124 silly mapToRegistry uri http://registry.npmjs.org/gulp-eslint
+125 silly fetchNamedPackageData gulp-header
+126 silly mapToRegistry name gulp-header
+127 silly mapToRegistry using default registry
+128 silly mapToRegistry registry http://registry.npmjs.org/
+129 silly mapToRegistry data Result {
+129 silly mapToRegistry   raw: 'gulp-header',
+129 silly mapToRegistry   scope: null,
+129 silly mapToRegistry   escapedName: 'gulp-header',
+129 silly mapToRegistry   name: 'gulp-header',
+129 silly mapToRegistry   rawSpec: '',
+129 silly mapToRegistry   spec: 'latest',
+129 silly mapToRegistry   type: 'tag' }
+130 silly mapToRegistry uri http://registry.npmjs.org/gulp-header
+131 silly fetchNamedPackageData gulp-sass
+132 silly mapToRegistry name gulp-sass
+133 silly mapToRegistry using default registry
+134 silly mapToRegistry registry http://registry.npmjs.org/
+135 silly mapToRegistry data Result {
+135 silly mapToRegistry   raw: 'gulp-sass',
+135 silly mapToRegistry   scope: null,
+135 silly mapToRegistry   escapedName: 'gulp-sass',
+135 silly mapToRegistry   name: 'gulp-sass',
+135 silly mapToRegistry   rawSpec: '',
+135 silly mapToRegistry   spec: 'latest',
+135 silly mapToRegistry   type: 'tag' }
+136 silly mapToRegistry uri http://registry.npmjs.org/gulp-sass
+137 silly fetchNamedPackageData gulp-tap
+138 silly mapToRegistry name gulp-tap
+139 silly mapToRegistry using default registry
+140 silly mapToRegistry registry http://registry.npmjs.org/
+141 silly mapToRegistry data Result {
+141 silly mapToRegistry   raw: 'gulp-tap',
+141 silly mapToRegistry   scope: null,
+141 silly mapToRegistry   escapedName: 'gulp-tap',
+141 silly mapToRegistry   name: 'gulp-tap',
+141 silly mapToRegistry   rawSpec: '',
+141 silly mapToRegistry   spec: 'latest',
+141 silly mapToRegistry   type: 'tag' }
+142 silly mapToRegistry uri http://registry.npmjs.org/gulp-tap
+143 silly fetchNamedPackageData gulp-zip
+144 silly mapToRegistry name gulp-zip
+145 silly mapToRegistry using default registry
+146 silly mapToRegistry registry http://registry.npmjs.org/
+147 silly mapToRegistry data Result {
+147 silly mapToRegistry   raw: 'gulp-zip',
+147 silly mapToRegistry   scope: null,
+147 silly mapToRegistry   escapedName: 'gulp-zip',
+147 silly mapToRegistry   name: 'gulp-zip',
+147 silly mapToRegistry   rawSpec: '',
+147 silly mapToRegistry   spec: 'latest',
+147 silly mapToRegistry   type: 'tag' }
+148 silly mapToRegistry uri http://registry.npmjs.org/gulp-zip
+149 silly fetchNamedPackageData highlight.js
+150 silly mapToRegistry name highlight.js
+151 silly mapToRegistry using default registry
+152 silly mapToRegistry registry http://registry.npmjs.org/
+153 silly mapToRegistry data Result {
+153 silly mapToRegistry   raw: 'highlight.js',
+153 silly mapToRegistry   scope: null,
+153 silly mapToRegistry   escapedName: 'highlight.js',
+153 silly mapToRegistry   name: 'highlight.js',
+153 silly mapToRegistry   rawSpec: '',
+153 silly mapToRegistry   spec: 'latest',
+153 silly mapToRegistry   type: 'tag' }
+154 silly mapToRegistry uri http://registry.npmjs.org/highlight.js
+155 silly fetchNamedPackageData marked
+156 silly mapToRegistry name marked
+157 silly mapToRegistry using default registry
+158 silly mapToRegistry registry http://registry.npmjs.org/
+159 silly mapToRegistry data Result {
+159 silly mapToRegistry   raw: 'marked',
+159 silly mapToRegistry   scope: null,
+159 silly mapToRegistry   escapedName: 'marked',
+159 silly mapToRegistry   name: 'marked',
+159 silly mapToRegistry   rawSpec: '',
+159 silly mapToRegistry   spec: 'latest',
+159 silly mapToRegistry   type: 'tag' }
+160 silly mapToRegistry uri http://registry.npmjs.org/marked
+161 silly fetchNamedPackageData node-qunit-puppeteer
+162 silly mapToRegistry name node-qunit-puppeteer
+163 silly mapToRegistry using default registry
+164 silly mapToRegistry registry http://registry.npmjs.org/
+165 silly mapToRegistry data Result {
+165 silly mapToRegistry   raw: 'node-qunit-puppeteer',
+165 silly mapToRegistry   scope: null,
+165 silly mapToRegistry   escapedName: 'node-qunit-puppeteer',
+165 silly mapToRegistry   name: 'node-qunit-puppeteer',
+165 silly mapToRegistry   rawSpec: '',
+165 silly mapToRegistry   spec: 'latest',
+165 silly mapToRegistry   type: 'tag' }
+166 silly mapToRegistry uri http://registry.npmjs.org/node-qunit-puppeteer
+167 silly fetchNamedPackageData qunit
+168 silly mapToRegistry name qunit
+169 silly mapToRegistry using default registry
+170 silly mapToRegistry registry http://registry.npmjs.org/
+171 silly mapToRegistry data Result {
+171 silly mapToRegistry   raw: 'qunit',
+171 silly mapToRegistry   scope: null,
+171 silly mapToRegistry   escapedName: 'qunit',
+171 silly mapToRegistry   name: 'qunit',
+171 silly mapToRegistry   rawSpec: '',
+171 silly mapToRegistry   spec: 'latest',
+171 silly mapToRegistry   type: 'tag' }
+172 silly mapToRegistry uri http://registry.npmjs.org/qunit
+173 silly fetchNamedPackageData rollup
+174 silly mapToRegistry name rollup
+175 silly mapToRegistry using default registry
+176 silly mapToRegistry registry http://registry.npmjs.org/
+177 silly mapToRegistry data Result {
+177 silly mapToRegistry   raw: 'rollup',
+177 silly mapToRegistry   scope: null,
+177 silly mapToRegistry   escapedName: 'rollup',
+177 silly mapToRegistry   name: 'rollup',
+177 silly mapToRegistry   rawSpec: '',
+177 silly mapToRegistry   spec: 'latest',
+177 silly mapToRegistry   type: 'tag' }
+178 silly mapToRegistry uri http://registry.npmjs.org/rollup
+179 silly fetchNamedPackageData rollup-plugin-terser
+180 silly mapToRegistry name rollup-plugin-terser
+181 silly mapToRegistry using default registry
+182 silly mapToRegistry registry http://registry.npmjs.org/
+183 silly mapToRegistry data Result {
+183 silly mapToRegistry   raw: 'rollup-plugin-terser',
+183 silly mapToRegistry   scope: null,
+183 silly mapToRegistry   escapedName: 'rollup-plugin-terser',
+183 silly mapToRegistry   name: 'rollup-plugin-terser',
+183 silly mapToRegistry   rawSpec: '',
+183 silly mapToRegistry   spec: 'latest',
+183 silly mapToRegistry   type: 'tag' }
+184 silly mapToRegistry uri http://registry.npmjs.org/rollup-plugin-terser
+185 silly fetchNamedPackageData yargs
+186 silly mapToRegistry name yargs
+187 silly mapToRegistry using default registry
+188 silly mapToRegistry registry http://registry.npmjs.org/
+189 silly mapToRegistry data Result {
+189 silly mapToRegistry   raw: 'yargs',
+189 silly mapToRegistry   scope: null,
+189 silly mapToRegistry   escapedName: 'yargs',
+189 silly mapToRegistry   name: 'yargs',
+189 silly mapToRegistry   rawSpec: '',
+189 silly mapToRegistry   spec: 'latest',
+189 silly mapToRegistry   type: 'tag' }
+190 silly mapToRegistry uri http://registry.npmjs.org/yargs
+191 verbose request uri http://registry.npmjs.org/@babel%2fcore
+192 verbose request no auth needed
+193 info attempt registry request try #1 at 20:53:56
+194 verbose request id 7ef64d6cc0d0d5a5
+195 http request GET http://registry.npmjs.org/@babel%2fcore
+196 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+197 verbose request uri http://registry.npmjs.org/@babel%2fpreset-env
+198 verbose request no auth needed
+199 info attempt registry request try #1 at 20:53:56
+200 http request GET http://registry.npmjs.org/@babel%2fpreset-env
+201 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+202 verbose request uri http://registry.npmjs.org/@rollup%2fplugin-babel
+203 verbose request no auth needed
+204 info attempt registry request try #1 at 20:53:56
+205 http request GET http://registry.npmjs.org/@rollup%2fplugin-babel
+206 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+207 verbose request uri http://registry.npmjs.org/@rollup%2fplugin-commonjs
+208 verbose request no auth needed
+209 info attempt registry request try #1 at 20:53:56
+210 http request GET http://registry.npmjs.org/@rollup%2fplugin-commonjs
+211 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+212 verbose request uri http://registry.npmjs.org/@rollup%2fplugin-node-resolve
+213 verbose request no auth needed
+214 info attempt registry request try #1 at 20:53:56
+215 http request GET http://registry.npmjs.org/@rollup%2fplugin-node-resolve
+216 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+217 verbose request uri http://registry.npmjs.org/babel-eslint
+218 verbose request no auth needed
+219 info attempt registry request try #1 at 20:53:56
+220 http request GET http://registry.npmjs.org/babel-eslint
+221 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+222 verbose request uri http://registry.npmjs.org/babel-plugin-transform-html-import-to-string
+223 verbose request no auth needed
+224 info attempt registry request try #1 at 20:53:56
+225 http request GET http://registry.npmjs.org/babel-plugin-transform-html-import-to-string
+226 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+227 verbose request uri http://registry.npmjs.org/colors
+228 verbose request no auth needed
+229 info attempt registry request try #1 at 20:53:56
+230 http request GET http://registry.npmjs.org/colors
+231 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+232 verbose request uri http://registry.npmjs.org/core-js
+233 verbose request no auth needed
+234 info attempt registry request try #1 at 20:53:56
+235 http request GET http://registry.npmjs.org/core-js
+236 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+237 verbose request uri http://registry.npmjs.org/fitty
+238 verbose request no auth needed
+239 info attempt registry request try #1 at 20:53:56
+240 http request GET http://registry.npmjs.org/fitty
+241 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+242 verbose request uri http://registry.npmjs.org/glob
+243 verbose request no auth needed
+244 info attempt registry request try #1 at 20:53:56
+245 http request GET http://registry.npmjs.org/glob
+246 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+247 verbose request uri http://registry.npmjs.org/gulp
+248 verbose request no auth needed
+249 info attempt registry request try #1 at 20:53:56
+250 http request GET http://registry.npmjs.org/gulp
+251 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+252 verbose request uri http://registry.npmjs.org/gulp-autoprefixer
+253 verbose request no auth needed
+254 info attempt registry request try #1 at 20:53:56
+255 http request GET http://registry.npmjs.org/gulp-autoprefixer
+256 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+257 verbose request uri http://registry.npmjs.org/gulp-clean-css
+258 verbose request no auth needed
+259 info attempt registry request try #1 at 20:53:56
+260 http request GET http://registry.npmjs.org/gulp-clean-css
+261 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+262 verbose request uri http://registry.npmjs.org/gulp-connect
+263 verbose request no auth needed
+264 info attempt registry request try #1 at 20:53:56
+265 http request GET http://registry.npmjs.org/gulp-connect
+266 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+267 verbose request uri http://registry.npmjs.org/gulp-eslint
+268 verbose request no auth needed
+269 info attempt registry request try #1 at 20:53:56
+270 http request GET http://registry.npmjs.org/gulp-eslint
+271 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+272 verbose request uri http://registry.npmjs.org/gulp-header
+273 verbose request no auth needed
+274 info attempt registry request try #1 at 20:53:56
+275 http request GET http://registry.npmjs.org/gulp-header
+276 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+277 verbose request uri http://registry.npmjs.org/gulp-sass
+278 verbose request no auth needed
+279 info attempt registry request try #1 at 20:53:56
+280 http request GET http://registry.npmjs.org/gulp-sass
+281 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+282 verbose request uri http://registry.npmjs.org/gulp-tap
+283 verbose request no auth needed
+284 info attempt registry request try #1 at 20:53:56
+285 http request GET http://registry.npmjs.org/gulp-tap
+286 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+287 verbose request uri http://registry.npmjs.org/gulp-zip
+288 verbose request no auth needed
+289 info attempt registry request try #1 at 20:53:56
+290 http request GET http://registry.npmjs.org/gulp-zip
+291 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+292 verbose request uri http://registry.npmjs.org/highlight.js
+293 verbose request no auth needed
+294 info attempt registry request try #1 at 20:53:56
+295 http request GET http://registry.npmjs.org/highlight.js
+296 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+297 verbose request uri http://registry.npmjs.org/marked
+298 verbose request no auth needed
+299 info attempt registry request try #1 at 20:53:56
+300 http request GET http://registry.npmjs.org/marked
+301 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+302 verbose request uri http://registry.npmjs.org/node-qunit-puppeteer
+303 verbose request no auth needed
+304 info attempt registry request try #1 at 20:53:56
+305 http request GET http://registry.npmjs.org/node-qunit-puppeteer
+306 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+307 verbose request uri http://registry.npmjs.org/qunit
+308 verbose request no auth needed
+309 info attempt registry request try #1 at 20:53:56
+310 http request GET http://registry.npmjs.org/qunit
+311 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+312 verbose request uri http://registry.npmjs.org/rollup
+313 verbose request no auth needed
+314 info attempt registry request try #1 at 20:53:56
+315 http request GET http://registry.npmjs.org/rollup
+316 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+317 verbose request uri http://registry.npmjs.org/rollup-plugin-terser
+318 verbose request no auth needed
+319 info attempt registry request try #1 at 20:53:56
+320 http request GET http://registry.npmjs.org/rollup-plugin-terser
+321 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+322 verbose request uri http://registry.npmjs.org/yargs
+323 verbose request no auth needed
+324 info attempt registry request try #1 at 20:53:56
+325 http request GET http://registry.npmjs.org/yargs
+326 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+327 info attempt registry request try #2 at 20:54:06
+328 http request GET http://registry.npmjs.org/@babel%2fcore
+329 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+330 info attempt registry request try #2 at 20:54:06
+331 http request GET http://registry.npmjs.org/@babel%2fpreset-env
+332 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+333 info attempt registry request try #2 at 20:54:06
+334 http request GET http://registry.npmjs.org/@rollup%2fplugin-babel
+335 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+336 info attempt registry request try #2 at 20:54:06
+337 http request GET http://registry.npmjs.org/@rollup%2fplugin-commonjs
+338 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+339 info attempt registry request try #2 at 20:54:06
+340 http request GET http://registry.npmjs.org/@rollup%2fplugin-node-resolve
+341 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+342 info attempt registry request try #2 at 20:54:06
+343 http request GET http://registry.npmjs.org/babel-eslint
+344 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+345 info attempt registry request try #2 at 20:54:06
+346 http request GET http://registry.npmjs.org/babel-plugin-transform-html-import-to-string
+347 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+348 info attempt registry request try #2 at 20:54:06
+349 http request GET http://registry.npmjs.org/colors
+350 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+351 info attempt registry request try #2 at 20:54:06
+352 http request GET http://registry.npmjs.org/core-js
+353 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+354 info attempt registry request try #2 at 20:54:06
+355 http request GET http://registry.npmjs.org/fitty
+356 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+357 info attempt registry request try #2 at 20:54:06
+358 http request GET http://registry.npmjs.org/glob
+359 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+360 info attempt registry request try #2 at 20:54:06
+361 http request GET http://registry.npmjs.org/gulp
+362 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+363 info attempt registry request try #2 at 20:54:06
+364 http request GET http://registry.npmjs.org/gulp-autoprefixer
+365 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+366 info attempt registry request try #2 at 20:54:06
+367 http request GET http://registry.npmjs.org/gulp-clean-css
+368 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+369 info attempt registry request try #2 at 20:54:06
+370 http request GET http://registry.npmjs.org/gulp-connect
+371 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+372 info attempt registry request try #2 at 20:54:06
+373 http request GET http://registry.npmjs.org/gulp-eslint
+374 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+375 info attempt registry request try #2 at 20:54:06
+376 http request GET http://registry.npmjs.org/gulp-header
+377 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+378 info attempt registry request try #2 at 20:54:06
+379 http request GET http://registry.npmjs.org/gulp-sass
+380 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+381 info attempt registry request try #2 at 20:54:06
+382 http request GET http://registry.npmjs.org/gulp-tap
+383 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+384 info attempt registry request try #2 at 20:54:06
+385 http request GET http://registry.npmjs.org/gulp-zip
+386 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+387 info attempt registry request try #2 at 20:54:06
+388 http request GET http://registry.npmjs.org/highlight.js
+389 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+390 info attempt registry request try #2 at 20:54:06
+391 http request GET http://registry.npmjs.org/marked
+392 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+393 info attempt registry request try #2 at 20:54:06
+394 http request GET http://registry.npmjs.org/node-qunit-puppeteer
+395 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+396 info attempt registry request try #2 at 20:54:06
+397 http request GET http://registry.npmjs.org/qunit
+398 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+399 info attempt registry request try #2 at 20:54:06
+400 http request GET http://registry.npmjs.org/rollup
+401 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+402 info attempt registry request try #2 at 20:54:06
+403 http request GET http://registry.npmjs.org/rollup-plugin-terser
+404 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+405 info attempt registry request try #2 at 20:54:06
+406 http request GET http://registry.npmjs.org/yargs
+407 info retry will retry, error on last attempt: Error: Invalid protocol: proxy.ad.postcon.de:
+408 info attempt registry request try #3 at 20:55:06
+409 http request GET http://registry.npmjs.org/@babel%2fcore
+410 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+410 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+410 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+410 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+410 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+410 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+410 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+410 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+410 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+410 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+410 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+410 silly fetchPackageMetaData  error for @babel/core@^7.9.6 Error: Invalid protocol: proxy.ad.postcon.de:
+410 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+410 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+410 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+410 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+410 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+410 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+410 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+410 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+410 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+410 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+411 info attempt registry request try #3 at 20:55:06
+412 http request GET http://registry.npmjs.org/@babel%2fpreset-env
+413 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+413 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+413 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+413 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+413 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+413 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+413 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+413 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+413 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+413 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+413 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+413 silly fetchPackageMetaData  error for @babel/preset-env@^7.9.6 Error: Invalid protocol: proxy.ad.postcon.de:
+413 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+413 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+413 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+413 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+413 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+413 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+413 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+413 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+413 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+413 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+414 info attempt registry request try #3 at 20:55:06
+415 http request GET http://registry.npmjs.org/@rollup%2fplugin-babel
+416 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+416 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+416 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+416 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+416 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+416 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+416 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+416 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+416 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+416 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+416 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+416 silly fetchPackageMetaData  error for @rollup/plugin-babel@^5.2.0 Error: Invalid protocol: proxy.ad.postcon.de:
+416 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+416 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+416 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+416 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+416 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+416 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+416 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+416 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+416 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+416 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+417 info attempt registry request try #3 at 20:55:06
+418 http request GET http://registry.npmjs.org/@rollup%2fplugin-commonjs
+419 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+419 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+419 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+419 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+419 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+419 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+419 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+419 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+419 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+419 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+419 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+419 silly fetchPackageMetaData  error for @rollup/plugin-commonjs@^15.0.0 Error: Invalid protocol: proxy.ad.postcon.de:
+419 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+419 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+419 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+419 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+419 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+419 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+419 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+419 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+419 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+419 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+420 info attempt registry request try #3 at 20:55:06
+421 http request GET http://registry.npmjs.org/@rollup%2fplugin-node-resolve
+422 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+422 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+422 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+422 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+422 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+422 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+422 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+422 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+422 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+422 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+422 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+422 silly fetchPackageMetaData  error for @rollup/plugin-node-resolve@^9.0.0 Error: Invalid protocol: proxy.ad.postcon.de:
+422 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+422 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+422 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+422 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+422 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+422 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+422 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+422 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+422 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+422 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+423 info attempt registry request try #3 at 20:55:06
+424 http request GET http://registry.npmjs.org/babel-eslint
+425 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+425 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+425 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+425 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+425 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+425 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+425 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+425 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+425 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+425 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+425 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+425 silly fetchPackageMetaData  error for babel-eslint@^10.1.0 Error: Invalid protocol: proxy.ad.postcon.de:
+425 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+425 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+425 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+425 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+425 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+425 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+425 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+425 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+425 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+425 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+426 info attempt registry request try #3 at 20:55:06
+427 http request GET http://registry.npmjs.org/babel-plugin-transform-html-import-to-string
+428 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+428 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+428 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+428 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+428 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+428 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+428 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+428 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+428 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+428 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+428 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+428 silly fetchPackageMetaData  error for babel-plugin-transform-html-import-to-string@0.0.1 Error: Invalid protocol: proxy.ad.postcon.de:
+428 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+428 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+428 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+428 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+428 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+428 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+428 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+428 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+428 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+428 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+429 info attempt registry request try #3 at 20:55:06
+430 http request GET http://registry.npmjs.org/colors
+431 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+431 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+431 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+431 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+431 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+431 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+431 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+431 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+431 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+431 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+431 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+431 silly fetchPackageMetaData  error for colors@^1.4.0 Error: Invalid protocol: proxy.ad.postcon.de:
+431 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+431 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+431 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+431 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+431 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+431 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+431 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+431 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+431 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+431 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+432 info attempt registry request try #3 at 20:55:06
+433 http request GET http://registry.npmjs.org/core-js
+434 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+434 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+434 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+434 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+434 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+434 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+434 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+434 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+434 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+434 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+434 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+434 silly fetchPackageMetaData  error for core-js@^3.6.5 Error: Invalid protocol: proxy.ad.postcon.de:
+434 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+434 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+434 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+434 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+434 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+434 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+434 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+434 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+434 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+434 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+435 info attempt registry request try #3 at 20:55:06
+436 http request GET http://registry.npmjs.org/fitty
+437 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+437 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+437 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+437 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+437 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+437 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+437 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+437 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+437 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+437 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+437 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+437 silly fetchPackageMetaData  error for fitty@^2.3.0 Error: Invalid protocol: proxy.ad.postcon.de:
+437 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+437 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+437 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+437 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+437 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+437 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+437 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+437 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+437 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+437 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+438 info attempt registry request try #3 at 20:55:06
+439 http request GET http://registry.npmjs.org/glob
+440 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+440 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+440 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+440 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+440 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+440 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+440 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+440 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+440 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+440 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+440 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+440 silly fetchPackageMetaData  error for glob@^7.1.6 Error: Invalid protocol: proxy.ad.postcon.de:
+440 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+440 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+440 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+440 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+440 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+440 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+440 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+440 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+440 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+440 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+441 info attempt registry request try #3 at 20:55:06
+442 http request GET http://registry.npmjs.org/gulp
+443 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+443 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+443 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+443 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+443 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+443 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+443 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+443 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+443 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+443 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+443 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+443 silly fetchPackageMetaData  error for gulp@^4.0.2 Error: Invalid protocol: proxy.ad.postcon.de:
+443 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+443 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+443 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+443 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+443 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+443 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+443 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+443 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+443 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+443 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+444 info attempt registry request try #3 at 20:55:06
+445 http request GET http://registry.npmjs.org/gulp-autoprefixer
+446 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+446 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+446 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+446 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+446 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+446 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+446 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+446 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+446 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+446 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+446 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+446 silly fetchPackageMetaData  error for gulp-autoprefixer@^7.0.1 Error: Invalid protocol: proxy.ad.postcon.de:
+446 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+446 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+446 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+446 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+446 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+446 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+446 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+446 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+446 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+446 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+447 info attempt registry request try #3 at 20:55:06
+448 http request GET http://registry.npmjs.org/gulp-clean-css
+449 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+449 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+449 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+449 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+449 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+449 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+449 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+449 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+449 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+449 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+449 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+449 silly fetchPackageMetaData  error for gulp-clean-css@^4.2.0 Error: Invalid protocol: proxy.ad.postcon.de:
+449 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+449 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+449 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+449 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+449 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+449 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+449 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+449 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+449 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+449 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+450 info attempt registry request try #3 at 20:55:06
+451 http request GET http://registry.npmjs.org/gulp-connect
+452 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+452 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+452 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+452 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+452 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+452 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+452 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+452 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+452 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+452 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+452 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+452 silly fetchPackageMetaData  error for gulp-connect@^5.7.0 Error: Invalid protocol: proxy.ad.postcon.de:
+452 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+452 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+452 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+452 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+452 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+452 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+452 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+452 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+452 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+452 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+453 info attempt registry request try #3 at 20:55:06
+454 http request GET http://registry.npmjs.org/gulp-eslint
+455 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+455 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+455 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+455 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+455 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+455 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+455 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+455 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+455 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+455 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+455 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+455 silly fetchPackageMetaData  error for gulp-eslint@^6.0.0 Error: Invalid protocol: proxy.ad.postcon.de:
+455 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+455 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+455 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+455 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+455 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+455 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+455 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+455 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+455 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+455 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+456 info attempt registry request try #3 at 20:55:06
+457 http request GET http://registry.npmjs.org/gulp-header
+458 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+458 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+458 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+458 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+458 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+458 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+458 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+458 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+458 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+458 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+458 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+458 silly fetchPackageMetaData  error for gulp-header@^2.0.9 Error: Invalid protocol: proxy.ad.postcon.de:
+458 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+458 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+458 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+458 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+458 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+458 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+458 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+458 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+458 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+458 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+459 info attempt registry request try #3 at 20:55:06
+460 http request GET http://registry.npmjs.org/gulp-sass
+461 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+461 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+461 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+461 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+461 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+461 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+461 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+461 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+461 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+461 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+461 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+461 silly fetchPackageMetaData  error for gulp-sass@^4.0.2 Error: Invalid protocol: proxy.ad.postcon.de:
+461 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+461 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+461 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+461 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+461 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+461 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+461 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+461 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+461 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+461 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+462 info attempt registry request try #3 at 20:55:06
+463 http request GET http://registry.npmjs.org/gulp-tap
+464 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+464 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+464 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+464 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+464 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+464 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+464 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+464 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+464 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+464 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+464 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+464 silly fetchPackageMetaData  error for gulp-tap@^2.0.0 Error: Invalid protocol: proxy.ad.postcon.de:
+464 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+464 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+464 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+464 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+464 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+464 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+464 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+464 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+464 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+464 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+465 info attempt registry request try #3 at 20:55:06
+466 http request GET http://registry.npmjs.org/gulp-zip
+467 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+467 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+467 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+467 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+467 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+467 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+467 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+467 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+467 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+467 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+467 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+467 silly fetchPackageMetaData  error for gulp-zip@^5.0.1 Error: Invalid protocol: proxy.ad.postcon.de:
+467 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+467 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+467 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+467 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+467 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+467 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+467 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+467 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+467 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+467 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+468 info attempt registry request try #3 at 20:55:06
+469 http request GET http://registry.npmjs.org/highlight.js
+470 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+470 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+470 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+470 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+470 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+470 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+470 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+470 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+470 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+470 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+470 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+470 silly fetchPackageMetaData  error for highlight.js@^10.0.3 Error: Invalid protocol: proxy.ad.postcon.de:
+470 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+470 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+470 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+470 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+470 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+470 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+470 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+470 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+470 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+470 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+471 info attempt registry request try #3 at 20:55:06
+472 http request GET http://registry.npmjs.org/marked
+473 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+473 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+473 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+473 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+473 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+473 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+473 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+473 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+473 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+473 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+473 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+473 silly fetchPackageMetaData  error for marked@^1.1.0 Error: Invalid protocol: proxy.ad.postcon.de:
+473 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+473 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+473 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+473 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+473 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+473 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+473 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+473 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+473 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+473 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+474 info attempt registry request try #3 at 20:55:06
+475 http request GET http://registry.npmjs.org/node-qunit-puppeteer
+476 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+476 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+476 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+476 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+476 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+476 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+476 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+476 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+476 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+476 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+476 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+476 silly fetchPackageMetaData  error for node-qunit-puppeteer@^2.0.1 Error: Invalid protocol: proxy.ad.postcon.de:
+476 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+476 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+476 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+476 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+476 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+476 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+476 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+476 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+476 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+476 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+477 info attempt registry request try #3 at 20:55:06
+478 http request GET http://registry.npmjs.org/qunit
+479 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+479 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+479 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+479 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+479 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+479 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+479 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+479 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+479 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+479 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+479 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+479 silly fetchPackageMetaData  error for qunit@^2.10.0 Error: Invalid protocol: proxy.ad.postcon.de:
+479 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+479 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+479 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+479 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+479 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+479 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+479 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+479 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+479 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+479 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+480 info attempt registry request try #3 at 20:55:06
+481 http request GET http://registry.npmjs.org/rollup
+482 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+482 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+482 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+482 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+482 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+482 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+482 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+482 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+482 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+482 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+482 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+482 silly fetchPackageMetaData  error for rollup@^2.26.4 Error: Invalid protocol: proxy.ad.postcon.de:
+482 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+482 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+482 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+482 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+482 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+482 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+482 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+482 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+482 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+482 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+483 info attempt registry request try #3 at 20:55:06
+484 http request GET http://registry.npmjs.org/rollup-plugin-terser
+485 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+485 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+485 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+485 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+485 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+485 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+485 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+485 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+485 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+485 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+485 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+485 silly fetchPackageMetaData  error for rollup-plugin-terser@^7.0.0 Error: Invalid protocol: proxy.ad.postcon.de:
+485 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+485 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+485 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+485 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+485 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+485 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+485 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+485 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+485 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+485 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+486 info attempt registry request try #3 at 20:55:06
+487 http request GET http://registry.npmjs.org/yargs
+488 silly fetchPackageMetaData Error: Invalid protocol: proxy.ad.postcon.de:
+488 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+488 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+488 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+488 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+488 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+488 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+488 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+488 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+488 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+488 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+488 silly fetchPackageMetaData  error for yargs@^15.1.0 Error: Invalid protocol: proxy.ad.postcon.de:
+488 silly fetchPackageMetaData     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+488 silly fetchPackageMetaData     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+488 silly fetchPackageMetaData     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+488 silly fetchPackageMetaData     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+488 silly fetchPackageMetaData     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+488 silly fetchPackageMetaData     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+488 silly fetchPackageMetaData     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+488 silly fetchPackageMetaData     at ontimeout (timers.js:365:14)
+488 silly fetchPackageMetaData     at tryOnTimeout (timers.js:237:5)
+488 silly fetchPackageMetaData     at Timer.listOnTimeout (timers.js:207:5)
+489 silly rollbackFailedOptional Starting
+490 silly rollbackFailedOptional Finishing
+491 silly runTopLevelLifecycles Finishing
+492 silly install printInstalled
+493 verbose stack Error: Invalid protocol: proxy.ad.postcon.de:
+493 verbose stack     at Request.init (/usr/local/lib/node_modules/npm/node_modules/request/request.js:460:31)
+493 verbose stack     at new Request (/usr/local/lib/node_modules/npm/node_modules/request/request.js:129:8)
+493 verbose stack     at request (/usr/local/lib/node_modules/npm/node_modules/request/index.js:55:10)
+493 verbose stack     at CachingRegistryClient.makeRequest (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:158:13)
+493 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:66:17
+493 verbose stack     at RetryOperation._fn (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/attempt.js:18:5)
+493 verbose stack     at Timeout._onTimeout (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/node_modules/retry/lib/retry_operation.js:68:10)
+493 verbose stack     at ontimeout (timers.js:365:14)
+493 verbose stack     at tryOnTimeout (timers.js:237:5)
+493 verbose stack     at Timer.listOnTimeout (timers.js:207:5)
+494 verbose cwd /Users/jpramirez/pdev/cakefest-2020-fixture-factories
+495 error Darwin 19.6.0
+496 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install"
+497 error node v6.9.4
+498 error npm  v3.10.10
+499 error Invalid protocol: proxy.ad.postcon.de:
+500 error If you need help, you may report this error at:
+500 error     <https://github.com/npm/npm/issues>
+501 verbose exit [ 1, true ]
