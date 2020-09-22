@@ -30,5 +30,7 @@ Copyright (C) 2011-2020 Hakim El Hattab, https://hakim.se
 ## Relevant links for the presentation
 
 https://reflectoring.io/objectmother-fluent-builder/ 
+
 https://martinfowler.com/bliki/ObjectMother.html
+
 Growing object-oriented software, guided by tests (chapter 22, constructing complex test data) 
