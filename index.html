@@ -23,62 +23,114 @@
 					</p>
 				</section>
 				<section>
-					<h4>Dynamic test fixtures</h4>
+					<h4>Test</h4>
+					<p>
+						Intelligibility
+					</p>
+					<p>
+						Usability
+					</p>
+					<p>
+						Performance
+					</p>
+				</section>
+				<section>
+					<h4>
+						Why test?
+					</h4>
+					<ol>
+						<li class="fragment">
+							Clean code
+						</li>
+						<li class="fragment">
+							Documentation
+						</li>
+						<li class="fragment">
+							Code integrity
+						</li>
+					</ol>
+				</section>
+				<section
+						data-background-image="assets/tree.jpg"
+						data-background-size="contain"
+				>
+					<div style="background-color: rgba(0, 0, 0, 0); color: #fff; padding: 20px; margin: auto;">
+						<h4>
+							<small class="fragment fade-right">Tests are the roots of your code</small>
+						</h4>
+					</div>
+				</section>
+				<section>
+					<h3>
+						How to test
+					</h3>
+					<div class="fragment">
+						<p style="color: red">Arrange</p>
+					</div>
+					<div class="fragment">
+						<p>Act</p>
+					</div>
+					<div class="fragment">
+						<p style="color: darkgreen">
+							Assert
+						</p>
+					</div>
+				</section>
+				<section>
+					<h3>
+						Test user permissions
+					</h3>
+					<div class="fragment">
+						<p style="color: red">
+							Arrange <br>
+							Create user, user group, permission, joining tables</p>
+					</div>
+					<div class="fragment">
+						<p>
+							Act <br>
+							Check permission A for user
+						</p>
+					</div>
+					<div class="fragment">
+						<p style="color: green">
+							Assert <br>
+							Expect true
+						</p>
+					</div>
+				</section>
+				<section>
+					<h4>Fixtures factories</h4>
 					<section>
-						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-7|9-10|12-13">
-						public function testUserPermission()
-						{
-						   // Arrange
-						   $permission = 'Foo';
-						   $user = UserFactory::make()
-							->with('UserGroups.Permissions', ['name' => 'Foo'])
-							->getEntity();
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-6|8-9|11-12|1-12">
+							public function testUserPermission()
+							{
+							  // Arrange
+							   $user = UserFactory::make()
+								->withPermission('Foo')
+								->getEntity();
 
-						   // Act
-						   $hasPermission = $this->Users->hasPermission(
-						      $user,
-						      $permission
-						   );
+							   // Act
+							   $act = $this->Users->hasPermission($user, 'Foo');
 
-						   // Assert
-						   $this->assertTrue($hasPermission);
-						}
+							   // Assert
+							   $this->assertTrue($act);
+							}
 						</code></pre></p>
 					</section>
 					<section>
-						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|5">
-						public function testUserPermission()
-						{
-						   $permission = 'Foo';
-						   $user = UserFactory::make()
-							->withPermission('Foo')
-							->getEntity();
-
-						   // Act
-						   ...
-
-						   // Assert
-						   ...
-						}
-						</code></pre></p>
-					</section>
-
-					<section>
-						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4|15-22">
-						public function dataProviderForUserWithPermissionA()
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4-7|13-14|17-19|17-25">
+						public function dataProviderForUserWithPermissionFoo()
 						{
 						   return [
-						      ['Admin',         true],
-						      ['Special User',  true],
-						      ['Permission A',  true],
-						      ['Permission B',  false],
+						      ['Admin', true],
+						      ['Guru',  true],
+						      ['Foo',   true],
+						      ['Bar',   false],
 						   ];
 						}
 
-						/**
-						* @dataProvider dataProviderForUserWithPermissionA
-						*/
-						public function testUserHasPermissionA(
+						/** @dataProvider dataProviderForUserWithPermissionFoo */
+						public function testUserHasPermissionFoo(
 						   string $permission,
 						   bool $expected
 						)
@@ -88,40 +140,13 @@
 							->getEntity();
 
 						   // Act
-						   ...
+						   $act = $this->Users->hasPermission($user, 'Foo');
 
 						   // Assert
-						   ...
+						   $this->assertSame($expected, $act);
 						}
 						</code></pre></p>
 					</section>
-
-				</section>
-				<section>
-					<h4>
-						Why writing tests?
-					</h4>
-					<ol>
-						<li class="fragment">
-							Provides clean productive code
-						</li>
-						<li class="fragment">
-							Documents the code
-						</li>
-						<li class="fragment">
-							Protects the code from internal and external changes
-						</li>
-					</ol>
-				</section>
-				<section
-					data-background-image="assets/tree.jpg"
-					data-background-size="contain"
-				>
-				<div style="background-color: rgba(0, 0, 0, 0.6); color: #fff; padding: 20px; margin: auto;">
-					<h4>
-						Tests are the roots of your code
-					</h4>
-				</div>
 				</section>
 				<section>
 					<h3>Setup</h3>
@@ -164,7 +189,7 @@
 					</section>
 					<section>
 						<h4>
-							Run migrations
+							Migrations (optional)
 						</h4>
 						<p>
 							<pre>In tests/bootstrap.php</pre>
@@ -188,8 +213,6 @@
 				<section>
 					<h4>User Factory</h4>
 					<p><pre data-id="code-animation"><code class="hljs" data-trim>
-					//////////////////////////// USER FACTORY ////////////////////////////////
-
 					namespace App\Test\Factory;
 
 					use CakephpFixtureFactories\Factory\BaseFactory;
@@ -215,7 +238,9 @@
 
 					   public function withPermission(string $permission): self
 					   {
-					   	return $this->with('Groups.Permissions', ['name' => $permission]);
+					   	return $this->with('Groups.Permissions', [
+						  'name' => $permission
+						]);
 					   }
 					}
 
