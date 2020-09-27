@@ -16,8 +16,212 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>CakePHP Fixture Factories</section>
-				<section>Slide 2</section>
+				<section>
+					<h3>CakePHP Fixture Factories</h3>
+					<p>
+						<small>Created by <a href="http://hakim.se">Nicolas Masson</a> and <a href="https://github.com/hakimel/reveal.js/graphs/contributors">Juan Pablo Ramirez</a></small>
+					</p>
+				</section>
+				<section>
+					<h4>Dynamic test fixtures</h4>
+					<section>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-7|9-10|12-13">
+						public function testUserPermission()
+						{
+						   // Arrange
+						   $permission = 'Foo';
+						   $user = UserFactory::make()
+							->with('UserGroups.Permissions', ['name' => 'Foo'])
+							->getEntity();
+
+						   // Act
+						   $hasPermission = $this->Users->hasPermission(
+						      $user,
+						      $permission
+						   );
+
+						   // Assert
+						   $this->assertTrue($hasPermission);
+						}
+						</code></pre></p>
+					</section>
+					<section>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|5">
+						public function testUserPermission()
+						{
+						   $permission = 'Foo';
+						   $user = UserFactory::make()
+							->withPermission('Foo')
+							->getEntity();
+
+						   // Act
+						   ...
+
+						   // Assert
+						   ...
+						}
+						</code></pre></p>
+					</section>
+
+					<section>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4|15-22">
+						public function dataProviderForUserWithPermissionA()
+						{
+						   return [
+						      ['Admin',         true],
+						      ['Special User',  true],
+						      ['Permission A',  true],
+						      ['Permission B',  false],
+						   ];
+						}
+
+						/**
+						* @dataProvider dataProviderForUserWithPermissionA
+						*/
+						public function testUserHasPermissionA(
+						   string $permission,
+						   bool $expected
+						)
+						{
+						   $user = UserFactory::make()
+							->withPermission($permission)
+							->getEntity();
+
+						   // Act
+						   ...
+
+						   // Assert
+						   ...
+						}
+						</code></pre></p>
+					</section>
+
+				</section>
+				<section>
+					<h4>
+						Why writing tests?
+					</h4>
+					<ol>
+						<li class="fragment">
+							Provides clean productive code
+						</li>
+						<li class="fragment">
+							Documents the code
+						</li>
+						<li class="fragment">
+							Protects the code from internal and external changes
+						</li>
+					</ol>
+				</section>
+				<section
+					data-background-image="assets/tree.jpg"
+					data-background-size="contain"
+				>
+				<div style="background-color: rgba(0, 0, 0, 0.6); color: #fff; padding: 20px; margin: auto;">
+					<h4>
+						Tests are the roots of your code
+					</h4>
+				</div>
+				</section>
+				<section>
+					<h3>Setup</h3>
+					<section>
+						<h4>Load the plugin</h4>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+						   // In Application.php
+						   ...
+						   protected function bootstrapCli(): void
+						   {
+						      // Load more plugins here
+						      $this->addPlugin('CakephpFixtureFactories');
+						   }
+						</code></pre></p>
+					</section>
+					<section>
+						<h4>
+							Update the listeners in <i>phpunit.xml</i>
+						</h4>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+							bin/cake fixture_factories_setup
+						</code></pre></p>
+					</section>
+					<section>
+						<h4>
+							Bake your factories
+						</h4>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+							bin/cake bake fixture_factory Users
+						</code></pre></p>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+							bin/cake bake fixture_factory -p UserPlugin Users
+						</code></pre></p>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+							bin/cake bake fixture_factory -p UserPlugin -a
+						</code></pre></p>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+							bin/cake bake fixture_factory -h
+						</code></pre></p>
+					</section>
+					<section>
+						<h4>
+							Run migrations
+						</h4>
+						<p>
+							<pre>In tests/bootstrap.php</pre>
+						</p>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+						\CakephpFixtureFactories\TestSuite\Migrator::migrate();
+						</code></pre></p>
+						<p>
+							<pre>Or with multiple locations:</pre>
+						</p>
+
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+						Migrator::migrate([
+							['plugin' => 'FooPlugin'],
+							['source' => 'BarFolder'],
+							...
+						 ]);
+						</code></pre></p>
+					</section>
+				</section>
+				<section>
+					<h4>User Factory</h4>
+					<p><pre data-id="code-animation"><code class="hljs" data-trim>
+					//////////////////////////// USER FACTORY ////////////////////////////////
+
+					namespace App\Test\Factory;
+
+					use CakephpFixtureFactories\Factory\BaseFactory;
+					use Faker\Generator;
+
+					class UserFactory extends BaseFactory
+					{
+					   protected function getRootTableRegistryName(): string
+					   {
+					   	return "Users";
+					   }
+
+					   protected function setDefaultTemplate(): void
+					   {
+					   	$this->setDefaultData(function (Generator $faker) {
+						   return [
+						      'username' => $faker->userName
+						      'password' => $faker->password,
+						      'email'    => $faker->email,
+						   ];
+					   	});
+					   }
+
+					   public function withPermission(string $permission): self
+					   {
+					   	return $this->with('Groups.Permissions', ['name' => $permission]);
+					   }
+					}
+
+
+					</code></pre></p>
+				</section>
 			</div>
 		</div>
 
