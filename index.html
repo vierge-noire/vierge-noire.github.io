@@ -21,34 +21,105 @@
 					<p>
 						<small>Created by <a href="http://hakim.se">Nicolas Masson</a> and <a href="https://github.com/hakimel/reveal.js/graphs/contributors">Juan Pablo Ramirez</a></small>
 					</p>
+					<aside class="notes">
+						Welcome to our presentation on the Cakephp Fixture Factories <br>
+						This work is presented to you by Nicolas Masson and myself, Juan-Pablo Ramirez <br>
+					</aside>
 				</section>
 				<section>
-					<h4>Test</h4>
-					<p>
-						Intelligibility
-					</p>
-					<p>
-						Usability
-					</p>
-					<p>
-						Performance
-					</p>
+					<section>
+						<h3>Static vs. Dynamic Test Fixtures</h3>
+						<aside class="notes">
+							The presentation proposes a package to create test fixtures dynamically with the help of factories,
+							which presents several advantages over the static CakePHP legacy approach.
+						</aside>
+					</section>
+					<section>
+						<h4>
+							Static
+						</h4>
+						<p>
+							Load many fixtures for each test
+						</p>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-5">
+							public function testUserPermission()
+							{
+							   $user = $this->Users->get(45, [
+						         'contain' => ['Groups.Permissions']
+						   ])
+
+							   $act = $this->Users->hasPermission($user, 'Foo');
+
+							   $this->assertTrue($act);
+							}
+						</code></pre></p>
+					</section>
+					<section>
+						<h4>
+							Dynamic
+						</h4>
+						<p>
+							Create fixtures on the fly
+						</p>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-5">
+							public function testUserPermission()
+							{
+							   $user = UserFactory::make()
+								->withPermission('Foo')
+								->getEntity();
+
+							   $act = $this->Users->hasPermission($user, 'Foo');
+
+							   $this->assertTrue($act);
+							}
+						</code></pre></p>
+					</section>
 				</section>
 				<section>
-					<h4>
+					<h3>Test should be</h3>
+
+					<h4 class="fragment">Intelligible</h4>
+					<h4 class="fragment">Usable</h4>
+					<h4 class="fragment">Performant</h4>
+					<aside class="notes">
+						Tests should meet the following criteria: they should be intelligible.
+						Ideally you should be able to read them like prose. <br>
+						They should be easy to write and to maintain. The excuse:
+						no time for writing tests should not be legitimate.
+						Autocompletion should assist you.<br>
+						They should run fast. To that aim, avoid
+						interaction with the DB and do not load unnecessary fixtures.
+					</aside>
+				</section>
+				<section>
+					<h3>
 						Why test?
-					</h4>
-					<ol>
+					</h3>
+					<ul>
 						<li class="fragment">
-							Clean code
+							<h4>Clean code</h4>
 						</li>
 						<li class="fragment">
-							Documentation
+							<h4>Documentation</h4>
 						</li>
 						<li class="fragment">
-							Code integrity
+							<h4>Code integrity</h4>
 						</li>
-					</ol>
+						<li class="fragment">
+							<h4>Saves time</h4>
+						</li>
+						<li class="fragment">
+							<h4>Saves money</h4>
+						</li>
+					</ul>
+					<aside class="notes">
+						But why do we write tests? Tests force you to write clean code. If you struggle
+						writing your test, it could be due to the complexity of the code your are testing <br>
+						If you tests can easily be read and understood, they document your source code.<br>
+						Whenever your code is refactored, or features are added, or external packages get updated,
+						tests ensure that your code retains it's integrity. <br>
+						Tests significantly reduce the amount of time spent on code maintenance.
+					</aside>
 				</section>
 				<section
 						data-background-image="assets/tree.jpg"
@@ -59,10 +130,14 @@
 							<small class="fragment fade-right">Tests are the roots of your code</small>
 						</h4>
 					</div>
+					<aside class="notes">
+						If your code is a tree, consider tests as its roots. It is its invisible part, the insures
+						that your code grows stable, and does not get wiped out by the first storm.
+					</aside>
 				</section>
 				<section>
 					<h3>
-						How to test
+						How to test?
 					</h3>
 					<div class="fragment">
 						<p style="color: red">Arrange</p>
@@ -75,6 +150,12 @@
 							Assert
 						</p>
 					</div>
+					<aside class="notes">
+						How do tests look like? Most of them will follow the famous AAA pattern.<br>
+						Arrange will prepare the scenario of your test<br>
+						Act will call the method under test<br>
+						Assert will ensure that the result of the method meets expectations.
+					</aside>
 				</section>
 				<section>
 					<h3>
@@ -118,7 +199,7 @@
 						</code></pre></p>
 					</section>
 					<section>
-						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4-7|13-14|17-19|17-25">
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4-7|11,13-14|17-19|17-25">
 						public function dataProviderForUserWithPermissionFoo()
 						{
 						   return [
@@ -139,10 +220,8 @@
 							->withPermission($permission)
 							->getEntity();
 
-						   // Act
 						   $act = $this->Users->hasPermission($user, 'Foo');
 
-						   // Assert
 						   $this->assertSame($expected, $act);
 						}
 						</code></pre></p>
@@ -175,15 +254,6 @@
 							Bake your factories
 						</h4>
 						<p><pre data-id="code-animation"><code class="hljs" data-trim>
-							bin/cake bake fixture_factory Users
-						</code></pre></p>
-						<p><pre data-id="code-animation"><code class="hljs" data-trim>
-							bin/cake bake fixture_factory -p UserPlugin Users
-						</code></pre></p>
-						<p><pre data-id="code-animation"><code class="hljs" data-trim>
-							bin/cake bake fixture_factory -p UserPlugin -a
-						</code></pre></p>
-						<p><pre data-id="code-animation"><code class="hljs" data-trim>
 							bin/cake bake fixture_factory -h
 						</code></pre></p>
 					</section>
@@ -212,7 +282,7 @@
 				</section>
 				<section>
 					<h4>User Factory</h4>
-					<p><pre data-id="code-animation"><code class="hljs" data-trim>
+					<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|8-11|13-22|24-28">
 					namespace App\Test\Factory;
 
 					use CakephpFixtureFactories\Factory\BaseFactory;
