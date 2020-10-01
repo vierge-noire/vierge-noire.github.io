@@ -28,7 +28,7 @@
 				</section>
 				<section>
 					<section>
-						<h3>Static vs. Dynamic Test Fixtures</h3>
+						<h3>Static vs. Dynamic <br> Test Fixtures</h3>
 						<aside class="notes">
 							The presentation proposes a package to create test fixtures dynamically with the help of factories,
 							which presents several advantages over the static CakePHP legacy approach.
@@ -45,7 +45,7 @@
 							public function testUserPermission()
 							{
 							   $user = $this->Users->get(45, [
-						         'contain' => ['Groups.Permissions']
+						         'contain' => ['UserGroups.Permissions']
 						   ])
 
 							   $act = $this->Users->hasPermission($user, 'Foo');
@@ -76,11 +76,15 @@
 					</section>
 				</section>
 				<section>
-					<h3>Test should be</h3>
+					<h3>Tests should be</h3>
 
 					<h4 class="fragment">Intelligible</h4>
+					<img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
 					<h4 class="fragment">Usable</h4>
-					<h4 class="fragment">Performant</h4>
+					<img width="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
+					<h4 class="fragment">Fast</h4>
+					<img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
+
 					<aside class="notes">
 						Tests should meet the following criteria: they should be intelligible.
 						Ideally you should be able to read them like prose. <br>
@@ -139,48 +143,48 @@
 					<h3>
 						How to test?
 					</h3>
-					<div class="fragment">
-						<p style="color: red">Arrange</p>
-					</div>
-					<div class="fragment">
-						<p>Act</p>
-					</div>
-					<div class="fragment">
-						<p style="color: darkgreen">
-							Assert
-						</p>
-					</div>
-					<aside class="notes">
-						How do tests look like? Most of them will follow the famous AAA pattern.<br>
-						Arrange will prepare the scenario of your test<br>
-						Act will call the method under test<br>
-						Assert will ensure that the result of the method meets expectations.
-					</aside>
+					<section>
+						<div class="fragment">
+							<p style="color: red">Arrange</p>
+						</div>
+						<div class="fragment">
+							<p>Act</p>
+						</div>
+						<div class="fragment">
+							<p style="color: darkgreen">
+								Assert
+							</p>
+						</div>
+						<aside class="notes">
+							How do tests look like? Most of them will follow the famous AAA pattern.<br>
+							Arrange will prepare the scenario of your test<br>
+							Act will call the method under test<br>
+							Assert will ensure that the result of the method meets expectations.
+						</aside>
+					</section>
+					<section>
+						<h4>Test permissions Foo</h4>
+						<div class="fragment">
+							<p style="color: red">
+								Arrange <br>
+								Create user, user group, permission Foo, joining tables</p>
+						</div>
+						<div class="fragment">
+							<p>
+								Act <br>
+								Check permission Foo for user
+							</p>
+						</div>
+						<div class="fragment">
+							<p style="color: green">
+								Assert <br>
+								Expect true
+							</p>
+						</div>
+					</section>
 				</section>
 				<section>
-					<h3>
-						Test user permissions
-					</h3>
-					<div class="fragment">
-						<p style="color: red">
-							Arrange <br>
-							Create user, user group, permission, joining tables</p>
-					</div>
-					<div class="fragment">
-						<p>
-							Act <br>
-							Check permission A for user
-						</p>
-					</div>
-					<div class="fragment">
-						<p style="color: green">
-							Assert <br>
-							Expect true
-						</p>
-					</div>
-				</section>
-				<section>
-					<h4>Fixtures factories</h4>
+					<h3>CakePHP Fixtures factories</h3>
 					<section>
 						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-6|8-9|11-12|1-12">
 							public function testUserPermission()
@@ -197,6 +201,9 @@
 							   $this->assertTrue($act);
 							}
 						</code></pre></p>
+						<img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
+						<img height="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
+						<img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
 					</section>
 					<section>
 						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4-7|11,13-14|17-19|17-25">
@@ -281,41 +288,129 @@
 					</section>
 				</section>
 				<section>
-					<h4>User Factory</h4>
-					<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|8-11|13-22|24-28">
-					namespace App\Test\Factory;
+					<h3>User Factory</h3>
+					<section>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+							bin/cake bake fixture_factory Users
+						</code></pre></p>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|6|8-11|13-22">
+							namespace App\Test\Factory;
 
-					use CakephpFixtureFactories\Factory\BaseFactory;
-					use Faker\Generator;
+							use CakephpFixtureFactories\Factory\BaseFactory;
+							use Faker\Generator;
 
-					class UserFactory extends BaseFactory
-					{
-					   protected function getRootTableRegistryName(): string
-					   {
-					   	return "Users";
-					   }
+							class UserFactory extends BaseFactory
+							{
+							   protected function getRootTableRegistryName(): string
+							   {
+								return "Users";
+							   }
 
-					   protected function setDefaultTemplate(): void
-					   {
-					   	$this->setDefaultData(function (Generator $faker) {
-						   return [
-						      'username' => $faker->userName
-						      'password' => $faker->password,
-						      'email'    => $faker->email,
-						   ];
-					   	});
-					   }
+							   protected function setDefaultTemplate(): void
+							   {
+								$this->setDefaultData(function (Generator $faker) {
+								   return [
+									// set the model's default values
+									// For example:
+									// 'name' => $faker->lastName
+								   ];
+								});
+							   }
+							}
+						</code></pre></p>
+					</section>
+					<section>
+						<h4>Modified</h4>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|13-22|24-29">
+							namespace App\Test\Factory;
 
-					   public function withPermission(string $permission): self
-					   {
-					   	return $this->with('Groups.Permissions', [
-						  'name' => $permission
+							use CakephpFixtureFactories\Factory\BaseFactory;
+							use Faker\Generator;
+
+							class UserFactory extends BaseFactory
+							{
+							   protected function getRootTableRegistryName(): string
+							   {
+								return "Users";
+							   }
+
+							   protected function setDefaultTemplate(): void
+							   {
+								$this->setDefaultData(function (Generator $faker) {
+								   return [
+									  'username' => $faker->userName
+									  'password' => $faker->password,
+									  'email'    => $faker->email,
+								   ];
+								});
+							   }
+
+							   public function withPermission(string $permission): self
+							   {
+								return $this->with('UserGroups.Permissions', [
+								  'name' => $permission
+								]);
+							   }
+							}
+						</code></pre></p>
+					</section>
+
+					<img height="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
+
+				</section>
+				<section>
+					<h3>Examples</h3>
+					<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|1|3|5|7|9-12|14-16|18-21|23-26|28|1,3">
+						$user = UserFactory::make()->getEntity();
+
+						$user = UserFactory::make()->persist();
+
+						UserFactory::make(3);
+
+						UserFactory::make(['username' => 'Foo'], 2);
+
+						UserFactory::make([
+						  ['username' => 'Foo'],
+						  ['username' => 'Bar'],
 						]);
-					   }
-					}
 
+						UserFactory::make()->with('UserGroups', [
+						  'name' => 'Golfers'
+						]);
 
+						UserFactory::make()->with(
+						  'UserGroups',
+						  UserGroupFactory::make(['name' => 'Golfers'])
+						);
+
+						UserFactory::make()->with('UserGroups', [
+						  ['name' => 'Golfers'],
+						  ['name' => 'Swimmers'],
+						]);
+
+						UserFactory::make(3)->with('UserGroups[5].Permissions');
 					</code></pre></p>
+					<div class="fragment fade-left">
+						<img height="80" data-src="assets/book.svg" alt="Book">
+						<img height="80" data-src="assets/tool.svg" alt="Tool">
+					</div>
+				</section>
+				<section>
+					<h3>Test Life Cycle</h3>
+					<div class="fragment">
+						<h4>Test Suite Starts</h4>
+						<p>Run migrations</p>
+					</div>
+					<div class="fragment">
+						<h4>Test Starts</h4>
+						<p>Truncate Dirty Tables</p>
+					</div>
+					<img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
+					<img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
+				</section>
+				<section>
+					<h3>Performance</h3>
+
 				</section>
 			</div>
 		</div>
