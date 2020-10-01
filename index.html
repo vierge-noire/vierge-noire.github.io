@@ -12,6 +12,14 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+		<style>
+			.green {
+				color: green;
+			}
+			.red {
+				color: red;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
@@ -164,23 +172,19 @@
 					</section>
 					<section>
 						<h4>Test permissions Foo</h4>
-						<div class="fragment">
-							<p style="color: red">
-								Arrange <br>
-								Create user, user group, permission Foo, joining tables</p>
-						</div>
-						<div class="fragment">
-							<p>
-								Act <br>
-								Check permission Foo for user
-							</p>
-						</div>
-						<div class="fragment">
-							<p style="color: green">
-								Assert <br>
-								Expect true
-							</p>
-						</div>
+						<p class="fragment red">
+							Arrange <br>
+							Create user, user group, permission Foo, joining tables</p>
+						</p>
+						<p class="fragment">
+							Act <br>
+							Check permission Foo for user
+						</p>
+						<p class="fragment green">
+							Assert <br>
+							Expect true
+						</p>
+						</p>
 					</section>
 				</section>
 				<section>
@@ -291,8 +295,10 @@
 					<h3>User Factory</h3>
 					<section>
 						<p><pre data-id="code-animation"><code class="hljs" data-trim>
-							bin/cake bake fixture_factory Users
+							bin/cake bake fixture_factory -a
 						</code></pre></p>
+					</section>
+					<section>
 						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|6|8-11|13-22">
 							namespace App\Test\Factory;
 
@@ -320,8 +326,7 @@
 						</code></pre></p>
 					</section>
 					<section>
-						<h4>Modified</h4>
-						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|13-22|24-29">
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|13-22|24-29|31-34">
 							namespace App\Test\Factory;
 
 							use CakephpFixtureFactories\Factory\BaseFactory;
@@ -351,12 +356,15 @@
 								  'name' => $permission
 								]);
 							   }
+
+							   public function admin(): self
+							   {
+								return $this->withPermission('Admin');
+							   }
 							}
 						</code></pre></p>
+						<img height="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
 					</section>
-
-					<img height="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
-
 				</section>
 				<section>
 					<h3>Examples</h3>
@@ -400,17 +408,72 @@
 					<div class="fragment">
 						<h4>Test Suite Starts</h4>
 						<p>Run migrations</p>
+						<img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
+						<img height="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
 					</div>
 					<div class="fragment">
 						<h4>Test Starts</h4>
 						<p>Truncate Dirty Tables</p>
+						<img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
 					</div>
-					<img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
-					<img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
 				</section>
 				<section>
 					<h3>Performance</h3>
-
+					<canvas data-chart="line" class="stretch">
+						<!--
+                        {
+                         "data": {
+                          "labels": [10, 20, 30, 40, 50, 60],
+                          "datasets": [
+                           {
+                            "data":[0.6, 1.1, 1.6, 1.9, 2.7, 2.7],
+                            "label":"Dynamic","backgroundColor":"rgba(215,27,59,.8)", "borderColor": "#d71b3b"
+                           },
+                           {
+                            "data":[7.2, 10, 15, 24, 26, 36],
+                            "label":"Dynamic persisted","backgroundColor":"rgba(22,172,234,.8)", "borderColor": "#16acea"
+                           },
+                           {
+                            "data":[7.7, 19, 38, 64, 100, 143],
+                            "label":"Static legacy listener","backgroundColor":"rgba(66,3,201,.8)", "borderColor": "#4203c9"
+                           }
+                          ]
+                         },
+                         "options": { "responsive": "true" }
+                        }
+                        -->
+					</canvas>
+				</section>
+				<section>
+					<h3>Compatibility</h3>
+					<p class="fragment green">
+						CakePHP 3
+					</p>
+					<p class="fragment green">
+						CakePHP 4
+					</p>
+					<p class="fragment green">
+						Static fixtures
+					</p>
+					<p class="fragment green">
+						Mysql - Sqlite - PostgreSQL
+					</p>
+				</section>
+				<section>
+					<h3>
+						Conclusion
+					</h3>
+					<p><pre data-id="code-animation"><code class="hljs" data-trim>
+						composer require --dev pakacuda/cakephp-fixture-factories
+					</code></pre></p>
+					<p>
+						<small>
+							<a href="https://github.com/vierge-noire/cakephp-fixture-factories">https://github.com/vierge-noire/cakephp-fixture-factories</a>
+						</small>
+					</p>
+					<p class="fragment">
+						Have fun!
+					</p>
 				</section>
 			</div>
 		</div>
@@ -419,6 +482,8 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/chart/Chart.min.js"></script>
+		<script src="plugin/chart/plugin.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -427,7 +492,25 @@
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart ],
+
+
+				chart: {
+					defaults: {
+						global: {
+							title: { fontColor: "#FFF" },
+							legend: {
+								labels: { fontColor: "#FFF" },
+							},
+						},
+						scale: {
+							scaleLabel: { fontColor: "#FFF" },
+							gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+							ticks: { fontColor: "#FFF" },
+						}
+					},
+					line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ]},
+				},
 			});
 		</script>
 	</body>
