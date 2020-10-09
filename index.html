@@ -33,36 +33,31 @@
 						Welcome to our presentation on the Cakephp Fixture Factories <br>
 						This work is presented to you by Nicolas Masson and myself, Juan-Pablo Ramirez <br>
                         Both have long years experience in CakePHP 3.x and 4.x
-
-
 					</aside>
+					<img data-src="assets/vierge-noire.jpg" height="400px" alt="Nico and Juan Pablo"/>
+
 				</section>
 				<section>
 					<section>
-						<h3>Static vs. Dynamic <br> Test Fixtures</h3>
+						<h4>Static Test Fixtures are not fun</h4>
+						<img class="fragment fade-down" height="400px" data-src="assets/pub.jpg" alt="Picture of Nico and Juan Pablo struggling with the static CakePHP fixtures" />
 						<aside class="notes">
-							The presentation proposes a package to create test fixtures dynamically with the help of factories,
-							which presents several advantages over the static CakePHP legacy approach.
+							We stared writing tests within a large project and got trapped by the number of fixtures
+							we had to create for each of them, multiplied by the amount of tables.
+							We also got tired of having to declare long lists of fixtures in our integration tests,
+							as well as maintaining them.
 
-                            We stared writing tests for a large project and got trapped by the number of fixtures
-                            we had to create for each of them, multiplied by the amount of tables.
-                            We also got tired of having to declare long lists of fixtures in our integration tests,
-                            as well as maintaining them.
-
-                            Eventually, we could not understand our tests. This is something I'll illustrate in the following slide.
-
-                            For example, we ended up with a large amount of user scenarios with different permissions. Every new test
-                            made the reading of the fixtures ever more impossible.
+							Eventually, we could not understand our tests. This is something I'll illustrate in the following slide.
 						</aside>
 					</section>
                     <section>
                         <h4>CakePHP fixtures are static</h4>
                         <h4>CakePHP Fixture Factories are dynamic</h4>
                         <aside class="notes">
-                            CakePHP fixtures are static, they are hard coded and shared across all tests, once loaded.
+							CakePHP fixtures are static, they are hard coded and shared across all tests, once loaded.
 
-                            Nicolas Masson came with the idea to create fixture factories in order to generate
-                            test fixtures dynamically. You create what you need inside your test.
+                            Nicolas Masson came up with the idea to create fixture factories in order to generate
+                            test fixtures dynamically for CakePHP too. You create what you need inside your test.
                             The first version proposed by Nico got developed and maintained by Juan Pablo.
                             I will explain in a simple example what this all means.
                         </aside>
@@ -80,6 +75,9 @@
                         </code></pre></p>
                         </p>
                         <aside class="notes">
+							For example, we ended up with a large amount of user scenarios with different permissions. Every new test
+							made the reading of the fixtures ever more impossible.
+
                             During this presentation, I will take the example of user permissions.
                             We have a table users, users belong to many user groups, and user groups belongs to many permissions.
                             We end up with 5 tables, and therefore 5 test fixture files.
@@ -560,7 +558,7 @@
 				<section>
 					<h3>Test Life Cycle</h3>
 					<div class="fragment">
-						<h4>Test Suite Starts</h4>
+						<h4>tests/Bootstrap</h4>
 						<p>Run migrations</p>
 						<img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
 						<img height="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
@@ -588,7 +586,7 @@
 						<!--
                         {
                          "data": {
-                          "labels": [10, 20, 30, 40, 50, 60],
+                          "labels": [100, 200, 300, 400, 500, 600],
                           "datasets": [
                            {
                             "data":[0.6, 1.1, 1.6, 1.9, 2.7, 2.7],
@@ -608,6 +606,9 @@
                         }
                         -->
 					</canvas>
+					<p><small>
+						<a href="https://github.com/pabloelcolombiano/cakephp-performance-tests" target="_blank">->Pilot study here<-</a>
+					</small></p>
                     <aside class="notes">
 
                         The x-axis is the number of tests per TestClass.
@@ -628,7 +629,7 @@
                         and your app in general, the fixture factories will enable you to write and test methods that rather use entities
                         than ids.
 
-
+						The numbers and the test setting are available on a github repo here.
 
                     </aside>
 				</section>
@@ -657,6 +658,10 @@
 					<p>
 						<small>
 							<a href="https://github.com/vierge-noire/cakephp-fixture-factories" target="_blank">https://github.com/vierge-noire/cakephp-fixture-factories</a>
+						</small>
+						<br>
+						<small>
+							<a href="https://github.com/vierge-noire/vierge-noire.github.io" target="_blank">Go to the presentation</a>
 						</small>
 					</p>
 					<p class="fragment">
