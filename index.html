@@ -99,7 +99,7 @@
 							public function testUserPermission()
 							{
 							   $user = $this->Users->get(45, [
-						         'contain' => ['UserGroups.Permissions']
+						         'contain' => ['UsersGroups.Permissions']
 						   ])
 
 							   $act = $this->Users->hasPermission($user, 'Foo');
@@ -251,14 +251,14 @@
 					</section>
 				</section>
 				<section>
-					<h3>CakePHP Fixtures factories</h3>
 					<section>
+                        <h3>Unit test</h3>
 						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-6|8-9|11-12|1-12">
 							public function testUserPermission()
 							{
 							  // Arrange
 							   $user = UserFactory::make()
-								->withPermission('Foo')
+								->with('UsersGroups.Permissions', ['name' => 'Foo'])
 								->getEntity();
 
 							   // Act
@@ -273,9 +273,11 @@
 						<img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
                         <aside class="notes">
                             This is how the test looks like with the factories.
+							The facot
                         </aside>
 					</section>
 					<section>
+                        <h3>Unit tests</h3>
 						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4-7|11,13-14|17-19|17-25">
 						public function dataProviderForUserWithPermissionFoo()
 						{
@@ -313,6 +315,41 @@
 
                             The test remains simple to read, and the test is complete.
                         </aside>
+					</section>
+					<section>
+                        <h3>Integration test</h3>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|1-9|11-14|16-19|21-24">
+						Feature: User permission
+
+						  Background:
+						   Given I create a user with id 504
+
+						  Scenario:
+							Given I log in with permission 'Users'
+							When I call get 'users/view/504'
+							Then I shall be granted access.
+
+						  Scenario:
+							Given I log in with permission 'Admin'
+							When I call get 'users/view/504'
+							Then I shall be granted access.
+
+						  Scenario:
+							Given I log in with permission 'Guru'
+							When I call get 'users/view/504'
+							Then I shall be granted access.
+
+						  Scenario:
+							Given I log in with permission 'Foo'
+							When I call get 'users/view/504'
+							Then I shall be redirected.
+
+						</code></pre></p>
+						<aside class="notes">
+							The factories will also ease the way you write your integration
+							test, for example here with behat. I will get back to it later
+							with some coding examples.
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -355,6 +392,10 @@
 						<p><pre data-id="code-animation"><code class="hljs" data-trim>
 							bin/cake fixture_factories_setup
 						</code></pre></p>
+						<aside class="notes">
+							The package uses an extension of the CakePHP native test listener.
+							It is doing much less. I'll get back to it.
+						</aside>
 					</section>
 					<section>
 						<h4>
@@ -365,7 +406,7 @@
 						</code></pre></p>
                         <aside class="notes">
                             Bake your factories. The plugin will crawl for all the tables and
-                            will generate a skeleton for your tables factories.
+                            will generate a skeleton for your fixture factories.
                             You can also specify one particular table, or a plugin, and more.
                             This is described in the docs.
                         </aside>
@@ -380,9 +421,19 @@
 						<p><pre data-id="code-animation"><code class="hljs" data-trim>
 						\CakephpTestMigrator\Migrator::migrate();
 						</code></pre></p>
-						<p>
-							<pre>Or with multiple locations:</pre>
-						</p>
+						<aside class="notes">
+							The Migrator is one of the key fixtures of the plugin.
+							It is actually not in the plugin, but aside.
+							The idea is that we do not drop tables, at no time.
+							The migrator will run migrations on Monday, and the schema
+							of your test DB will evolve exactly the same way as your
+							productive DB does. Migrations get indirectly tested.
+
+							You do not have to care about any maintenance of your DB.
+
+							If you ever switch branches, the migrator detects it and drops
+							all the tables.
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -391,6 +442,9 @@
 						<p><pre data-id="code-animation"><code class="hljs" data-trim>
 							bin/cake bake fixture_factory -a
 						</code></pre></p>
+						<aside class="notes">
+							Assuming we've baked all our factories.
+						</aside>
 					</section>
 					<section>
 						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|6|8-11|13-22">
@@ -507,7 +561,7 @@
 					<h3>Test Life Cycle</h3>
 					<div class="fragment">
 						<h4>Test Suite Starts</h4>
-						<p>Run migrations or Sql</p>
+						<p>Run migrations</p>
 						<img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
 						<img height="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
 					</div>
@@ -611,6 +665,15 @@
                     <p class="fragment fade-right">
                         Zuluru - Bancer - Dreamingmind
                     </p>
+					<p class="fragment fade-right">
+						The CakePHP community!
+					</p>
+					<aside class="notes">
+						You will find the factories easy to write, to read and fast to write.
+						They are the missing part of the CakePHP testing environment to have
+						a comfortable experience while coding. Making tests asier to write will
+						enhance the quality of your code.
+					</aside>
 				</section>
 			</div>
 		</div>

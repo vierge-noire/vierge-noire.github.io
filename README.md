@@ -19,7 +19,7 @@ composer require --dev pakacuda/cakephp-fixture-factories "^1.0"
 
 ## License
 
-The CakePHPFixtureFactories plugin is offered under an [MIT license](https://opensource.org/licenses/mit-license.php).
+The CakePHP Fixture Factories plugin is offered under an [MIT license](https://opensource.org/licenses/mit-license.php).
 
 Copyright 2020 Juan Pablo Ramirez and Nicolas Masson
 
