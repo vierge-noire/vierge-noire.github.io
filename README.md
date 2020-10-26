@@ -28,3 +28,6 @@ Licensed under The MIT License Redistributions of files must retain the above co
 ## Authors
 * Juan Pablo Ramirez
 * Nicolas Masson
+
+## Support
+Contact us at vierge.noire.info@gmail.com for professional assistance.
