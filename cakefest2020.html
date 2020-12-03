@@ -1,0 +1,732 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>CakePHP Fixture Factories</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/blood.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+		<style>
+			.green {
+				color: green;
+			}
+			.red {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>CakePHP Fixture Factories</h3>
+					<p>
+						<small>Created by <a href="https://twitter.com/nicopakacuda?lang=en" target="_blank">Nicolas Masson</a> and <a href="https://webrider.de" target="_blank">Juan Pablo Ramirez</a></small>
+                        <br>
+                        <small> Press <b>S</b> for speaker view</small>
+                        <br>
+                        <small><a href="mailto:'vierge.noire.info@gmail.com'">vierge.noire.info@gmail.com</a></small>
+                    <p>
+
+                    </p>
+					<aside class="notes">
+						Welcome to our presentation on the Cakephp Fixture Factories <br>
+						This work is presented to you by Nicolas Masson and myself, Juan-Pablo Ramirez <br>
+                        Both have long years experience in CakePHP 3.x and 4.x
+					</aside>
+					<img class="fade-down fragment" data-src="assets/vierge-noire.jpg" height="300px" alt=""/>
+
+				</section>
+				<section>
+					<section>
+						<h4>Static Test Fixtures are not fun</h4>
+						<img class="fragment fade-down" height="400px" data-src="assets/pub.jpg" alt="" />
+						<aside class="notes">
+							We stared writing tests within a large project and got trapped by the number of fixtures
+							we had to create for each of them, multiplied by the amount of tables.
+							We also got tired of having to declare long lists of fixtures in our integration tests,
+							as well as maintaining them.
+
+							Eventually, we could not understand our tests. This is something I'll illustrate in the following slide.
+						</aside>
+					</section>
+                    <section>
+                        <h4>CakePHP fixtures are static</h4>
+                        <h4>CakePHP Fixture Factories are dynamic</h4>
+                        <aside class="notes">
+							CakePHP fixtures are static, they are hard coded and shared across all tests, once loaded.
+
+                            Nicolas Masson came up with the idea to create fixture factories in order to generate
+                            test fixtures dynamically for CakePHP too. You create what you need inside your test.
+                            The first version proposed by Nico got developed and maintained by Juan Pablo.
+                            I will explain in a simple example what this all means.
+                        </aside>
+                    </section>
+                    <section>
+                        <h4>Example <br> User permissions</h4>
+                        <p>UsersTable &harr; UsersGroupsTable &harr; PermissionsTable</p>
+                        <p>5 Tables
+                        <p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|5|4|3|2|1">
+                            users
+                            users_users_groups
+                            users_groups
+                            users_groups_permissions
+                            permissions
+                        </code></pre></p>
+                        </p>
+                        <aside class="notes">
+							For example, we ended up with a large amount of user scenarios with different permissions. Every new test
+							made the reading of the fixtures ever more impossible.
+
+                            During this presentation, I will take the example of user permissions.
+                            We have a table users, users belong to many user groups, and user groups belongs to many permissions.
+                            We end up with 5 tables, and therefore 5 test fixture files.
+
+                            Let's say I need a user with permission Foo. I need to go to the permission fixtures and search for permission foo, note its id,
+                            search in the pivot table users groups permissions which user groups this permission is associated. Hopefully I find one. Knowing this or these
+                            user group ids, I need to search in the pivot table users users groups for one user belonging to the user groups.
+
+                            A terrible pain. There are ways to ease the pain, but the pain will always remain.
+                        </aside>
+                    </section>
+					<section>
+						<h4>
+							Static
+						</h4>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-5">
+							public function testUserPermission()
+							{
+							   $user = $this->Users->get(45, [
+						         'contain' => ['UsersGroups.Permissions']
+						   ])
+
+							   $act = $this->Users->hasPermission($user, 'Foo');
+
+							   $this->assertTrue($act);
+							}
+						</code></pre></p>
+                        <aside class="notes">
+                            This is a test consuming CakePHP traditional fixtures.
+
+                            Let's assume that the user 45 had permission Foo.
+
+                            If my test needs to act on user 45, I need to fetch it with a query based on its id . It's double work.
+
+                            Additionally, if you want to add an additional permission to user 45, things will keep growing, and the complexity will make you think
+                            twice before you write another test.
+                        </aside>
+					</section>
+					<section>
+						<h4>
+							Dynamic
+						</h4>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-5">
+							public function testUserPermission()
+							{
+							   $user = UserFactory::make()
+								->with('UsersGroups.Permissions', ['name' => 'Foo'])
+								->getEntity();
+
+							   $act = $this->Users->hasPermission($user, 'Foo');
+
+							   $this->assertTrue($act);
+							}
+						</code></pre></p>
+                        <aside class="notes">
+                            Whereas in the case of dynamic fixtures, you create the user you need for this test within the test.
+                            We use here a user factory. The method with allows to insert associated data based on the associations
+                            defined in your tables.
+
+                            The following will create a user, belonging to whatever users group, belonging to a permission Foo.
+                        </aside>
+					</section>
+				</section>
+				<section>
+					<h3>Tests should be</h3>
+
+					<h4 class="fragment">Readable</h4>
+					<img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
+					<h4 class="fragment">Easy to write</h4>
+					<img width="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
+					<h4 class="fragment">Fast</h4>
+					<img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
+
+					<aside class="notes">
+						Tests should meet the following criteria: they should be intelligible.
+						Ideally you should be able to read them like prose. <br>
+						They should be easy to write and to maintain. The excuse:
+						no time for writing tests should not be legitimate.
+						Autocompletion should assist you.<br>
+						They should run fast. To that aim, avoid
+						interaction with the DB and do not load unnecessary fixtures.
+					</aside>
+				</section>
+				<section>
+					<h3>
+						Why test?
+					</h3>
+					<ul>
+						<li class="fragment">
+							<h4>Clean code</h4>
+						</li>
+						<li class="fragment">
+							<h4>Documentation</h4>
+						</li>
+						<li class="fragment">
+							<h4>Code integrity</h4>
+						</li>
+						<li class="fragment">
+							<h4>Saves time</h4>
+						</li>
+					</ul>
+					<aside class="notes">
+						But why do we write tests? Tests force you to write clean code. If you struggle
+						writing your test, it could be due to the complexity of the code your are testing <br>
+						If your tests can easily be read and understood, they document your source code.<br>
+						Whenever your code is refactored, features are added, or external packages get updated,
+						tests ensure that your code retains it's integrity. <br>
+						Tests significantly reduce the amount of time spent on code maintenance. It saves time and efforts.
+					</aside>
+				</section>
+				<section
+						data-background-image="assets/tree.jpg"
+						data-background-size="contain"
+				>
+					<div style="background-color: rgba(0, 0, 0, 0); color: #fff; padding: 20px; margin: auto;">
+						<h4>
+							<small class="fragment fade-right">Tests are the roots of your code</small>
+						</h4>
+					</div>
+					<aside class="notes">
+						If your code is a tree, consider tests as its roots. It is its invisible part, it insures
+						that your code grows stable, and does not get wiped out by the first storm.
+					</aside>
+				</section>
+				<section>
+					<h3 style="color: grey">
+						Test anatomy
+					</h3>
+					<section>
+						<div class="fragment">
+							<p style="color: red">Arrange</p>
+						</div>
+						<div class="fragment">
+							<p>Act</p>
+						</div>
+						<div class="fragment">
+							<p style="color: darkgreen">
+								Assert
+							</p>
+						</div>
+						<aside class="notes">
+							How do tests look like? Most of them will follow the famous AAA pattern.<br>
+							Arrange will prepare the scenario of your test<br>
+							Act will call the method under test<br>
+							Assert will ensure that the result of the method meets expectations.
+
+                            Test driven development means that you write Arrange and Assert before Act.
+						</aside>
+					</section>
+					<section>
+						<h4>Test permissions Foo</h4>
+						<p class="fragment red">
+							Arrange <br>
+							Create user, user group, permission Foo, pivot tables</p>
+						</p>
+						<p class="fragment">
+							Act <br>
+							Check permission Foo for user
+						</p>
+						<p class="fragment green">
+							Assert <br>
+							Expect user to have permission Foo
+						</p>
+						</p>
+                        <aside class="notes">
+                            Back to our previous example, in arrange we create the user, the users group, the permission and the pivot table
+                            We call our hasPermission method and we eventually assert the the user has the given permission.
+                        </aside>
+					</section>
+				</section>
+				<section>
+					<section>
+                        <h3>Unit test</h3>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-6|8-9|11-12|1-12">
+							public function testUserPermission()
+							{
+							  // Arrange
+							   $user = UserFactory::make()
+								->with('UsersGroups.Permissions', ['name' => 'Foo'])
+								->getEntity();
+
+							   // Act
+							   $act = $this->Users->hasPermission($user, 'Foo');
+
+							   // Assert
+							   $this->assertTrue($act);
+							}
+						</code></pre></p>
+						<img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
+						<img height="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
+						<img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
+                        <aside class="notes">
+                            This is how the test looks like with the factories.
+							The factory being tight to the UsersTable, it is aware of the associations of the user.
+                        </aside>
+					</section>
+					<section>
+                        <h3>Unit tests</h3>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4-7|11,13-14|17-19|17-25">
+						public function dataProviderForUserWithPermissionFoo()
+						{
+						   return [
+						      ['Admin', true],
+						      ['Guru',  true],
+						      ['Foo',   true],
+						      ['Bar',   false],
+						   ];
+						}
+
+						/** @dataProvider dataProviderForUserWithPermissionFoo */
+						public function testUserHasPermissionFoo(
+						   string $permission,
+						   bool $expected
+						)
+						{
+						   $user = UserFactory::make()
+							->withPermission($permission)
+							->getEntity();
+
+						   $act = $this->Users->hasPermission($user, 'Foo');
+
+						   $this->assertSame($expected, $act);
+						}
+						</code></pre></p>
+                        <aside class="notes">
+                            Since creating fixtures are now made a piece of cake, we are not afraid any more to
+                            add tests to make our application more robust.
+                            For example here, we will test the hasPermission method against 4 users with different
+                            permissions. Admin and Gurus should have all permission Foo. A user with permission Bar not.
+
+                            The PHPUnit data provider tool enables to run one test with different settings. Here we pass the permission
+                            of the user created in the test, and the assert expectation.
+
+                            The test remains simple to read, and the test is complete.
+                        </aside>
+					</section>
+					<section>
+                        <h3>Integration test</h3>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|1-9|11-14|16-19|21-24">
+						Feature: User permission
+
+						  Background:
+						   Given I create a user with id 504
+
+						  Scenario:
+							Given I log in with permission 'Users'
+							When I call get 'users/view/504'
+							Then I shall be granted access.
+
+						  Scenario:
+							Given I log in with permission 'Admin'
+							When I call get 'users/view/504'
+							Then I shall be granted access.
+
+						  Scenario:
+							Given I log in with permission 'Guru'
+							When I call get 'users/view/504'
+							Then I shall be granted access.
+
+						  Scenario:
+							Given I log in with permission 'Foo'
+							When I call get 'users/view/504'
+							Then I shall be redirected.
+
+						</code></pre></p>
+						<aside class="notes">
+							The factories will also ease the way you write your integration
+							test, for example here with behat. I will get back to it later
+							with some coding examples.
+						</aside>
+					</section>
+				</section>
+				<section>
+					<h3>Setup</h3>
+                    <section>
+                        <h4>Installation</h4>
+                        <p>
+                        CakePHP 4.x
+                        </p>
+                        <pre data-id="code-animation"><code class="hljs" data-trim>
+                        composer require --dev vierge-noire/cakephp-fixture-factories "^2.0"
+                        </code></pre></p>
+                        <p>CakePHP 3.x</p>
+                        <pre data-id="code-animation"><code class="hljs" data-trim>
+    						composer require --dev vierge-noire/cakephp-fixture-factories "^1.0"
+					    </code></pre></p>
+                        <aside class="notes">
+                            The package is available for CakePHP 3 and 4. Both versions work exactly the same way and have the same features.
+                        </aside>
+                    </section>
+					<section>
+						<h4>Load the plugin</h4>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+						   // In Application.php
+						   ...
+						   protected function bootstrapCli(): void
+						   {
+						      // Load more plugins here
+						      $this->addPlugin('CakephpFixtureFactories');
+						   }
+						</code></pre></p>
+                        <aside class="notes">
+
+                        </aside>
+					</section>
+					<section>
+						<h4>
+							Update the listeners in <i>phpunit.xml</i>
+						</h4>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+							bin/cake fixture_factories_setup
+						</code></pre></p>
+						<aside class="notes">
+							The package uses an extension of the CakePHP native test listener.
+							It is doing much less. I'll get back to it.
+						</aside>
+					</section>
+					<section>
+						<h4>
+							Bake your factories
+						</h4>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+							bin/cake bake fixture_factory -a
+						</code></pre></p>
+                        <aside class="notes">
+                            Bake your factories. The plugin will crawl for all the tables and
+                            will generate a skeleton for your fixture factories.
+                            You can also specify one particular table, or a plugin, and more.
+                            This is described in the docs.
+                        </aside>
+					</section>
+					<section>
+						<h4>
+							Migrations (optional)
+						</h4>
+						<p>
+							<pre>In tests/bootstrap.php</pre>
+						</p>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+						\CakephpTestMigrator\Migrator::migrate();
+						</code></pre></p>
+						<aside class="notes">
+							The Migrator is one of the key fixtures of the plugin.
+							It is actually not in the plugin, but aside.
+							The idea is that we do not drop tables, at no time.
+							The migrator will run migrations on Monday, and the schema
+							of your test DB will evolve exactly the same way as your
+							productive DB does. Migrations get indirectly tested.
+
+							You do not have to care about any maintenance of your DB.
+
+							If you ever switch branches, the migrator detects it and drops
+							all the tables.
+						</aside>
+					</section>
+				</section>
+				<section>
+					<h3>User Factory</h3>
+					<section>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim>
+							bin/cake bake fixture_factory -a
+						</code></pre></p>
+						<aside class="notes">
+							Assuming we've baked all our factories.
+						</aside>
+					</section>
+					<section>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|6|8-11|13-22">
+							namespace App\Test\Factory;
+
+							use CakephpFixtureFactories\Factory\BaseFactory;
+							use Faker\Generator;
+
+							class UserFactory extends BaseFactory
+							{
+							   protected function getRootTableRegistryName(): string
+							   {
+								return "Users";
+							   }
+
+							   protected function setDefaultTemplate(): void
+							   {
+								$this->setDefaultData(function (Generator $faker) {
+								   return [
+									// set the model's default values
+									// For example:
+									// 'name' => $faker->lastName
+								   ];
+								});
+							   }
+							}
+						</code></pre></p>
+					</section>
+					<section>
+						<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|13-22|24-29|31-34|36-39">
+							namespace App\Test\Factory;
+
+							use CakephpFixtureFactories\Factory\BaseFactory;
+							use Faker\Generator;
+
+							class UserFactory extends BaseFactory
+							{
+							   protected function getRootTableRegistryName(): string
+							   {
+								return "Users";
+							   }
+
+							   protected function setDefaultTemplate(): void
+							   {
+								$this->setDefaultData(function (Generator $faker) {
+								   return [
+									  'username' => $faker->userName
+									  'password' => $faker->password,
+									  'email'    => $faker->email,
+								   ];
+								});
+							   }
+
+							   public function withPermission(string $permission): self
+							   {
+								return $this->with('UserGroups.Permissions', [
+								  'name' => $permission
+								]);
+							   }
+
+							   public function admin(): self
+							   {
+								return $this->withPermission('Admin');
+							   }
+
+							   public function inFantasticMood(): self
+							   {
+								// Make this user happy here
+								return $this;
+							   }
+							}
+						</code></pre></p>
+						<img height="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
+					</section>
+				</section>
+				<section>
+					<h3>Examples</h3>
+					<p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|1|3|5|7|9-12|14-16|18-21|23-26|28|1,3">
+						$user = UserFactory::make()->getEntity();
+
+						$user = UserFactory::make()->persist();
+
+						UserFactory::make(3);
+
+						UserFactory::make(['username' => 'Foo'], 2);
+
+						UserFactory::make([
+						  ['username' => 'Foo'],
+						  ['username' => 'Bar'],
+						]);
+
+						UserFactory::make()->with('UserGroups', [
+						  'name' => 'Golfers'
+						]);
+
+						UserFactory::make()->with(
+						  'UserGroups',
+						  UserGroupFactory::make(['name' => 'Golfers'])
+						);
+
+						UserFactory::make()->with('UserGroups', [
+						  ['name' => 'Golfers'],
+						  ['name' => 'Swimmers'],
+						]);
+
+						UserFactory::make(3)->with('UserGroups[5].Permissions');
+					</code></pre></p>
+					<div class="fragment fade-left">
+						<img height="80" data-src="assets/book.svg" alt="Book">
+						<img height="80" data-src="assets/tool.svg" alt="Tool">
+					</div>
+				</section>
+				<section>
+					<h3>Test Life Cycle</h3>
+					<div class="fragment">
+						<h4>tests/Bootstrap</h4>
+						<p>Run migrations</p>
+						<img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
+						<img height="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
+					</div>
+					<div class="fragment">
+						<h4>Test Starts</h4>
+						<p>Truncate Dirty Tables</p>
+						<img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
+					</div>
+                    <aside class="notes">
+                        The test life cycle using the listener made for the factories is slightly different from the one out of the box in CakePHP.
+                        The schema of the DB is created using the migrations, or running your Sql commands on your test DB.
+                        This documents your schema. Additionally, it involves the migrations in your test cycle. Your migrations get tested. This is very useful.
+
+                        Before every test, the dirty tables get truncate. The schema is never modified.
+                        This speeds up significantly the tests.
+
+
+                    </aside>
+				</section>
+				<section>
+					<h3>Performance</h3>
+					<p style="font-size: 24px;">Time (Y axis) vs Number of tests (X axis)</p>
+					<canvas data-chart="line" class="stretch">
+						<!--
+                        {
+                         "data": {
+                          "labels": [100, 200, 300, 400, 500, 600],
+                          "datasets": [
+                           {
+                            "data":[0.6, 1.1, 1.6, 1.9, 2.7, 2.7],
+                            "label":"Dynamic","backgroundColor":"rgba(215,27,59,.8)", "borderColor": "#d71b3b"
+                           },
+                           {
+                            "data":[7.2, 10, 15, 24, 26, 36],
+                            "label":"Dynamic persisted","backgroundColor":"rgba(22,172,234,.8)", "borderColor": "#16acea"
+                           },
+                           {
+                            "data":[7.7, 19, 38, 64, 100, 143],
+                            "label":"Static legacy listener","backgroundColor":"rgba(66,3,201,.8)", "borderColor": "#4203c9"
+                           }
+                          ]
+                         },
+                         "options": { "responsive": "true" }
+                        }
+                        -->
+					</canvas>
+					<p><small>
+						<a href="https://github.com/pabloelcolombiano/cakephp-performance-tests" target="_blank">->Pilot study here<-</a>
+					</small></p>
+                    <aside class="notes">
+
+                        The x-axis is the number of tests per TestClass.
+                        In y-axis is the time in second to perform the whole test suite. The numbers are taken form a performance
+                        study available here.
+
+                        In red, the fixtures generated by the factories are not persisted in the data base.
+                        This is real unit testing, or at least close to it, since there is no interaction with
+                        the database. Tests remain low.
+
+                        In blue sky, the fixtures are generated by the factories, and persisted. This takes significantly
+                        more time time. The execution time is proportional to the size of your app.
+
+                        In dark blue, the fixtures are generated by the CakePHP native fixtures. Since all fixtures of a fixture file are loaded
+                        for a given test, the more your application grows, the faster it gets slower. The law is hyperbolic.
+
+                        You will probably not achieve the red line. But if you keep in mind that avoiding DB interaction speeds up your test,
+                        and your app in general, the fixture factories will enable you to write and test methods that rather use entities
+                        than ids.
+
+						The numbers and the test setting are available on a github repo here.
+
+                    </aside>
+				</section>
+				<section>
+					<h3>Compatibility</h3>
+					<p class="fragment green">
+						CakePHP 3
+					</p>
+					<p class="fragment green">
+						CakePHP 4
+					</p>
+					<p class="fragment green">
+						Static fixtures
+					</p>
+					<p class="fragment green">
+						Mysql - Sqlite - PostgreSQL
+					</p>
+				</section>
+				<section>
+					<h3>
+						Conclusion
+					</h3>
+					<p><pre data-id="code-animation"><code class="hljs" data-trim>
+						composer require --dev vierge-noire/cakephp-fixture-factories
+					</code></pre></p>
+					<p>
+						<small>
+							<a href="https://github.com/vierge-noire/cakephp-fixture-factories" target="_blank">https://github.com/vierge-noire/cakephp-fixture-factories</a>
+						</small>
+						<br>
+						<small>
+							<a href="https://github.com/vierge-noire/vierge-noire.github.io" target="_blank">Go to the presentation</a>
+						</small>
+                        <br>
+                        <small>
+                            <a href="mailto:'vierge.noire.info@gmail.com'">vierge.noire.info@gmail.com</a>
+                        </small>
+					</p>
+					<p class="fragment">
+                        Acknowledgements
+                    </p>
+                    <p class="fragment fade-right">
+                        Zuluru - Bancer - Dreamingmind
+                    </p>
+					<p class="fragment fade-right">
+						The CakePHP community!
+					</p>
+					<aside class="notes">
+						You will find the factories easy to write, to read and fast to write.
+						They are the missing part of the CakePHP testing environment to have
+						a comfortable experience while coding. Making tests asier to write will
+						enhance the quality of your code.
+					</aside>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/chart/Chart.min.js"></script>
+		<script src="plugin/chart/plugin.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart ],
+
+
+				chart: {
+					defaults: {
+						global: {
+							title: { fontColor: "#FFF" },
+							legend: {
+								labels: { fontColor: "#FFF" },
+							},
+						},
+						scale: {
+							scaleLabel: { fontColor: "#FFF" },
+							gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+							ticks: { fontColor: "#FFF" },
+						}
+					},
+					line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ]},
+				},
+			});
+		</script>
+	</body>
+</html>
