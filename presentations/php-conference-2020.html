@@ -1,0 +1,539 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>CakePHP Fixture Factories</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+
+    <style>
+        .cakephp {
+            color: #D33C44!important;
+        }
+        .vierge-noire {
+            color: #0C0239!important;
+        }
+        .col-container {
+            display: flex;
+        }
+        .col {
+            flex: 1;
+            font-size: 0.6em;
+        }
+        .shadow {
+            -webkit-box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+            -moz-box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+            box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+        }
+        .slides {
+            width: 1120px!important;
+        }
+        i {
+            font-style: italic;
+        }
+        .green {
+            color: green;
+        }
+        .red {
+            color: red;
+        }
+        .orange {
+            color: orange;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h4 class="cakephp">
+                CakePHP Fixture Factories
+            </h4>
+            <h4 class="vierge-noire">
+                Test DB Cleaner
+            </h4>
+            <p><small>Juan Pablo Ramirez - Nicolas Masson</small></p>
+            <p>
+                <img style="height: 100px" src="assets/IPC.png">
+                <img style="height: 100px" src="assets/cakephp_logo.jpg">
+                <img style="height: 100px" src="../images/vierge-noire-3.svg">
+            </p>
+
+        </section>
+        <section>
+            <h4>Test Driven Developers</h4>
+            <img class="fade-down shadow" data-src="assets/pablo-et-nico.jpg" height="200px" alt=""/>
+            <div class="col-container">
+                <div class="col">
+                    Juan Pablo Ramirez<br>
+                    Fullstack developer at <a href="webrider.de">webrider.de</a>
+                </div>
+                <div class="col">
+                    Nicolas Masson <br>
+                    Fullstack developer at <a href="https://b-projects.tech/">[B]-projects</a>
+                </div>
+            </div>
+            <p>
+                <a class="vierge-noire" href="https://vierge-noire.github.io/" target="_blank">
+                    <img style="height: 150px" src="../images/vierge-noire-3.svg">
+                </a>
+            </p>
+        </section>
+        <section>
+            <h4>Tests around the DB</h4>
+            <section>
+                <p class="fragment">Test Fixtures</p>
+                <p class="fragment">DB clean-up</p>
+            </section>
+            <section>
+                <ul style="list-style-type: upper-roman">
+                    <li>
+                        <span class="cakephp">CakePHP</span>'s native ORM
+                    </li>
+                    <li class="fragment">
+                        <span class="cakephp">CakePHP</span> Fixture Factories
+                    </li>
+                    <li class="fragment vierge-noire">
+                        Test DB Cleaner
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <h4>Example <br> User permissions</h4>
+            <p>Users &harr; UsersGroups &harr; Permissions</p>
+            <p><pre data-id="code-animation"><code class="hljs" data-trim>
+                users
+                users_users_groups
+                users_groups
+                users_groups_permissions
+                permissions
+            </code></pre>
+            </p>
+            <aside class="notes">
+                For example, we ended up with a large amount of user scenarios with different permissions. Every new test
+                made the reading of the fixtures ever more impossible.
+
+                During this presentation, I will take the example of user permissions.
+                We have a table users, users belong to many user groups, and user groups belongs to many permissions.
+                We end up with 5 tables, and therefore 5 test fixture files.
+
+                Let's say I need a user with permission Foo. I need to go to the permission fixtures and search for permission foo, note its id,
+                search in the pivot table users groups permissions which user groups this permission is associated. Hopefully I find one. Knowing this or these
+                user group ids, I need to search in the pivot table users users groups for one user belonging to the user groups.
+
+                A terrible pain. There are ways to ease the pain, but the pain will always remain.
+            </aside>
+        </section>
+        <section>
+            <h4><span class="cakephp">CakePHP</span>'s native ORM</h4>
+            <section>
+                <p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|9|">
+                namespace App\Model\Table;
+
+                use Cake\ORM\Table;
+
+                class UsersTable extends Table
+                {
+                    public function initialize(array $config): void
+                    {
+                        $this->belongsToMany('UsersGroups');
+                    }
+                }
+                </code></pre></p>
+            </section>
+            <section>
+                <p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|10-11|">
+                namespace App\Model\Table;
+
+                use Cake\ORM\Table;
+
+                class UsersGroupsTable extends Table
+                {
+                    public function initialize(array $config): void
+                    {
+                        $this
+                            ->belongsToMany('Users')
+                            ->belongsToMany('Permissions');
+                    }
+                }
+                </code></pre></p>
+            </section>
+            <section>
+                <p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|9|">
+                namespace App\Model\Table;
+
+                use Cake\ORM\Table;
+
+                class PermissionsTable extends Table
+                {
+                    public function initialize(array $config): void
+                    {
+                        $this->belongsToMany('UsersGroups');
+                    }
+                }
+                </code></pre></p>
+            </section>
+            <section>
+                <p class="fragment"><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|2|">
+                    $users = $this->Users->find()
+                        ->contain('UsersGroups.Permissions')
+                        ->toArray();
+                </code></pre></p>
+                <p class="fragment"><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|2|">
+                    $admins = $this->Users->find()
+                        ->matching('UsersGroups.Permissions', function ($q) {
+                            return $q->where(['Permissions.name' => 'Admin')
+                        })
+                        ->toArray();
+                </code></pre></p>
+            </section>
+            <section>
+                <p class="fragment"><pre data-id="code-animation"><code class="hljs" data-trim>
+                    public function hasPermission(int $userId, string $perm): bool
+                    {
+                      return $this->Users->find()
+                        ->innerJoinWith('UsersGroups.Permissions', function ($q) use ($perm) {
+                            return $q->where(['Permissions.name' => $perm)
+                        })
+                        ->where(['Users.id' => $userId])
+                        ->count() > 0;
+                    }
+                </code></pre></p>
+                <p class="fragment"><pre data-id="code-animation"><code class="hljs" data-trim>
+                    public function hasPermission(User $user, string $perm): bool
+                    {
+                        return in_array(
+                            $perm,
+                            Hash::extract($user, 'users_groups.{n}.permissions.{n}.name')
+                        )
+                    }
+                </code></pre></p>
+            </section>
+        </section>
+        <section>
+            <h4>
+                Test anatomy
+            </h4>
+            <section>
+                <div class="fragment">
+                    <p style="color: red">Arrange</p>
+                </div>
+                <div class="fragment">
+                    <p>Act</p>
+                </div>
+                <div class="fragment">
+                    <p style="color: darkgreen">
+                        Assert
+                    </p>
+                </div>
+                <aside class="notes">
+                    How do tests look like? Most of them will follow the famous AAA pattern.<br>
+                    Arrange will prepare the scenario of your test<br>
+                    Act will call the method under test<br>
+                    Assert will ensure that the result of the method meets expectations.
+
+                    Test driven development means that you write Arrange and Assert before Act.
+                </aside>
+            </section>
+            <section>
+                <h4>Test permissions Foo</h4>
+                <p class="fragment red">
+                    Arrange <br>
+                    Create user, user group, permission Foo, pivot tables</p>
+                </p>
+                <p class="fragment">
+                    Act <br>
+                    Check permission Foo for user
+                </p>
+                <p class="fragment green">
+                    Assert <br>
+                    Expect user to have permission Foo
+                </p>
+                </p>
+                <aside class="notes">
+                    Back to our previous example, in arrange we create the user, the users group, the permission and the pivot table
+                    We call our hasPermission method and we eventually assert the the user has the given permission.
+                </aside>
+            </section>
+        </section>
+        <section>
+            <h4>Test fixtures</h4>
+            <section>
+                <p>UsersTable &harr; UsersGroupsTable &harr; PermissionsTable</p>
+                <p>5 Tables &rarr; 5 Fixtures per test</p>
+                <p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|5|4|3|2|1">
+                users
+                users_users_groups
+                users_groups
+                users_groups_permissions
+                permissions
+                </code></pre></p>
+            </section>
+            <section>
+                <p class="fragment">
+                    1 permission <i>Foo</i> -
+                    4 users:
+                    <i class="green">Admins</i>, <i class="green">Gurus</i>, <i class="green">Foo</i>, <i class="red">Bar</i>
+                </p>
+                <div class="col-container">
+                    <div class="col fragment fade-right">
+                        <h4>Static</h4>
+                        <ul>
+                            <li class="fragment">
+                                SQL "Dump" with 4 users, user groups and permissions + pivot tables
+                            </li>
+                            <li class="fragment">
+                                Load the dump before each test
+                            </li>
+                            <li class="fragment">
+                                Identify test relevant user
+                            </li>
+                            <li class="green fragment">
+                                Easy to create
+                            </li>
+                            <li class="red fragment">
+                                Horrible to maintain
+                            </li>
+                            <li class="orange fragment">
+                                Total fixtures loaded: 5 &#x2027; 4 &#x2027; 4 = 80
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col fragment fade-left">
+                        <h4>Dynamic / Factories</h4>
+                        <ul>
+                            <li class="fragment">
+                                Create before each test 1 user, 1 user groups and 1 permission + pivot tables
+                            </li>
+                            <li class="fragment">
+                                Within each test
+                            </li>
+                            <li class="orange fragment">
+                                Easy to create
+                            </li>
+                            <li class="green fragment">
+                                Easy to maintain
+                            </li>
+                            <li class="green fragment">
+                                Total fixtures loaded: 5 &#x2027; 4 = 20
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section>
+            <div style="position:fixed; top:5%; right:0; z-index:9999;">
+                <a href="http://www.cakephp.org/">
+                    <img src="http://www.cakephp.org/img/flags/Baked-with-CakePHP.png" width="100px;">
+                </a>
+            </div>
+            <h4> <span class="cakephp">CakePHP</span> Fixture Factories</h4>
+            <section>
+                <p>App\Test\Factory\UserFactory.php</p>
+                <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|6-16|">
+                    protected function getRootTableRegistryName(): string
+                    {
+                      return 'Users';
+                    }
+
+                    protected function setDefaultTemplate(): void
+                    {
+                      $this->setDefaultData(function(Generator $faker) {
+                        return [
+                          'username' => $faker->username,
+                          'email' => $faker->email,
+                        ];
+                      });
+
+                      $this->withPermission();
+                    }
+                </code></pre>
+            </section>
+            <section>
+                <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|1|3|5|7|9-12|">
+                    $user = UserFactory::make()->getEntity();
+
+                    UserFactory::make(4)->getEntities();
+
+                    UserFactory::make(4)->persist();
+
+                    UserFactory::make(['username' => 'Foo'])->persist();
+
+                    UserFactory::make([
+                      ['username' => 'Foo'],
+                      ['username' => 'Bar'],
+                    ])->persist();
+                </code></pre>
+            </section>
+            <section>
+                <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|1-3|5-10|12-14|">
+                    UserFactory::make(3)
+                      ->with('UsersGroups.Permissions', ['name' => 'Foo'])
+                      ->getEntity();
+
+                    UserFactory::make()
+                      ->with('UsersGroups.Permissions', [
+                        ['name' => 'Foo'],
+                        ['name' => 'Bar'],
+                      ])
+                      ->getEntity();
+
+                    UserFactory::make()
+                      ->withPermission('Foo')
+                      ->getEntity();
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3>Unit test</h3>
+                <p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-6|8-9|11-12|1-12|">
+							public function testUserPermission()
+							{
+							  // Arrange
+							   $user = UserFactory::make()
+								->with('UsersGroups.Permissions', ['name' => 'Foo'])
+								->getEntity();
+
+							   // Act
+							   $act = $this->Users->hasPermission($user, 'Foo');
+
+							   // Assert
+							   $this->assertTrue($act);
+							}
+						</code></pre></p>
+                <img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
+                <img height="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
+                <img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
+                <aside class="notes">
+                    This is how the test looks like with the factories.
+                    The factory being tight to the UsersTable, it is aware of the associations of the user.
+                </aside>
+            </section>
+            <section>
+                <h3>Unit tests</h3>
+                <p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4-7|11,13-14|17-19|17-25|">
+						public function dataProviderForUserWithPermissionFoo()
+						{
+						   return [
+						      ['Admin', true],
+						      ['Guru',  true],
+						      ['Foo',   true],
+						      ['Bar',   false],
+						   ];
+						}
+
+						/** @dataProvider dataProviderForUserWithPermissionFoo */
+						public function testUserHasPermissionFoo(
+						   string $permission,
+						   bool $expected
+						)
+						{
+						   $user = UserFactory::make()
+							->withPermission($permission)
+							->getEntity();
+
+						   $act = $this->Users->hasPermission($user, 'Foo');
+
+						   $this->assertSame($expected, $act);
+						}
+						</code></pre></p>
+                <aside class="notes">
+                    Since creating fixtures are now made a piece of cake, we are not afraid any more to
+                    add tests to make our application more robust.
+                    For example here, we will test the hasPermission method against 4 users with different
+                    permissions. Admin and Gurus should have all permission Foo. A user with permission Bar not.
+
+                    The PHPUnit data provider tool enables to run one test with different settings. Here we pass the permission
+                    of the user created in the test, and the assert expectation.
+
+                    The test remains simple to read, and the test is complete.
+                </aside>
+            </section>
+            <section>
+                <h3>Integration test</h3>
+                <p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|1-9|11-14|16-19|21-24">
+						Feature: User permission
+
+						  Background:
+						   Given I create a user with id 504
+
+						  Scenario:
+							Given I log in with permission 'Users'
+							When I call get 'users/view/504'
+							Then I shall be granted access.
+
+						  Scenario:
+							Given I log in with permission 'Admin'
+							When I call get 'users/view/504'
+							Then I shall be granted access.
+
+						  Scenario:
+							Given I log in with permission 'Guru'
+							When I call get 'users/view/504'
+							Then I shall be granted access.
+
+						  Scenario:
+							Given I log in with permission 'Foo'
+							When I call get 'users/view/504'
+							Then I shall be redirected.
+
+						</code></pre></p>
+                <aside class="notes">
+                    The factories will also ease the way you write your integration
+                    test, for example here with behat. I will get back to it later
+                    with some coding examples.
+                </aside>
+            </section>
+        </section>
+    </div>
+</div>
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script src="plugin/chart/Chart.min.js"></script>
+<script src="plugin/chart/plugin.js"></script>
+<script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart ],
+
+
+        chart: {
+            defaults: {
+                global: {
+                    title: { fontColor: "#FFF" },
+                    legend: {
+                        labels: { fontColor: "#FFF" },
+                    },
+                },
+                scale: {
+                    scaleLabel: { fontColor: "#FFF" },
+                    gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+                    ticks: { fontColor: "#FFF" },
+                }
+            },
+            line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ]},
+        },
+    });
+</script>
+</body>
+</html>
