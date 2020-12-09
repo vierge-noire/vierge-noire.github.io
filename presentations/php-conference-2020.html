@@ -13,6 +13,8 @@
     <!-- Theme used for syntax highlighted code -->
     <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
     <style>
         .cakephp {
@@ -63,9 +65,31 @@
             border-color: green;
             border-width: 2px;
         }
+        footer {
+            position: absolute;
+            bottom: 1em;
+            left: 1em;
+            font-size: 0.5em;
+            width: 100%;
+        }
+        footer a {
+            color: #0C0239!important;
+        }
+        .float-right {
+            position:fixed;
+            top:5%;
+            z-index:9999;
+            font-size: 0.8em;
+            right:0;
+        }
+        .float-left {
+            float: left;
+            font-size: 0.5em;
+            position: fixed;
+            padding: 5px;
+            font-weight: bold;
+        }
     </style>
-
-
 </head>
 <body>
 <div class="reveal">
@@ -107,48 +131,158 @@
         <section>
             <h4>Tests and the DB</h4>
             <section>
+                <h4>Two issues</h4>
                 <p class="fragment">Test Fixtures</p>
                 <p class="fragment">DB clean-up</p>
+                <aside class="notes">
+                    In this presentation, I will address issues encountered when writing tests interacting with
+                    the database.
+                    I will address in particular the test fixtures, that is the population of the database
+                    before tests get run in the so-called "Arrange" phase of the tests.
+                    <br>
+                    In the second part of the presentation, I will present our work at Vierge Noire towards the
+                    cleaning of the test database prior to each test. Their are already multiple approaches to
+                    these issues, and I only wish to present our approaches.
+                </aside>
             </section>
             <section>
                 <ul style="list-style-type: upper-roman">
+                    <li>
+                        Tests overview
+                    </li>
                     <li>
                         <span class="cakephp">CakePHP</span>'s native ORM
                     </li>
                     <li class="fragment">
                         <span class="cakephp">CakePHP</span> Fixture Factories
                     </li>
-                    <li class="fragment vierge-noire">
-                        Test DB Cleaner
+                    <li>
+                        Trigger-based DB Cleaner
                     </li>
                 </ul>
+                <aside class="notes">
+                    In a first part, I'll quickly talk about what tests are, and what they are good for.
+                    I'll then give a brief presentation of the CakePHP ORM. This will illustrate the way
+                    the CakePHP fixture factories were conceived. Eventually, I'll present an innovative
+                    approach to clean test DBs: the trigger-based cleaner.
+                </aside>
             </section>
         </section>
         <section>
-            <h4>Example <br> User permissions</h4>
-            <p>Users &harr; UsersGroups &harr; Permissions</p>
-            <p><pre data-id="code-animation"><code class="hljs" data-trim>
+            <h4>Tests should be</h4>
+
+            <h4 class="fragment">Readable</h4>
+            <img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
+            <h4 class="fragment">Easy to write</h4>
+            <img width="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
+            <h4 class="fragment">Run fast</h4>
+            <img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
+
+            <aside class="notes">
+                Tests should meet the following criteria: they should be intelligible.
+                Ideally you should be able to read them like prose. <br>
+                They should be easy to write and to maintain. The excuse:
+                no time for writing tests should not be legitimate.
+                Autocompletion should assist you.<br>
+                They should run fast. To that aim, avoid
+                interaction with the DB and do not load unnecessary fixtures.
+            </aside>
+        </section>
+        <section>
+            <h4>
+                Why test?
+            </h4>
+            <ul>
+                <li class="fragment">
+                    <h4>Clean code</h4>
+                </li>
+                <li class="fragment">
+                    <h4>Documentation</h4>
+                </li>
+                <li class="fragment">
+                    <h4>Code integrity</h4>
+                </li>
+                <li class="fragment">
+                    <h4>Saves time</h4>
+                </li>
+            </ul>
+            <aside class="notes">
+                But why do we write tests? Tests helps you to write clean code. If you struggle
+                writing your test, it could be due to the complexity of the code your are testing <br>
+                If your tests can easily be read and understood, they document your source code.<br>
+                Whenever your code is refactored, features are added, or external packages get updated,
+                tests ensure that your code retains it's integrity. <br>
+                Tests significantly reduce the amount of time spent on code maintenance. It saves time and efforts.
+            </aside>
+        </section>
+        <section>
+            <h4>
+                Test anatomy
+            </h4>
+            <section>
+                <div class="fragment">
+                    <p style="color: red">Arrange</p>
+                </div>
+                <div class="fragment">
+                    <p>Act</p>
+                </div>
+                <div class="fragment">
+                    <p style="color: darkgreen">
+                        Assert
+                    </p>
+                </div>
+                <aside class="notes">
+                    How do tests look like? Most of them will follow the famous AAA pattern.<br>
+                    Arrange will prepare the scenario of your test<br>
+                    Act will call the method under test<br>
+                    Assert will ensure that the result of the method meets expectations.
+
+                    Test driven development means that you write Arrange and Assert before Act.
+                </aside>
+            </section>
+            <section>
+                <h4>Example <br> User permissions</h4>
+                <p>Users &harr; UsersGroups &harr; Permissions</p>
+                <p><pre data-id="code-animation"><code class="hljs" data-trim>
                 users
                 users_users_groups
                 users_groups
                 users_groups_permissions
                 permissions
             </code></pre>
-            </p>
-            <aside class="notes">
-                For example, we ended up with a large amount of user scenarios with different permissions. Every new test
-                made the reading of the fixtures ever more impossible.
+                </p>
+                <aside class="notes">
+                    In this presentation, I will take the example of user permissions.
+                    We have a table users, users belong to many user groups, and user groups belongs to many permissions.
+                    We end up with 5 tables, and therefore 5 test fixture files.
 
-                During this presentation, I will take the example of user permissions.
-                We have a table users, users belong to many user groups, and user groups belongs to many permissions.
-                We end up with 5 tables, and therefore 5 test fixture files.
+                    Let's say I need a user with permission Foo. I need to go to the permission fixtures and search for permission foo, note its id,
+                    search in the pivot table users groups permissions which user groups this permission is associated. Hopefully I find one. Knowing this or these
+                    user group ids, I need to search in the pivot table users users groups for one user belonging to the user groups.
 
-                Let's say I need a user with permission Foo. I need to go to the permission fixtures and search for permission foo, note its id,
-                search in the pivot table users groups permissions which user groups this permission is associated. Hopefully I find one. Knowing this or these
-                user group ids, I need to search in the pivot table users users groups for one user belonging to the user groups.
-
-                A terrible pain. There are ways to ease the pain, but the pain will always remain.
-            </aside>
+                    A terrible pain. There are ways to ease the pain, but the pain will always remain.
+                </aside>
+            </section>
+            <section>
+                <h4>Test permissions Foo</h4>
+                <p class="fragment red">
+                    Arrange <br>
+                    Create user, user group, permission Foo, pivot tables</p>
+                </p>
+                <p class="fragment">
+                    Act <br>
+                    Check permission Foo for user
+                </p>
+                <p class="fragment green">
+                    Assert <br>
+                    Expect user to have permission Foo
+                </p>
+                </p>
+                <aside class="notes">
+                    Back to our previous example, in arrange we create the user, the users group, the permission and the pivot table
+                    We call our hasPermission method and we eventually assert the the user has the given permission.
+                </aside>
+            </section>
         </section>
         <section>
             <h4><span class="cakephp">CakePHP</span>'s native ORM</h4>
@@ -241,99 +375,6 @@
             </section>
         </section>
         <section>
-            <h4>Tests should be</h4>
-
-            <h4 class="fragment">Readable</h4>
-            <img height="80" data-src="assets/book.svg" alt="Book" class="fragment fade-left">
-            <h4 class="fragment">Easy to write</h4>
-            <img width="80" data-src="assets/tool.svg" alt="Tool" class="fragment fade-left">
-            <h4 class="fragment">Run fast</h4>
-            <img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
-
-            <aside class="notes">
-                Tests should meet the following criteria: they should be intelligible.
-                Ideally you should be able to read them like prose. <br>
-                They should be easy to write and to maintain. The excuse:
-                no time for writing tests should not be legitimate.
-                Autocompletion should assist you.<br>
-                They should run fast. To that aim, avoid
-                interaction with the DB and do not load unnecessary fixtures.
-            </aside>
-        </section>
-        <section>
-            <h4>
-                Why test?
-            </h4>
-            <ul>
-                <li class="fragment">
-                    <h4>Clean code</h4>
-                </li>
-                <li class="fragment">
-                    <h4>Documentation</h4>
-                </li>
-                <li class="fragment">
-                    <h4>Code integrity</h4>
-                </li>
-                <li class="fragment">
-                    <h4>Saves time</h4>
-                </li>
-            </ul>
-            <aside class="notes">
-                But why do we write tests? Tests helps you to write clean code. If you struggle
-                writing your test, it could be due to the complexity of the code your are testing <br>
-                If your tests can easily be read and understood, they document your source code.<br>
-                Whenever your code is refactored, features are added, or external packages get updated,
-                tests ensure that your code retains it's integrity. <br>
-                Tests significantly reduce the amount of time spent on code maintenance. It saves time and efforts.
-            </aside>
-        </section>
-        <section>
-            <h4>
-                Test anatomy
-            </h4>
-            <section>
-                <div class="fragment">
-                    <p style="color: red">Arrange</p>
-                </div>
-                <div class="fragment">
-                    <p>Act</p>
-                </div>
-                <div class="fragment">
-                    <p style="color: darkgreen">
-                        Assert
-                    </p>
-                </div>
-                <aside class="notes">
-                    How do tests look like? Most of them will follow the famous AAA pattern.<br>
-                    Arrange will prepare the scenario of your test<br>
-                    Act will call the method under test<br>
-                    Assert will ensure that the result of the method meets expectations.
-
-                    Test driven development means that you write Arrange and Assert before Act.
-                </aside>
-            </section>
-            <section>
-                <h4>Test permissions Foo</h4>
-                <p class="fragment red">
-                    Arrange <br>
-                    Create user, user group, permission Foo, pivot tables</p>
-                </p>
-                <p class="fragment">
-                    Act <br>
-                    Check permission Foo for user
-                </p>
-                <p class="fragment green">
-                    Assert <br>
-                    Expect user to have permission Foo
-                </p>
-                </p>
-                <aside class="notes">
-                    Back to our previous example, in arrange we create the user, the users group, the permission and the pivot table
-                    We call our hasPermission method and we eventually assert the the user has the given permission.
-                </aside>
-            </section>
-        </section>
-        <section>
             <h4>Test fixtures</h4>
             <section>
                 <p>UsersTable &harr; UsersGroupsTable &harr; PermissionsTable</p>
@@ -388,7 +429,7 @@
                             <li class="orange fragment">
                                 Easy to create
                             </li>
-                            <li class="green fragment">
+                            <li class="orange fragment">
                                 Easy to maintain
                             </li>
                             <li class="green fragment">
@@ -400,11 +441,7 @@
             </section>
         </section>
         <section>
-            <div style="position:fixed; top:5%; right:0; z-index:9999;">
-                <a href="http://www.cakephp.org/">
-                    <img src="http://www.cakephp.org/img/flags/Baked-with-CakePHP.png" width="100px;">
-                </a>
-            </div>
+            <div class="baked-with-cakephp"></div>
             <h4> <span class="cakephp">CakePHP</span> Fixture Factories</h4>
             <section>
                 <p>App\Test\Factory\UserFactory.php</p>
@@ -463,11 +500,7 @@
             </section>
         </section>
         <section>
-            <div style="position:fixed; top:5%; right:0; z-index:9999;">
-                <a href="http://www.cakephp.org/">
-                    <img src="http://www.cakephp.org/img/flags/Baked-with-CakePHP.png" width="100px;">
-                </a>
-            </div>
+            <div class="baked-with-cakephp"></div>
             <section>
                 <h3>Unit test</h3>
                 <p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3-6|8-9|11-12|1-12|">
@@ -524,7 +557,7 @@
                 </aside>
             </section>
             <section>
-                <h3>Integration test</h3>
+                <h3>Behavioral test</h3>
                 <p><pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|1-9|11-14|16-19|21-24">
 						Feature: User permission
 
@@ -560,11 +593,7 @@
             </section>
         </section>
         <section data-transition="convex">
-            <div style="position:fixed; top:5%; right:0; z-index:9999;">
-                <a href="http://www.cakephp.org/">
-                    <img src="http://www.cakephp.org/img/flags/Baked-with-CakePHP.png" width="100px;">
-                </a>
-            </div>
+            <div class="baked-with-cakephp"></div>
             <h4> <span class="cakephp">CakePHP</span> Fixture Factories</h4>
             <p class="fragment">
                 Default template
@@ -631,8 +660,28 @@
             </aside>
         </section>
         <section>
+            <h4>DB cleaning</h4>
+            <p>
+                <small><a href="https://github.com/vierge-noire/test-database-cleaner" target="_blank">
+                    https://github.com/vierge-noire/test-database-cleaner
+                </a></small>
+            </p>
+            <p>
+                <div class="fragment">
+                    <img src="assets/laravel-logo.svg" height="200px">
+                    <img src="assets/symfony-logo.svg" height="200px">
+                </div>
+                <img src="../images/vierge-noire-3.svg" height="150px">
+            </p>
+        </section>
+        <section>
             <h4>DB cleaning with transactions</h4>
             <div class="orange-framed fragment">
+                <div class="float-right">
+                    <img src="assets/laravel-logo.svg" height="100px">
+                    <img src="assets/symfony-logo.svg" height="100px">
+                </div>
+                <div class="orange float-left">Warm-up</div>
                 <p class="col">Test suite starts</p>
                 <p class="col orange">Truncate all tables</p>
                 <div class="col-container">
@@ -645,7 +694,7 @@
                     <div class="col fade-right">
                         <p class="orange">
                             Run migrations <br>
-                            ~10s seconds
+                            ~10 seconds
                         </p>
                     </div>
                 </div>
@@ -658,31 +707,103 @@
                     <p class="green">Rollback transaction</p>
                 </div>
             </div>
+            <aside class="notes">
+                In the best case, your framework will truncate all tables before the tests start.
+                It will then run your DB migrations in order to reconstruct the schema. Or worst, it
+                loads a database dump.
+            </aside>
         </section>
         <section>
             <h4>DB cleaning with triggers</h4>
-            <p class="col">Test suite starts</p>
-            <div class="green-framed fragment">
-                <p class="col green">
-                    Create a table collecting dirty tables
-                </p>
-                <p class="col green">
-                    Create ON INSERT triggers for each tables
-                </p>
-                <div class="col fade-right">
-                    <p class="green">
-                        Run migrations
+            <section>
+                <p class="col">Test suite starts</p>
+                <div class="green-framed fragment">
+                    <div class="float-right">
+                        <img src="../images/vierge-noire-3.svg" height="100px">
+                    </div>
+                    <div class="green float-left">Warm-up</div>
+                    <p class="col green">
+                        <div class="col fade-right">
+                            <p class="green">
+                                Run migrations
+                            </p>
+                        </div>
+                    <pre data-id="code-animation" style="font-size: 0.4em"><code data-trim>
+                        CREATE TABLE IF NOT EXISTS dirty_tables_collector (table_name VARCHAR(128) PRIMARY KEY);
+
+                        CREATE TRIGGER table_users_trigger AFTER INSERT ON `users`
+                            FOR EACH ROW
+                            INSERT IGNORE INTO dirty_table_collector (table_name)
+                            VALUES ('dirty_tables_collector'), ('users');
+                    </code></pre>
                     </p>
                 </div>
-            </div>
-            <div class="grey-framed fragment">
-                <p class="col green">Truncate dirty tables (1 procedure)</p>
-                <div class="col">
-                    <p>Run test</p>
+                <div class="grey-framed fragment">
+                    <p class="col green">Truncate dirty tables in 1 procedure</p>
+                    <div class="col">
+                        <p>Run test</p>
+                    </div>
                 </div>
-            </div>
-
+                <img height="80" data-src="assets/chrono.svg" alt="Chrono" class="fragment fade-left">
+                <aside class="notes">
+                    The package
+                </aside>
+            </section>
+            <section>
+                <p>
+                    <small><a href="https://github.com/vierge-noire/test-database-cleaner" target="_blank">
+                        https://github.com/vierge-noire/test-database-cleaner
+                    </a></small>
+                </p>
+                <p class="fragment">
+                    It's fast: no warm up
+                </p>
+                <p class="fragment">
+                    MySQL, Postgres, SQL Server, Sqlite + contribution
+                </p>
+                <p class="fragment">
+                    CakePHP, Laravel + contribution
+                </p>
+                <p class="fragment">
+                    Feel free to join the project!
+                </p>
+                <aside class="notes">
+                    This approach is only one different solution.
+                    It is fast, because it cuts down the warm-up time drastically.
+                    It works with any SQL engine supporting triggers.
+                    The package is open for extension. We are working on a version working with Symfony.
+                    Additionally, the SQL commands can also be optimized.
+                </aside>
+            </section>
         </section>
+        <section>
+            <h4>
+                Conclusion
+            </h4>
+            <div class="baked-with-cakephp"></div>
+            <p class="fragment">
+                Build fast with <span class="cakephp">CakePHP</span>
+            </p>
+            <p class="fragment">
+                Grow solid with the Fixture Factories
+            </p>
+            <p class="fragment">
+                Join us to improve the test database cleaner
+            </p>
+            <p class="fragment">
+                <small>Credits: Juan Pablo Ramirez - Nicolas Masson</small>
+
+            </p>
+            <div>
+                <a class="vierge-noire" href="https://vierge-noire.github.io/" target="_blank">
+                    <small>https://vierge-noire.github.io</small> <br>
+                    <img style="height: 150px" src="../images/vierge-noire-3.svg">
+                </a>
+            </div>
+        </section>
+        <footer>
+            <a href="mailto:'vierge.noire.info@gmail.com'">vierge.noire.info@gmail.com</a>
+        </footer>
     </div>
 </div>
 <script src="dist/reveal.js"></script>
@@ -692,11 +813,21 @@
 <script src="plugin/chart/Chart.min.js"></script>
 <script src="plugin/chart/plugin.js"></script>
 <script>
+
+    $(function(){
+        $(".baked-with-cakephp").html('<div class="float-right">\n' +
+            '    <a href="http://www.cakephp.org/">\n' +
+            '        <img src="http://www.cakephp.org/img/flags/Baked-with-CakePHP.png" width="100px;">\n' +
+            '    </a>\n' +
+            '</div>');
+    });
+
     // More info about initialization & config:
     // - https://revealjs.com/initialization/
     // - https://revealjs.com/config/
     Reveal.initialize({
         hash: true,
+        slideNumber: 'c/t',
 
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart ],
