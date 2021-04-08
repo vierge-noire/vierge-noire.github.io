@@ -125,12 +125,13 @@
                 <h4>
                     <a href="https://passbolt.com" target="_blank"><img style="height: 30px; margin: 0 30px" src="assets/passbolt.png"></a>
                 </h4>
+                <p class="small">Based in Luxembourg</p>
                 <p class="small">Open source password manager</p>
                 <p class="small"><a href="https://github.com/passbolt/passbolt_api" target="_blank">github.com/passbolt</a> </p>
-                <p class="small">Installable on any Linux server</p>
+                <p class="small">Installable on any Linux server + hosted on cloud</p>
                 <p class="small">Based on OpenGPG</p>
                 <p class="small">Collaborative</p>
-                <p class="small">RestFull API</p>
+                <p class="small">RESTFull API</p>
                 <p class="small">Built in CakePHP</p>
                 <p class="small">TDD oriented</p>
 
@@ -157,7 +158,7 @@
             <section>
                 <ul style="list-style-type: upper-roman">
                     <li>
-                        Tests overview
+                        Testing overview
                     </li>
                     <li class="fragment">
                         <span class="cakephp">CakePHP</span>'s native ORM
@@ -242,14 +243,14 @@
                         }
 
                         /** @dataProvider dataProvider */
-                        public function testUserHasPermission(
+                        public function testUserHasPermissionFoo(
                            string $perm,
                            bool $expect
                         )
                         {
                            $user = UserFactory::make()->withPermission($perm)->getEntity();
 
-                           $act = $this->Users->hasPermission($user, $perm);
+                           $act = $this->Users->hasPermission($user, 'Foo');
 
                            $this->assertSame($expect, $act);
                         }
@@ -280,6 +281,9 @@
                 Why test?
             </h4>
             <ul>
+                <li class="fragment">
+                    <h4>Development tool</h4>
+                </li>
                 <li class="fragment">
                     <h4>Clean code</h4>
                 </li>
