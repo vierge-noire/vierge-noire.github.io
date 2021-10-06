@@ -1,0 +1,361 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>CakePHP Fixture Factories</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <style>
+        section {
+            /*font-family: "Open Sans",Verdana,sans-serif!important;*/
+        }
+        section.orga {
+            color: white;
+            text-shadow: 0px -2px 2px #FFFFFF;
+        }
+        .white-shadowed {
+            color: white!important;
+            text-shadow: 0px -2px 2px #000000!important;
+        }
+        .cakephp {
+            color: #D33C44!important;
+        }
+        p.small {
+            font-size: large;
+        }
+        .shadow {
+            -webkit-box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+            -moz-box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+            box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+        }
+        .slides {
+            width: 1120px!important;
+        }
+        i {
+            font-style: italic;
+        }
+        div.luxembourg {
+            background: rgb(238,36,54);
+            background: linear-gradient(0deg, rgba(238,36,54,1) 0%, rgba(255,255,255,1) 33%, rgba(255,255,255,1) 66%, rgba(0,156,215,1) 100%);
+            padding: 50px;
+            /*border: 3px solid lightgrey;*/
+            /*border-radius: 15px;*/
+        }
+        td {
+            font-size: smaller;
+            text-align: center!important;
+            vertical-align: middle!important;
+            border-width: 0!important;
+            padding: 10px!important;
+        }
+        .green {
+            color: green;
+        }
+        .red {
+            color: red;
+        }
+        .orange {
+            color: orange;
+        }
+        .orange-framed {
+            border-style: solid;
+            border-color: orange;
+            border-width: 2px;
+        }
+        .grey-framed {
+            border-style: solid;
+            border-color: grey;
+            border-width: 2px;
+        }
+        .green-framed {
+            border-style: solid;
+            border-color: green;
+            border-width: 2px;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 1em;
+            font-size: 0.5em;
+            width: 100%;
+        }
+        footer a {
+            color: #0C0239!important;
+        }
+        .float-right {
+            position:fixed;
+            top:5%;
+            z-index:9999;
+            font-size: 0.8em;
+            right:0;
+        }
+        .float-left {
+            float: left;
+            font-size: 0.5em;
+            position: fixed;
+            padding: 5px;
+            font-weight: bold;
+        }
+        .mini {
+            font-size: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <a href="https://passbolt.com" target="_blank"><img style="height: 40px; margin: 40px 0" src="assets/passbolt.png"></a>
+            <h3 class="cakephp">
+                How does your Cake test?
+            </h3>
+            <p class="small">Juan Pablo Ramirez - Remy Bertot</p>
+        </section>
+        <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" class="white-shadowed" data-background-interactive>
+            <section style="color: white">
+                <h4 style="color: white">Passbolt in a nutshell</h4>
+                <p class="fragment">Who we are / What we do</p>
+                <hr>
+                <h4 style="color: white" class="fragment">Code insights</h4>
+                <p>
+                    <span class="fragment">Architecture</span>
+                    <span class="fragment">/ Locale</span>
+                    <span class="fragment">/ Dependency injection</span><br>
+                    <span class="fragment">Middlewares</span>
+                    <span class="fragment">/ JWT Authentication</span>
+                </p>
+                <hr>
+                <h4 style="color: white" class="fragment">Testing tools</h4>
+                <span class="fragment">Authentication</span>
+                <span class="fragment">/ Fixtures</span>
+                <span class="fragment">/ Factories</span>
+
+            </section>
+        </section>
+        <section>
+            <section>
+                <h4 style="background-color: white; padding: 40px ; opacity: 0.9">
+                    <a href="https://passbolt.com" target="_blank"><img style="height: 30px; margin: 0 30px" src="assets/passbolt.png"></a>
+                    <p>
+                        in a nutshell
+                    </p>
+                </h4>
+            </section>
+            <section data-background="assets/passbolt_bg.jpg"></section>
+            <section>
+                <div class="luxembourg shadow">
+<!--                    <h4>-->
+<!--                        <a href="https://passbolt.com" target="_blank"><img style="height: 30px; margin: 0 30px" src="assets/passbolt.png"></a>-->
+<!--                    </h4>-->
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Luxembourg</td>
+                            <td>18 employees</td>
+                            <td>>100K users</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td>Open source</td>
+                            <td><a href="https://github.com/passbolt/passbolt_api" target="_blank">github.com/passbolt</a></td>
+                            <td>OpenGPG</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td>Self-hosted</td>
+                            <td>Entreprise</td>
+                            <td>Cloud-hosted</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td>RESTFull API</td>
+                            <td>Web extension</td>
+                            <td>Mobile app</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td>Test driven</td>
+                            <td>Security driven</td>
+                            <td><img height="150px" style="border: solid 1px whitesmoke; border-radius: 2px" src="http://i.giphy.com/l41lFiBrHIPUuxscg.gif"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </section>
+            <section>
+                <div>
+                    <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <small style="display: block">3 TECHNICAL LEADERS</small>
+                                <img height="150px" style="border: solid 1px whitesmoke; border-radius: 2px" src="http://i.giphy.com/14xNd7YClBLRio.gif"/>
+                            </td>
+                            <td>
+                                <small style="display: block">1 PROJECT MANAGER</small>
+                                <img height="150px" style="border: solid 1px whitesmoke; border-radius: 2px" src="http://i.giphy.com/nGlhhVfcw561i.gif"/>
+                            </td>
+                            <td>
+                                <small style="display: block">1 DESIGNER</small>
+                                <img height="150px" style="border: solid 1px whitesmoke; border-radius: 2px" src="http://i.giphy.com/6lsW1YMkojWrC.gif"/>
+                            </td>
+                        </tr>
+                        <tr class="fragment fade-left">
+                            <td>
+                                <small style="display: block">1 SUPPORT</small>
+                                <img height="150px" style="border: solid 1px whitesmoke; border-radius: 2px" src="http://i.giphy.com/ghXliYqQb2BMI.gif"/>
+                            </td>
+                            <td>
+                                <small style="display: block">COMMUNITY</small>
+                                <img height="150px" style="border: solid 1px whitesmoke; border-radius: 2px" src="http://i.giphy.com/l2Jejc2X9SRlxS8Zq.gif"/>
+                            </td>
+                            <td>
+                                <small style="display: block">HR + MARKETING + CUSTOMER SUPPORT</small>
+                                <img height="150px" style="border: solid 1px whitesmoke; border-radius: 2px" src="http://i.giphy.com/w1otEhQ00WdWg.gif"/>
+                            </td>
+                        </tr>
+                        <tr class="fragment fade-right">
+                            <td>
+                                <small style="display: block">2 BACK DEVS</small>
+                                <img height="150px" style="border: solid 1px whitesmoke; border-radius: 2px" src="http://i.giphy.com/2Y9FOGIqQU4H8yKnk4.gif"/>
+                            </td>
+                            <td>
+                                <small style="display: block">2 FRONT DEVS</small>
+                                <img height="150px" style="border: solid 1px whitesmoke; border-radius: 2px" src="http://i.giphy.com/uYVRhh5pLevCM.gif"/>
+                            </td>
+                            <td>
+                                <small style="display: block">2 SYSOPS</small>
+                                <img height="150px" style="border: solid 1px whitesmoke; border-radius: 2px" src="http://i.giphy.com/O6cLcNr9HD6yk.gif"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </section>
+            <section>
+                <p>Meet us on the <a href="https://community.passbolt.com/" target="_blank">Passbolt Community Forum</a></p>
+            </section>
+        </section>
+        <section>
+            <h4>Last year's main achievements</h4>
+            <table>
+                <tbody>
+                <tr>
+                    <td class="fragment">
+                        Migration from CakePHP 3.8 to 4.2
+                    </td>
+                    <td class="fragment">
+                        Internationalization
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fragment">
+                        JWT Authentication
+                    </td>
+                    <td class="fragment">
+                        Dependency injection
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fragment">
+                        PostgreSQL
+                    </td>
+                    <td class="fragment">
+                        Translations (FR, DE and SE)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fragment">
+                        PHPStan 6 + Psalm 4
+                    </td>
+                    <td class="fragment">
+                        Fixture Factories
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </section>
+        <section data-background="https://production-enterprise-static.downloads.crowdin.com/images/project-logo/2/small/56b4d16fe656ab36dcec24f0f7dc1ae389.png" data-background-repeat="repeat" data-background-size="50px">
+            <p style="background-color: white; padding: 100px" class="shadow">
+                <a href="https://passbolt.crowdin.com/passbolt" target="_blank">
+                    <img width="250px" src="assets/cakefest21/crowdin-logo-small-black.svg">
+                </a>
+            </p>
+        </section>
+        <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" class="white-shadowed" data-background-interactive>
+            Enter the code...
+        </section>
+        <section>
+
+            <section data-background="./assets/cakefest21/architecture.png">
+                <h1 class="white-shadowed">
+                    Architecture overview
+                </h1>
+            </section>
+        </section>
+        <section>
+            <span style="display: inline-block">Set emails subject</span>
+            <img src="assets/cakefest21/test_locale.png">
+            <span class="mini">testLocaleServiceLocaleTranslateString_With_French_Org_Setting</span>
+        </section>
+        <section>
+            <span style="display: inline-block">Set emails locale</span>
+            <span class="mini">testPreviewCommandLocale</span>
+            <img src="assets/cakefest21/test_locale_cmd.png">
+        </section>
+    </div>
+</div>
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script src="plugin/chart/Chart.min.js"></script>
+<script src="plugin/chart/plugin.js"></script>
+<script>
+
+    $(function(){
+        $(".baked-with-cakephp").html('<div class="float-right">\n' +
+            '    <a href="http://www.cakephp.org/">\n' +
+            '        <img src="http://www.cakephp.org/img/flags/Baked-with-CakePHP.png" width="100px;">\n' +
+            '    </a>\n' +
+            '</div>');
+    });
+
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+        slideNumber: 'c/t',
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart ],
+
+
+        chart: {
+            defaults: {
+                global: {
+                    title: { fontColor: "#FFF" },
+                    legend: {
+                        labels: { fontColor: "#FFF" },
+                    },
+                },
+                scale: {
+                    scaleLabel: { fontColor: "#FFF" },
+                    gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+                    ticks: { fontColor: "#FFF" },
+                }
+            },
+            line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ]},
+        },
+    });
+</script>
+</body>
+</html>
