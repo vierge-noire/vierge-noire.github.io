@@ -20,13 +20,9 @@
         section {
             /*font-family: "Open Sans",Verdana,sans-serif!important;*/
         }
-        section.orga {
-            color: white;
-            text-shadow: 0px -2px 2px #FFFFFF;
-        }
         .white-shadowed {
             color: white!important;
-            text-shadow: 0px -2px 2px #000000!important;
+            text-shadow: 0 0 10px #000000!important;
         }
         .cakephp {
             color: #D33C44!important;
@@ -122,25 +118,23 @@
             </h3>
             <p class="small">Juan Pablo Ramirez - Remy Bertot</p>
         </section>
-        <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" class="white-shadowed" data-background-interactive>
-            <section style="color: white">
-                <h4 style="color: white">Passbolt in a nutshell</h4>
-                <p class="fragment">Who we are / What we do</p>
-                <hr>
-                <h4 style="color: white" class="fragment">Code insights</h4>
-                <p>
+        <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" data-background-interactive>
+            <section>
+                <h4 class="white-shadowed">Passbolt in a nutshell</h4>
+                <p class="fragment white-shadowed">Who we are / What we do</p>
+
+                <h4 class="fragment white-shadowed"><hr>Code insights</h4>
+                <p class="white-shadowed">
                     <span class="fragment">Architecture</span>
                     <span class="fragment">/ Locale</span>
                     <span class="fragment">/ Dependency injection</span><br>
                     <span class="fragment">Middlewares</span>
                     <span class="fragment">/ JWT Authentication</span>
                 </p>
-                <hr>
-                <h4 style="color: white" class="fragment">Testing tools</h4>
-                <span class="fragment">Authentication</span>
-                <span class="fragment">/ Fixtures</span>
-                <span class="fragment">/ Factories</span>
-
+                <h4 class="fragment white-shadowed"><hr>Testing tools</h4>
+                <p class="white-shadowed">
+                    <span class="fragment">Fixtures Factories</span>
+                </p>
             </section>
         </section>
         <section>
@@ -247,15 +241,22 @@
             </section>
         </section>
         <section>
-            <h4>Last year's main achievements</h4>
-            <table>
-                <tbody>
+            <h4>Last year</h4>
+            <table><tbody>
                 <tr>
                     <td class="fragment">
-                        Migration from CakePHP 3.8 to 4.2
+                        From CakePHP 3.8 to 4.2
                     </td>
                     <td class="fragment">
-                        Internationalization
+                        Security Audit
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fragment">
+                        PostgreSQL
+                    </td>
+                    <td class="fragment">
+                        Locales (FR, DE and SE)
                     </td>
                 </tr>
                 <tr>
@@ -268,22 +269,13 @@
                 </tr>
                 <tr>
                     <td class="fragment">
-                        PostgreSQL
+                        Fixture Factories
                     </td>
-                    <td class="fragment">
-                        Translations (FR, DE and SE)
-                    </td>
-                </tr>
-                <tr>
                     <td class="fragment">
                         PHPStan 6 + Psalm 4
                     </td>
-                    <td class="fragment">
-                        Fixture Factories
-                    </td>
                 </tr>
-            </tbody>
-            </table>
+            </tbody></table>
         </section>
         <section data-background="https://production-enterprise-static.downloads.crowdin.com/images/project-logo/2/small/56b4d16fe656ab36dcec24f0f7dc1ae389.png" data-background-repeat="repeat" data-background-size="50px">
             <p style="background-color: white; padding: 100px" class="shadow">
@@ -292,8 +284,8 @@
                 </a>
             </p>
         </section>
-        <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" class="white-shadowed" data-background-interactive>
-            Enter the code...
+        <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" data-background-interactive>
+            <p class="white-shadowed">Enter the code...</p>
         </section>
         <section>
 
@@ -301,17 +293,35 @@
                 <h1 class="white-shadowed">
                     Architecture overview
                 </h1>
+                <aside class="notes">
+                    The API architecture at Passbolt follows strictly the CakePHP conventions.
+                    Controllers are slim and feature one single dedicated action.
+                    Models are slim.
+                    The business logic is placed in services.
+                    Middlewares are useful.
+                    Plugins are essentials.
+                    Schema is handled with migrations. Around 24 tables;
+                </aside>
             </section>
         </section>
         <section>
-            <span style="display: inline-block">Set emails subject</span>
-            <img src="assets/cakefest21/test_locale.png">
-            <span class="mini">testLocaleServiceLocaleTranslateString_With_French_Org_Setting</span>
-        </section>
-        <section>
-            <span style="display: inline-block">Set emails locale</span>
-            <span class="mini">testPreviewCommandLocale</span>
-            <img src="assets/cakefest21/test_locale_cmd.png">
+            <section data-background="assets/cakefest21/test_locale.png">
+                <h1 class="white-shadowed">Locales</h1>
+                <aside class="notes">
+                    As mentioned previously, internationalization is a new feature. As every feature, it has it's own
+                    plugin. Let's dive into it...
+                </aside>
+            </section>
+            <section>
+                <span style="display: inline-block">Set emails subject</span>
+                <span class="mini">testLocaleServiceLocaleTranslateString_With_French_Org_Setting</span>
+                <img src="assets/cakefest21/test_locale.png">
+            </section>
+            <section>
+                <span style="display: inline-block">Set emails locale</span>
+                <span class="mini">testPreviewCommandLocale</span>
+                <img src="assets/cakefest21/test_locale_cmd.png">
+            </section>
         </section>
     </div>
 </div>
