@@ -104,7 +104,7 @@
             font-weight: bold;
         }
         .mini {
-            font-size: 2px;
+            font-size: 1px;
         }
     </style>
 </head>
@@ -116,7 +116,7 @@
             <h3 class="cakephp">
                 How does your Cake test?
             </h3>
-            <p class="small">Juan Pablo Ramirez - Remy Bertot</p>
+            <p class="small">Juan Pablo Ramirez</p>
         </section>
         <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" data-background-interactive>
             <section>
@@ -134,6 +134,7 @@
                 <h4 class="fragment white-shadowed"><hr>Testing tools</h4>
                 <p class="white-shadowed">
                     <span class="fragment">Fixtures Factories</span>
+                    <span class="fragment">/ Test suite light</span>
                 </p>
             </section>
         </section>
@@ -149,9 +150,6 @@
             <section data-background="assets/passbolt_bg.jpg"></section>
             <section>
                 <div class="luxembourg shadow">
-<!--                    <h4>-->
-<!--                        <a href="https://passbolt.com" target="_blank"><img style="height: 30px; margin: 0 30px" src="assets/passbolt.png"></a>-->
-<!--                    </h4>-->
                 <table>
                     <tbody>
                         <tr>
@@ -278,11 +276,21 @@
             </tbody></table>
         </section>
         <section data-background="https://production-enterprise-static.downloads.crowdin.com/images/project-logo/2/small/56b4d16fe656ab36dcec24f0f7dc1ae389.png" data-background-repeat="repeat" data-background-size="50px">
-            <p style="background-color: white; padding: 100px" class="shadow">
-                <a href="https://passbolt.crowdin.com/passbolt" target="_blank">
-                    <img width="250px" src="assets/cakefest21/crowdin-logo-small-black.svg">
-                </a>
-            </p>
+            <section>
+                <p style="background-color: white; padding: 100px" class="shadow">
+                    <a href="https://passbolt.crowdin.com/passbolt" target="_blank">
+                        <img width="250px" src="assets/cakefest21/crowdin-logo-small-black.svg">
+                    </a>
+                </p>
+                <aside class="notes">
+                    A little word on the translations
+                </aside>
+            </section>
+            <section>
+                <p>
+                    <img src="./assets/cakefest21/locale_login.png">
+                </p>
+            </section>
         </section>
         <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" data-background-interactive>
             <p class="white-shadowed">Enter the code...</p>
@@ -312,15 +320,80 @@
                     plugin. Let's dive into it...
                 </aside>
             </section>
-            <section>
-                <span style="display: inline-block">Set emails subject</span>
+            <section data-background-color="#272A2A">
+                <span style="display: inline-block">Translate emails subject</span>
                 <span class="mini">testLocaleServiceLocaleTranslateString_With_French_Org_Setting</span>
                 <img src="assets/cakefest21/test_locale.png">
             </section>
-            <section>
+            <section data-background-color="#272A2A">
                 <span style="display: inline-block">Set emails locale</span>
                 <span class="mini">testPreviewCommandLocale</span>
-                <img src="assets/cakefest21/test_locale_cmd.png">
+                <p><img src="assets/cakefest21/test_locale_cmd.png"></p>
+            </section>
+        </section>
+        <section>
+            <section data-background="./assets/cakefest21/jwt_auth_container.png">
+                <h2 class="white-shadowed">
+                    Json Web Token<br> Authentication
+                </h2>
+                <div class="baked-with-cakephp"></div>
+                <aside class="notes">
+                    JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained
+                    way for securely transmitting information between parties as a JSON object.
+                    This information can be verified and trusted because it is digitally signed.
+                    JWTs can be signed using a secret (with the HMAC algorithm) or a public/private
+                    key pair using RSA or ECDSA. (https://jwt.io/introduction)
+                </aside>
+            </section>
+            <section data-background-color="#272A2A">
+                <span style="display: inline-block">JWT Authentication</span>
+                <span class="mini">testResourcesAddSuccessWithJWT</span>
+                <p><img src="assets/cakefest21/jwt_auth_test.png"></p>
+            </section>
+            <section data-background-color="#272A2A">
+                <span style="display: inline-block">Security Exceptions</span>
+                <span class="mini">testJwtLoginControllerTest_Consumed_Verify_Token_Should_Send_An_Email</span>
+                <img src="assets/cakefest21/jwt_exception.png">
+            </section>
+            <section data-background-color="#272A2A">
+                <span style="display: inline-block">Security Exceptions</span>
+                <span class="mini">testAuthRefreshTokenControllerWithExpiredCookie_Should_Trigger_Bad_Request_And_Send_Emails</span>
+                <img src="assets/cakefest21/jwt_exception_2.png">
+            </section>
+        </section>
+        <section data-background-transition="zoom">
+            <section data-background="https://ds1.static.rtbf.be/article/image/1240x800/9/1/2/c0ac51fcb4b4f641803655c0bfd640e2-1527689087.jpg">
+                <h2 class="white-shadowed"><a href="https://github.com/vierge-noire" target="_blank">Vierge noire</a></h2>
+                <p class="white-shadowed">Ramirez + Masson</p>
+            </section>
+            <section data-background="https://avatars.githubusercontent.com/u/71731883?s=200&v=4" data-background-repeat="repeat" data-background-size="5px">
+                <p style="background-color: white; padding: 100px" class="shadow">
+                    <a href="https://github.com/vierge-noire/cakephp-test-migrator" target="_blank">CakePHP Migrator < 4.3</a><br>
+                    <a class="fragment" href="https://book.cakephp.org/4.next/en/development/testing.html#creating-test-database-schema" target="_blank">CakePHP Migrations > 4.3</a><br>
+                    <a class="fragment" href="https://github.com/vierge-noire/cakephp-test-suite-light" target="_blank">CakePHP Test Suite Light</a><br>
+                    <a class="fragment" href="https://github.com/vierge-noire/cakephp-fixture-factories" target="_blank">CakePHP Fixture Factories</a>
+                </p>
+            </section>
+            <section data-background-iframe="https://book.cakephp.org/4.next/en/development/testing.html#creating-test-database-schema" data-background-interactive>
+                <div style="position: absolute; width: 200px; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(211, 60, 68, 0.7); padding: 20px; font-size: 20px; text-align: center;">
+                    <h2 class="white-shadowed">Cookbook</h2>
+                </div>
+            </section>
+        </section>
+        <section>
+            <section data-background="./assets/cakefest21/tsl.png">
+                <h1 class="white-shadowed">Test Suite Light</h1>
+                <aside class="notes">
+                    If you wonder why we chose that name, feel free to break the ice with this question as the Q/A session.
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section data-background="./assets/cakefest21/ff.png">
+                <h1 class="white-shadowed">Fixture Factories</h1>
+                <aside class="notes">
+
+                </aside>
             </section>
         </section>
     </div>
@@ -335,8 +408,8 @@
 
     $(function(){
         $(".baked-with-cakephp").html('<div class="float-right">\n' +
-            '    <a href="http://www.cakephp.org/">\n' +
-            '        <img src="http://www.cakephp.org/img/flags/Baked-with-CakePHP.png" width="100px;">\n' +
+            '    <a href="https://book.cakephp.org/authentication/2/en/authenticators.html#jwt" target="_blank">\n' +
+            '        <img src="http://www.cakephp.org/img/flags/Baked-with-CakePHP.png" width="150px;">\n' +
             '    </a>\n' +
             '</div>');
     });
