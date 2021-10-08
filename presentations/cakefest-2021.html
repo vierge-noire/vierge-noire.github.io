@@ -17,7 +17,9 @@
 
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         section {
+            font-family: 'Roboto', sans-serif;
             /*font-family: "Open Sans",Verdana,sans-serif!important;*/
         }
         .white-shadowed {
@@ -54,6 +56,9 @@
             vertical-align: middle!important;
             border-width: 0!important;
             padding: 10px!important;
+        }
+        tbody.large-margins td {
+            padding: 30px!important;
         }
         .green {
             color: green;
@@ -113,45 +118,52 @@
     <div class="slides">
         <section>
             <a href="https://passbolt.com" target="_blank"><img style="height: 40px; margin: 40px 0" src="assets/passbolt.png"></a>
-            <h3 class="cakephp">
-                How does your Cake test?
+            <h3>
+                How does your <span class="cakephp">CAKE</span> test?
             </h3>
-            <p class="small">Juan Pablo Ramirez</p>
-        </section>
-        <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" data-background-interactive>
-            <section>
-                <h4 class="white-shadowed">Passbolt in a nutshell</h4>
-                <p class="fragment white-shadowed">Who we are / What we do</p>
-
-                <h4 class="fragment white-shadowed"><hr>Code insights</h4>
-                <p class="white-shadowed">
-                    <span class="fragment">Architecture</span>
-                    <span class="fragment">/ Locale</span>
-                    <span class="fragment">/ Dependency injection</span><br>
-                    <span class="fragment">Middlewares</span>
-                    <span class="fragment">/ JWT Authentication</span>
-                </p>
-                <h4 class="fragment white-shadowed"><hr>Testing tools</h4>
-                <p class="white-shadowed">
-                    <span class="fragment">Fixtures Factories</span>
-                    <span class="fragment">/ Test suite light</span>
-                </p>
-            </section>
+            <p class="small">by Juan Pablo Ramirez</p>
         </section>
         <section>
             <section>
-                <h4 style="background-color: white; padding: 40px ; opacity: 0.9">
-                    <a href="https://passbolt.com" target="_blank"><img style="height: 30px; margin: 0 30px" src="assets/passbolt.png"></a>
-                    <p>
-                        in a nutshell
-                    </p>
+                <h3>Passbolt in a nutshell</h3>
+                <p class="fragment">Who we are / What we do</p>
+
+                <h3 class="fragment">Code insights</h3>
+                <p>
+                    <span class="fragment">Architecture</span>
+                    <span class="fragment">/ Locale</span>
+                    <span class="fragment">/ JWT Authentication<br></span>
+                    <span class="fragment">Middlewares</span>
+                    <span class="fragment">/ Dependency injection</span><br>
+                </p>
+                <h3 class="fragment">Testing tools</h3>
+                <p>
+                    <span class="fragment">Test Suite Light</span>
+                    <span class="fragment">/ Fixtures Factories</span>
+                </p>
+                <aside class="notes">
+                    Here is a quick overview of the presentation coming.
+                    I'll briefly introduce Passbolt and the team.
+                    I'll then pick some examples of the code of the API
+                    to present how we use CakePHP, which is open to improvement suggestions.
+                    Finally I'll re-introduce the test suite light and the fixture factories
+                    which Mark Story already mentioned yesterday.
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section data-background="assets/cakefest21/Animated-devices-V2.svg" data-background-interactive>
+
+                <h4 style="background-color: #00000000; padding: 40px ; opacity: 0.9">
+                <p class="white-shadowed">
+                    in a nutshell
+                </p>
                 </h4>
             </section>
             <section data-background="assets/passbolt_bg.jpg"></section>
             <section>
-                <div class="luxembourg shadow">
                 <table>
-                    <tbody>
+                    <tbody class="large-margins">
                         <tr>
                             <td>Luxembourg</td>
                             <td>18 employees</td>
@@ -175,11 +187,10 @@
                         <tr class="fragment">
                             <td>Test driven</td>
                             <td>Security driven</td>
-                            <td><img height="150px" style="border: solid 1px whitesmoke; border-radius: 2px" src="http://i.giphy.com/l41lFiBrHIPUuxscg.gif"/></td>
+                            <td>Open source driven</td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
             </section>
             <section>
                 <div>
@@ -240,10 +251,10 @@
         </section>
         <section>
             <h4>Last year</h4>
-            <table><tbody>
+            <table><tbody class="large-margins">
                 <tr>
                     <td class="fragment">
-                        From CakePHP 3.8 to 4.2
+                        CakePHP 3.8 to 4.2
                     </td>
                     <td class="fragment">
                         Security Audit
@@ -275,9 +286,14 @@
                 </tr>
             </tbody></table>
         </section>
-        <section data-background="https://production-enterprise-static.downloads.crowdin.com/images/project-logo/2/small/56b4d16fe656ab36dcec24f0f7dc1ae389.png" data-background-repeat="repeat" data-background-size="50px">
+        <section>
             <section>
-                <p style="background-color: white; padding: 100px" class="shadow">
+                <p>
+                    <img src="./assets/cakefest21/locale_login.png">
+                </p>
+            </section>
+            <section>
+                <p>
                     <a href="https://passbolt.crowdin.com/passbolt" target="_blank">
                         <img width="250px" src="assets/cakefest21/crowdin-logo-small-black.svg">
                     </a>
@@ -285,11 +301,6 @@
                 <aside class="notes">
                     A little word on the translations
                 </aside>
-            </section>
-            <section>
-                <p>
-                    <img src="./assets/cakefest21/locale_login.png">
-                </p>
             </section>
         </section>
         <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" data-background-interactive>
@@ -363,16 +374,16 @@
         </section>
         <section data-background-transition="zoom">
             <section data-background="https://ds1.static.rtbf.be/article/image/1240x800/9/1/2/c0ac51fcb4b4f641803655c0bfd640e2-1527689087.jpg">
-                <h2 class="white-shadowed"><a href="https://github.com/vierge-noire" target="_blank">Vierge noire</a></h2>
-                <p class="white-shadowed">Ramirez + Masson</p>
+                <h2 class="white-shadowed" style="margin-top: 400px"><a href="https://github.com/vierge-noire" target="_blank">Vierge noire</a></h2>
+                <p class="small">Juan Pablo Ramirez + Nicolas Masson</p>
             </section>
-            <section data-background="https://avatars.githubusercontent.com/u/71731883?s=200&v=4" data-background-repeat="repeat" data-background-size="5px">
-                <p style="background-color: white; padding: 100px" class="shadow">
-                    <a href="https://github.com/vierge-noire/cakephp-test-migrator" target="_blank">CakePHP Migrator < 4.3</a><br>
-                    <a class="fragment" href="https://book.cakephp.org/4.next/en/development/testing.html#creating-test-database-schema" target="_blank">CakePHP Migrations > 4.3</a><br>
-                    <a class="fragment" href="https://github.com/vierge-noire/cakephp-test-suite-light" target="_blank">CakePHP Test Suite Light</a><br>
-                    <a class="fragment" href="https://github.com/vierge-noire/cakephp-fixture-factories" target="_blank">CakePHP Fixture Factories</a>
-                </p>
+            <section data-background-color="#272A2A">
+            <!--                <p style="background-color: white; padding: 100px">-->
+                    <p style="text-decoration: line-through"><a href="https://github.com/vierge-noire/cakephp-test-migrator" target="_blank">CakePHP Migrator < 4.3</a><br>
+                    <p><a class="fragment" href="https://book.cakephp.org/4.next/en/development/testing.html#creating-test-database-schema" target="_blank">CakePHP Migrations > 4.3</a></p>
+                    <p><a class="fragment" href="https://github.com/vierge-noire/cakephp-test-suite-light" target="_blank">CakePHP Test Suite Light</a></p>
+                    <p><a class="fragment" href="https://github.com/vierge-noire/cakephp-fixture-factories" target="_blank">CakePHP Fixture Factories</a></p>
+<!--                </p>-->
             </section>
             <section data-background-iframe="https://book.cakephp.org/4.next/en/development/testing.html#creating-test-database-schema" data-background-interactive>
                 <div style="position: absolute; width: 200px; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(211, 60, 68, 0.7); padding: 20px; font-size: 20px; text-align: center;">
@@ -387,14 +398,50 @@
                     If you wonder why we chose that name, feel free to break the ice with this question as the Q/A session.
                 </aside>
             </section>
+            <section data-background-color="#272A2A">
+                <span style="display: inline-block">Sniffers</span>
+                <span class="mini">testRecreateDirtyTableCollectorAfterDrop</span>
+                <img src="assets/cakefest21/test_tsl.png">
+            </section>
+            <section data-background-color="#272A2A">
+                <h1 class="white-shadowed">Let's go bigger!</h1>
+                <a href="https://github.com/vierge-noire/test-database-cleaner" target="_blank">Test Database Cleaner</a>
+                <aside class="notes">
+                    Der Tatort reiniger.
+                </aside>
+            </section>
         </section>
         <section>
-            <section data-background="./assets/cakefest21/ff.png">
+            <section data-background="./assets/cakefest21/test_ff.png">
                 <h1 class="white-shadowed">Fixture Factories</h1>
                 <aside class="notes">
 
                 </aside>
             </section>
+            <section data-background-color="#272A2A">
+                <span style="display: block">
+                    Unique fields
+                    <span class="mini">testDetectDuplicateInBelongsToOneAssociation
+                    </span>
+                </span>
+
+                <img src="assets/cakefest21/test_ff.png">
+            </section>
+        </section>
+        <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" data-background-interactive>
+            <p class="white-shadowed">...exit the code;</p>
+        </section>
+        <section>
+            <p><a href="https://passbolt.com" target="_blank"><img style="height: 40px; margin: 40px 0" src="assets/passbolt.png"></a></p>
+            <p class="fragment"><a href="https://github.com/passbolt/passbolt_api" target="_blank">Passbolt API</a></p>
+            <p class="fragment"><a href="https://community.passbolt.com/" target="_blank">Passbolt Community Forum</a></p>
+            <p class="fragment"><a href="https://github.com/vierge-noire/cakephp-fixture-factories/" target="_blank">Fixture Factories</a></p>
+            <h2 class="fragment">Thank you <span class="cakephp">Bakers</span>!</h2>
+            <aside class="notes">
+                For those who did not know it yet, I hope you'll enjoy passbolt as a password manager in your life.
+                Here is a link to the API, we are waiting for your contributions! It could inspire you just as you
+                could inspire us.
+            </aside>
         </section>
     </div>
 </div>
