@@ -1,0 +1,417 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Service injection</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        section {
+            font-family: 'Roboto', sans-serif;
+            /*font-family: "Open Sans",Verdana,sans-serif!important;*/
+        }
+        .white-shadowed {
+            color: white!important;
+            text-shadow: 0 0 10px #000000!important;
+        }
+        .cakephp {
+            color: #D33C44!important;
+        }
+        p.small {
+            font-size: large;
+        }
+        .shadow {
+            -webkit-box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+            -moz-box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+            box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+        }
+        .slides {
+            width: 1120px!important;
+        }
+        i {
+            font-style: italic;
+        }
+        div.luxembourg {
+            background: rgb(238,36,54);
+            background: linear-gradient(0deg, rgba(238,36,54,1) 0%, rgba(255,255,255,1) 33%, rgba(255,255,255,1) 66%, rgba(0,156,215,1) 100%);
+            padding: 50px;
+            /*border: 3px solid lightgrey;*/
+            /*border-radius: 15px;*/
+        }
+        td {
+            font-size: smaller;
+            text-align: center!important;
+            vertical-align: middle!important;
+            border-width: 0!important;
+            padding: 10px!important;
+        }
+        tbody.large-margins td {
+            padding: 30px!important;
+        }
+        .green {
+            color: green;
+        }
+        .red {
+            color: red;
+        }
+        .orange {
+            color: orange;
+        }
+        .orange-framed {
+            border-style: solid;
+            border-color: orange;
+            border-width: 2px;
+        }
+        .grey-framed {
+            border-style: solid;
+            border-color: grey;
+            border-width: 2px;
+        }
+        .green-framed {
+            border-style: solid;
+            border-color: green;
+            border-width: 2px;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 1em;
+            font-size: 0.5em;
+            width: 100%;
+        }
+        footer a {
+            color: #0C0239!important;
+        }
+        .float-right {
+            position:fixed;
+            top:5%;
+            z-index:9999;
+            font-size: 0.8em;
+            right:0;
+        }
+        .float-left {
+            float: left;
+            font-size: 0.5em;
+            position: fixed;
+            padding: 5px;
+            font-weight: bold;
+        }
+        .mini {
+            font-size: 1px;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h3>
+                Service Injection
+            </h3>
+            <a href="https://passbolt.com" target="_blank"><img style="height: 40px; margin: 40px 0" src="assets/passbolt.png"></a>
+            <p class="small">by Juan Pablo Ramirez</p>
+            <aside class="notes">
+                Welcome to my presentation on how service injection. It is a pleasure
+                to be part of this event.
+            </aside>
+            <p class="small">The CakePHP Conference - September 30th 2023 - Luxembourg Satellite Event</p>
+            <p class="small">
+                <img src="assets/cakephp_grey.svg" width="100px">
+            </p>
+        </section>
+        <section>
+            <section>
+                <h3>Passbolt manages your passwords</h3>
+                <p class="fragment">Community Edition</p>
+                <p class="fragment">Enterprise Edition</p>
+                <p class="fragment">Cloud Edition</p>
+
+                <h3 class="fragment">Code insights</h3>
+                <p>
+                    <span class="fragment">Dependency</span>
+                    <span class="fragment">/ Interfaces</span>
+                    <span class="fragment">/ Cake's DIC<br></span>
+                </p>
+
+                <aside class="notes">
+                    Here is a quick overview of the presentation coming.
+                    Passbolt is a password manager with three different flavours.
+                    The community edition is for free. You can install it on your
+                    server and use it for your team, regardless of the number of users.
+                    The enterprise edition has additional features.
+                    The cloud edition has the same features as the enterprise edition,
+                    but we host it for you.
+
+                    The challenge for us developers at Passbolt is to shape the code
+                    to match our business model. A common structure, on which additional
+                    features can easily melt.
+
+                    The service offered depends on the solution requested.
+                    The contract with the users vary -> need of interfaces.
+                    We use the DIC to inject the right service for the solution served.
+
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section data-background="assets/cakefest21/Animated-devices-V2.svg" data-background-interactive>
+
+                <h4 style="background-color: #00000000; padding: 40px ; opacity: 0.9">
+                <p class="white-shadowed">
+                    in a nutshell
+                </p>
+                </h4>
+            </section>
+            <section data-background="assets/passbolt_bg.jpg"></section>
+            <section>
+                <img src="assets/cakefest23/setup.png" height="100%">
+            </section>
+            <section>
+                <img src="assets/cakefest23/passphrase_policy.png" height="100%">
+            </section>
+            <section>
+                <img src="assets/cakefest23/account_recovery.png" height="100%">
+            </section>
+            <section>
+                <img src="assets/cakefest23/setup_json.png" height="100%">
+            </section>
+            <section>
+                <p>
+                    Basic user setup <br><small>core</small>
+                </p>
+                <p>
+                    User passphrase policy <br><small>if enabled</small>
+                </p>
+                <p>
+                    Account recovery policy <br><small>if enabled</small>
+                </p>
+                <aside class="notes">
+                    Three features in one single endpoint.
+                    When users setup their account, additional information
+                    are required in order to inform the front end of the options
+                    possible as set by the administrators of the passbolt instance.
+                </aside>
+            </section>
+            <section>
+                <img src="assets/cakefest23/controller.png" height="100%">
+                <aside class="notes">
+                    For the devs would cannot wait to see some code, here is a little teaser.
+                    In the coming slides I will speak a bit of the architecture in
+                    the code at passbolt, explain how we make the enabling and disabling
+                    of features easy, and eventually how we use the DIC to decorate the responses served.
+                </aside>
+            </section>
+        </section>
+        <section>
+            Interfaces
+            <section>
+                <iframe src="https://giphy.com/embed/l1HwIWJvD6gIInQD3d" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/thosewhocant-trutv-those-who-cant-twc310-l1HwIWJvD6gIInQD3d"></a></p>
+                <img src="">
+                <aside class="notes">
+                    At this moment I want to simply describe the paradigm of an interface with
+                    a simple example.
+                    Wikipedia: "In computing, an <b>interface</b> is a shared boundary across which
+                    two or more separate components of a computer system exchange information."
+
+                    An interface is a contract setting the requirements
+                    in the interaction between two entities.
+                    The contract has to be filled, but the implementation of the contract is not
+                    specified.
+                </aside>
+            </section>
+            <section>
+                <img src="assets/cakefest23/door_simple.jpg" height="300px">
+                <img class="fragment" src="assets/cakefest23/door_code.jpg" height="300px">
+                <img class="fragment" src="assets/cakefest23/door_fingerprint.jpg" height="300px">
+            </section>
+            <section>
+                <a href="https://github.com/cakephp/cakephp/blob/4.x/src/Database/DriverInterface.php" target="_blank">Cake\Database\DriverInterface.php</a>
+                <aside class="notes">
+                    You will find a great example of an interface in the CakePHP code. The interface defines
+                    all that is needed for a DB engine to work. It does not tell how it works, but what is needed.
+                    Note that it has not changed in 2 years. Interfaces do not evolve, the implementations do.
+                </aside>
+            </section>
+        </section>
+        <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" data-background-interactive>
+            <p class="white-shadowed">Enter the code...</p>
+            <aside class="notes">
+                Let's now have some Cake...
+            </aside>
+        </section>
+        <section>
+            <section data-background="./assets/cakefest21/architecture.png">
+                <h1 class="white-shadowed">
+                    Architecture overview
+                </h1>
+                <aside class="notes">
+                    The API architecture at Passbolt follows strictly the CakePHP conventions.
+                    Controllers are slim and feature one single dedicated action.
+                    Models are slim.
+                    The business logic is placed in services.
+                    Middlewares are useful.
+                    Plugins are essentials.
+                    By not loading a plugin, a complete feature can be disabled. This will
+                    present interesting features combined with the DIC
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section data-background="assets/cakefest23/mfa_controller.png">
+                <h1 class="white-shadowed">MFA</h1>
+                <aside class="notes">
+                    MFA is a typical example where dependency injection is very useful.
+                    MFA depends on a service provided outside passbolt. In order to have the
+                    feature testable, we need to mock the service.
+                </aside>
+            </section>
+            <section data-background-color="#272A2A">
+                <a href="https://github.com/passbolt/passbolt_api/blob/master/plugins/PassboltCe/MultiFactorAuthentication/src/Controller/Yubikey/YubikeyVerifyPostController.php#L38" target="_blank">Controller</a>
+                <br>
+                <img src="assets/cakefest23/mfa_controller_simple.png">
+                <aside class="notes">
+                    At the controller level, the interface is specified in the signature of the method.
+                    It is not a class, but a contract.
+                </aside>
+            </section>
+            <section data-background-color="#272A2A">
+                <a href="https://github.com/passbolt/passbolt_api/blob/master/plugins/PassboltCe/MultiFactorAuthentication/src/Form/MfaFormInterface.php" target="_blank">Interface</a>
+                <br>
+                <img src="assets/cakefest23/mfa_interface.png">
+                <aside class="notes">
+                    The interface seals the contract between the controller and the future implementations
+                    of the MFA verification form.
+                </aside>
+            </section>
+            <section data-background-color="#272A2A">
+                <a href="https://github.com/passbolt/passbolt_api/blob/master/plugins/PassboltCe/MultiFactorAuthentication/tests/TestCase/Controllers/Yubikey/YubikeyVerifyPostControllerTest.php#L38" target="_blank">Integration test</a>
+                <br>
+                <img src="assets/cakefest23/mfa_test.png">
+                <aside class="notes">
+                    Since the controller does not specifies the implementation, we can mock the form
+                    and have it behave the way we want. Here, the MFA verification form will be
+                    successfull, and we assert that an MFA cookie was created and as secured added
+                    to the response of the request.
+                    In terms of testing, the injection make it very efficient to tests. One integration
+                    test should ensure that the expected implementation was injected into the controller.
+                    Apart from that the various test cases should be covered by unit tests at the level
+                    of the service. This is much faster.
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section data-background="assets/cakefest23/ee_plugin.png">
+                <h2 class="white-shadowed">
+                    Deeper <br>injection
+                </h2>
+                <aside class="notes">
+                    Let us now return to our previous example
+                    on user setup.
+                </aside>
+            </section>
+            <section data-background-color="#272A2A">
+                <span style="display: inline-block">User setup</span>
+                <p><img src="assets/cakefest23/controller.png"></p>
+            </section>
+            <section data-background-color="#272A2A">
+                <span style="display: inline-block">Application</span><br>
+                <img src="assets/cakefest23/setup_service_provider.png">
+            </section>
+            <section data-background-color="#272A2A">
+                <span style="display: inline-block">Ee Plugin</span><br>
+                <img src="assets/cakefest23/ee_plugin.png">
+            </section>
+            <section data-background-color="#272A2A">
+                <span style="display: inline-block">User Passphrase Policies Plugin</span><br>
+                <img src="assets/cakefest23/user_passphrase_policies.png">
+            </section>
+            <section data-background-color="#272A2A">
+                <a href="https://github.com/passbolt/passbolt_api/blob/master/src/Service/Setup/AbstractSetupStartService.php" target="_blank">Abstract service</a>
+            </section>
+            <section data-background-color="#272A2A">
+                <span style="display: inline-block">Setup Start Services</span><br>
+                <img src="assets/cakefest23/default_setup_start_service.png" height="200px">
+                <img src="assets/cakefest23/ee_setup_start_service.png" height="300px">
+            </section>
+        </section>
+
+        <section data-background="http://i.giphy.com/7FrOU9tPbgAZtxV5mb.gif" data-background-interactive>
+            <p class="white-shadowed">...exit the code</p>
+        </section>
+        <section>
+            <p>Meet us on the <a href="https://community.passbolt.com/" target="_blank">Passbolt Community Forum</a></p>
+        </section>
+        <section>
+            <p><a href="https://passbolt.com" target="_blank"><img style="height: 40px; margin: 40px 0" src="assets/passbolt.png"></a></p>
+            <p class="fragment"><a href="https://github.com/passbolt/passbolt_api" target="_blank">Passbolt API</a></p>
+            <p class="fragment"><a href="https://community.passbolt.com/" target="_blank">Community Forum</a></p>
+            <p class="fragment"><a href="https://book.cakephp.org/4/en/development/dependency-injection.html" target="_blank">Dependency Injection</a></p>
+            <p class="fragment"><a href="https://container.thephpleague.com/4.x/" target="_blank">PHP League Container</a></p>
+            <h2 class="fragment">Thank you <span class="cakephp">Bakers</span>!</h2>
+            <aside class="notes">
+                For those who did not know it yet, I hope you'll enjoy passbolt as a password manager in your life.
+                Here is a link to the API, we are waiting for your contributions! It could inspire you just as you
+                could inspire us.
+            </aside>
+        </section>
+    </div>
+</div>
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script src="plugin/chart/Chart.min.js"></script>
+<script src="plugin/chart/plugin.js"></script>
+<script>
+
+    $(function(){
+        $(".baked-with-cakephp").html('<div class="float-right">\n' +
+            '    <a href="https://book.cakephp.org/authentication/2/en/authenticators.html#jwt" target="_blank">\n' +
+            '        <img src="http://www.cakephp.org/img/flags/Baked-with-CakePHP.png" width="150px;">\n' +
+            '    </a>\n' +
+            '</div>');
+    });
+
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+        slideNumber: 'c/t',
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart ],
+
+
+        chart: {
+            defaults: {
+                global: {
+                    title: { fontColor: "#FFF" },
+                    legend: {
+                        labels: { fontColor: "#FFF" },
+                    },
+                },
+                scale: {
+                    scaleLabel: { fontColor: "#FFF" },
+                    gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+                    ticks: { fontColor: "#FFF" },
+                }
+            },
+            line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ]},
+        },
+    });
+</script>
+</body>
+</html>
