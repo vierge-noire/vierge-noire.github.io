@@ -125,6 +125,10 @@
             <aside class="notes">
                 Welcome to my presentation on how service injection. It is a pleasure
                 to be part of this event.
+                I am Juan Pablo, a backend software developer at Passbolt since almost three years
+                now. A CakePHP users since version 3.3, so roughly 8 years.
+                For those who are not familiar with it CakePHP is one of the oldest
+                PHP frameworks alive. It is the framework we use to code the API at passbolt.
             </aside>
             <p class="small">The CakePHP Conference - September 30th 2023 - Luxembourg Satellite Event</p>
             <p class="small">
@@ -146,7 +150,6 @@
                 </p>
 
                 <aside class="notes">
-                    Here is a quick overview of the presentation coming.
                     Passbolt is a password manager with three different flavours.
                     The community edition is for free. You can install it on your
                     server and use it for your team, regardless of the number of users.
@@ -156,8 +159,9 @@
 
                     The challenge for us developers at Passbolt is to shape the code
                     to match our business model. A common structure, on which additional
-                    features can easily melt.
-
+                    features can easily melt. The business domain drives the architecture
+                    of the software.
+                    
                     The service offered depends on the solution requested.
                     The contract with the users vary -> need of interfaces.
                     We use the DIC to inject the right service for the solution served.
@@ -347,6 +351,15 @@
                 <span style="display: inline-block">Setup Start Services</span><br>
                 <img src="assets/cakefest23/default_setup_start_service.png" height="200px">
                 <img src="assets/cakefest23/ee_setup_start_service.png" height="300px">
+                <aside class="notes">
+                    This is what the implementations of the flavored services look like.
+                    The classes consist only of a constructor. The user service info service
+                    is always required. The two others will be injected only if the plugins
+                    are enables. The code differences between the community and the enterprise
+                    are completely decoupled. The controller does not know of the enterprise
+                    edition. The Ee plugin acts as a service manager, injecting in the container
+                    the services that are enabled.
+                </aside>
             </section>
             <section data-background-color="#272A2A">
                 <img src="assets/cakefest23/setup_json.png" height="100%">
@@ -357,7 +370,9 @@
             <p class="white-shadowed">...exit the code</p>
         </section>
         <section>
-            <p>Meet us on the <a href="https://community.passbolt.com/" target="_blank">Passbolt Community Forum</a></p>
+            <p>Meet us</p>
+            <p><a href="https://community.passbolt.com/" target="_blank">Passbolt Community Forum</a></p>
+            <p class="fragment"><a href="https://github.com/passbolt/passbolt_api" target="_blank">Passbolt API</a></p>
         </section>
         <section>
             <p><a href="https://passbolt.com" target="_blank"><img style="height: 40px; margin: 40px 0" src="assets/passbolt.png"></a></p>
@@ -367,7 +382,7 @@
             <p class="fragment"><a href="https://container.thephpleague.com/4.x/" target="_blank">PHP League Container</a></p>
             <h2 class="fragment">Thank you <span class="cakephp">Bakers</span>!</h2>
             <aside class="notes">
-                For those who did not know it yet, I hope you'll enjoy passbolt as a password manager in your life.
+                For those who did not know it yet, I hope you'll enjoy passbolt as a password manager.
                 Here is a link to the API, we are waiting for your contributions! It could inspire you just as you
                 could inspire us.
             </aside>
