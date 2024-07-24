@@ -1,0 +1,469 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Service injection</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/night.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        section {
+            font-family: 'Roboto', sans-serif;
+            /*font-family: "Open Sans",Verdana,sans-serif!important;*/
+        }
+        .white-shadowed {
+            color: white!important;
+            text-shadow: 0 0 10px #000000!important;
+        }
+        .cakephp {
+            color: #D33C44!important;
+        }
+        p.small {
+            font-size: large;
+        }
+        .shadow {
+            -webkit-box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+            -moz-box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+            box-shadow: 4px 6px 5px -4px rgba(0,0,0,0.75);
+        }
+        .slides {
+            width: 1120px!important;
+        }
+        i {
+            font-style: italic;
+        }
+        div.luxembourg {
+            background: rgb(238,36,54);
+            background: linear-gradient(0deg, rgba(238,36,54,1) 0%, rgba(255,255,255,1) 33%, rgba(255,255,255,1) 66%, rgba(0,156,215,1) 100%);
+            padding: 50px;
+            /*border: 3px solid lightgrey;*/
+            /*border-radius: 15px;*/
+        }
+        td {
+            font-size: smaller;
+            text-align: center!important;
+            vertical-align: middle!important;
+            border-width: 0!important;
+            padding: 10px!important;
+        }
+        tbody.large-margins td {
+            padding: 30px!important;
+        }
+        .green {
+            color: green;
+        }
+        .red {
+            color: red;
+        }
+        .orange {
+            color: orange;
+        }
+        .orange-framed {
+            border-style: solid;
+            border-color: orange;
+            border-width: 2px;
+        }
+        .grey-framed {
+            border-style: solid;
+            border-color: grey;
+            border-width: 2px;
+        }
+        .green-framed {
+            border-style: solid;
+            border-color: green;
+            border-width: 2px;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 1em;
+            font-size: 0.5em;
+            width: 100%;
+        }
+        footer a {
+            color: #0C0239!important;
+        }
+        .float-right {
+            position:fixed;
+            top:5%;
+            z-index:9999;
+            font-size: 0.8em;
+            right:0;
+        }
+        .float-left {
+            float: left;
+            font-size: 0.5em;
+            position: fixed;
+            padding: 5px;
+            font-weight: bold;
+        }
+        .mini {
+            font-size: 1px;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <a href="https://passbolt.com" target="_blank"><img style="height: 40px; margin: 40px 0" src="assets/passbolt.png"></a>
+            <h3>
+                Bread and Butter
+            </h3>
+            <p class="small">by Juan Pablo Ramirez</p>
+            <aside class="notes">
+                Welcome to my presentation Passbolt's bread and butter, an insight on the CakePHP
+                tools we value the most.
+                It is a pleasure
+                to be part of this event.
+                I am Juan Pablo, a backend software developer at Passbolt since almost four years
+                now.
+            </aside>
+            <p class="small">The CakePHP Conference - July 26th 2024</p>
+            <p class="small">
+                <img src="assets/cakephp_grey.svg" width="100px">
+            </p>
+        </section>
+        <section>
+            <h4 class="fragment">Passbolt in a nutshell</h4>
+            <h4 class="fragment">Dependency injection</h4>
+            <h4 class="fragment">Performance</h4>
+            <h4 class="fragment">Tasting tools</h4>
+            <aside class="notes">
+                Here is a quick overview of the presentation coming.
+                I'll briefly introduce Passbolt and the API.
+                I'll then explain how we integrated the dependency injection tool
+                to sustain our software architecture.
+                In a third part I will present the latest work we did on the API
+                in terms of performance.
+                Finally I'll re-introduce the test suite light and the fixture factories
+                with their latest changes, tools that are fundamental in our development
+                workflow.
+            </aside>
+        </section>
+        <section>
+            <section data-background="assets/cakefest21/Animated-devices-V2.svg" data-background-interactive>
+                <h4 style="background-color: #00000000; padding: 40px ; opacity: 0.9">
+                    <p class="white-shadowed">
+                        Passbolt in a nutshell
+                    </p>
+                </h4>
+            </section>
+            <section>
+                How the application looks like
+            </section>
+            <section>
+                Sharing passwords
+            </section>
+            <section>
+                Admin section
+            </section>
+            <section>
+                The console
+            </section>
+            <section>
+                The community, the enterprise and the cloud
+                <aside class="notes">
+                    The good, the bad and the lazy (or the smart).
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>
+                    <a href="https://book.cakephp.org/4/en/development/dependency-injection.html" target="_blank">Dependency Injection</a>
+                </h2>
+            </section>
+            <section>
+                <h4>
+                    External libraries
+                </h4>
+                <p class="small">league/flysystem-google-cloud-storage</p>
+                <p class="small">enygma/yubikey</p>
+                <p class="small">duosecurity/duo_universal_php</p>
+                <p class="small">firebase/php-jwt</p>
+                <p class="small">directorytree/ldaprecord</p>
+                <p class="small">...</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h4>Dependency Injection</h4>
+                <h2>Image storage</h2>
+            </section>
+            <section>
+                <img src="assets/cakefest24/AvatarsViewController.png" height="100%">
+                <aside class="notes">
+                    The avatar view controller is responsible for serving the avatar
+                    of a given user in a particular format.
+                    The avatars are saved in DB, but also cached for performance reasons.
+                    In the on-premise solutions, the avatar are cached on file in
+                    a dedicated folder.
+                    In the cloud solutions, the avatar are cached on a google cloud
+                    storage bucket.
+                </aside>
+            </section>
+            <section>
+                <pre>Application.php</pre>
+                <p><pre data-id="code-animation"><code class="c++">
+public function services(ContainerInterface $container): void
+{
+    $container
+        ->add(FilesystemAdapter::class, LocalFilesystemAdapter::class)
+        ->addArgument(TMP . 'avatars');
+}
+                </code></pre></p>
+            </section>
+            <section>
+                <pre>MultiTenantPlugin.php</pre>
+                <p><pre data-id="code-animation"><code class="c++">
+public function services(ContainerInterface $container): void
+{
+    $container
+        ->extend(FilesystemAdapter::class)
+        ->setConcrete(MultiTenantFileStorageAdapterService::class)
+        ->addArgument(PASSBOLT_ORG);
+}
+                </code></pre></p>
+            </section>
+            <section>
+                <pre>AvatarsIntegrationTestTrait.php</pre>
+                <img src="assets/cakefest24/AvatarsIntegrationTestTrait.png" height="100%">
+                <aside class="notes">
+                    The FilesystemAdapter is injected prior to the test setup to ensure that
+                    the tests run using the locale file storage system, and not the Google cloud
+                    bucket.
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h4>Dependency Injection</h4>
+                <h3>New Event &#129336;</h3>
+                <h4>Application.buildContainer</h4>
+                <aside class="notes">
+                    An event is triggered when the container is created.
+                    Like all events, this should be handled with care. It might
+                    however help in tricky situations.
+                </aside>
+            </section>
+            <section>
+                <pre>PassboltBuildCommandsListener.php</pre>
+                <img src="assets/cakefest24/PassboltBuildCommandsListener.png" height="100%">
+            </section>
+            <section>
+                TODO: add snapshots of the commands in CE and in EE.
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Performance</h2>
+                <aside class="notes">
+                    With an increasing number of users, certain endpoints of the API
+                    had to be reshaped. Here are the tricks we used!
+                </aside>
+            </section>
+            <section>
+                <h4>Performance</h4>
+                <h2>Pagination</h2>
+                <p>
+                    <a href="" target="_blank">bcrowe/cakephp-api-pagination</a>
+                </p>
+            </section>
+            <section>
+                <pre>NumericCountAwarePaginator.php</pre>
+                <img src="assets/cakefest24/NumericCountAwarePaginator.png" height="100%">
+            </section>
+        </section>
+        <section>
+            <section>
+                <h4>Performance</h4>
+                <h3>Disable hydration</h3>
+                <p><pre data-id="code-animation"><code class="c++">
+                    $query->disableHydration();
+                </code></pre></p>
+                <aside class="notes">
+                    Hydration will parse all the entities returned by the DB into Entity object.
+                    While this can be useful when combined with virtual fields,
+                    it comes with a significant performance cost. To be avoided when querying
+                    larger set of data.
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h4>Performance</h4>
+                <h3>Avoid result formatting</h3>
+                <p><pre data-id="code-animation"><code class="c++">
+$query->formatResults(function (CollectionInterface $results) {
+    return $results->map(function (Resources $resource) {
+        $resource['is_shared'] = count($resource['permissions']) > 1;
+
+        return $resource;
+    });
+});
+                </code></pre></p>
+            </section>
+            <section>
+                <p>Calculate fields in SQL</p>
+                <pre data-id="code-animation"><code class="c++">
+$countSubQuery = $this->foldersRelationsTable->selectQuery();
+
+$personal = $query->expr()->case()
+    ->when($query->expr()->eq('COUNT(*)', 1, 'integer'))
+    ->then($query->newExpr('TRUE'), 'boolean')
+    ->when($query->expr()->gt('COUNT(*)', 1, 'integer'))
+    ->then($query->expr('FALSE'), 'boolean');
+
+$countSubQuery->select([
+    'is_personal' => $personal
+])->where(['FoldersRelations.foreign_id' => $resourceId]);
+
+$selectTypeMap = $query->getSelectTypeMap();
+$selectTypeMap->addDefaults(['is_personal' => 'boolean']);
+
+return $query->selectAlso(['is_personal' => $countSubQuery]);
+                </code></pre>
+                &#129722;&#128668;
+            </section>
+            <section>
+                <p>PassboltBelongsToMany.php</p>
+                <p>unset <i>_joinData</i></p>
+                <pre data-id="code-animation"><code class="c++">
+class PassboltBelongsToMany extends BelongsToMany
+{
+    public function eagerLoader(array $options): Closure
+    {
+        $closure = parent::eagerLoader($options);
+
+        return function ($row) use ($closure) {
+            $row = $closure($row);
+            foreach ($row[$this->getAlias()] ?? [] as $i => $subRow) {
+                unset($row[$this->getAlias()][$i][$this->_junctionProperty]);
+            }
+
+            return $row;
+        };
+    }
+}
+                </code></pre>
+                &#128024;
+            </section>
+        </section>
+        <section>
+            <section>
+                <h4>Performance</h4>
+                <h3>Vanilla DateTime Type</h3>
+                <pre data-id="code-animation"><code class="c++">
+    TypeFactory::map('datetime', PassboltISOFormatDateTimeType::class);
+                </code></pre>
+                <p>&#128640;</p>
+            </section>
+            <section>
+                <h4>Vanilla DateTime Type</h4>
+                <pre data-id="code-animation"><code class="c++">
+class PassboltISOFormatDateTimeType extends DateTimeType
+{
+  public function manyToPHP(array $values, array $fields, DriverInterface $driver): array
+  {
+    foreach ($fields as $field) {
+      if (!isset($values[$field])) {
+        continue;
+      }
+
+      $values[$field] = date(\DateTimeInterface::ATOM, strtotime($values[$field]));
+    }
+
+    return $values;
+  }
+}
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Test Fixture Factories</h2>
+            </section>
+            <section>
+                <pre>PasswordExpiryShareControllerTest.php</pre>
+                <pre data-id="code-animation"><code class="c++">
+$allUsers = [$owner, $userLosingPermission] = UserFactory::make(2)
+    ->user()->persist();
+
+[$resourceViewed, $resourceNotViewed] = ResourceFactory::make(2)
+    ->withPermissionsFor([$owner, $userLosingPermission])
+    ->withSecretsFor($allUsers)
+    ->persist();
+
+SecretAccessFactory::make()
+    ->withUsers(UserFactory::make($userLosingPermission))
+    ->withResources(ResourceFactory::make($resourceViewed))
+    ->persist();
+
+$this->logInAs($owner);
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <h2>Test Suite Light</h2>
+        </section>
+    </div>
+</div>
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script src="plugin/chart/Chart.min.js"></script>
+<script src="plugin/chart/plugin.js"></script>
+<script>
+
+    $(function(){
+        $(".baked-with-cakephp").html('<div class="float-right">\n' +
+            '    <a href="https://book.cakephp.org/authentication/2/en/authenticators.html#jwt" target="_blank">\n' +
+            '        <img src="http://www.cakephp.org/img/flags/Baked-with-CakePHP.png" width="150px;">\n' +
+            '    </a>\n' +
+            '</div>');
+    });
+
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+        slideNumber: 'c/t',
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealChart ],
+
+
+        chart: {
+            defaults: {
+                global: {
+                    title: { fontColor: "#FFF" },
+                    legend: {
+                        labels: { fontColor: "#FFF" },
+                    },
+                },
+                scale: {
+                    scaleLabel: { fontColor: "#FFF" },
+                    gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+                    ticks: { fontColor: "#FFF" },
+                }
+            },
+            line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ]},
+        },
+    });
+</script>
+</body>
+</html>
