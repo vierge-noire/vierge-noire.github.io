@@ -117,11 +117,11 @@
 <div class="reveal">
     <div class="slides">
         <section>
-            <a href="https://passbolt.com" target="_blank"><img style="height: 40px; margin: 40px 0" src="assets/passbolt.png"></a>
+            <a href="https://passbolt.com" target="_blank"><img style="height: 40px; margin: 40px 0" src="assets/passbolt-white.svg"></a>
             <h3>
                 Bread and Butter
             </h3>
-            <p class="small">by Juan Pablo Ramirez</p>
+            <p class="small">Juan Pablo Ramirez - Ishan Vyas</p>
             <aside class="notes">
                 Welcome to my presentation Passbolt's bread and butter, an insight on the CakePHP
                 tools we value the most.
@@ -136,7 +136,7 @@
             </p>
         </section>
         <section>
-            <h4 class="fragment">Passbolt in a nutshell</h4>
+            <h4>Passbolt in a nutshell</h4>
             <h4 class="fragment">Dependency injection</h4>
             <h4 class="fragment">Performance</h4>
             <h4 class="fragment">Tasting tools</h4>
@@ -147,35 +147,34 @@
                 to sustain our software architecture.
                 In a third part I will present the latest work we did on the API
                 in terms of performance.
-                Finally I'll re-introduce the test suite light and the fixture factories
+                Finally, I'll re-introduce the test suite light and the fixture factories
                 with their latest changes, tools that are fundamental in our development
                 workflow.
             </aside>
         </section>
         <section>
-            <section data-background="assets/cakefest21/Animated-devices-V2.svg" data-background-interactive>
+            <section data-background="https://www.passbolt.com/animated_devices.svg" data-background-interactive>
                 <h4 style="background-color: #00000000; padding: 40px ; opacity: 0.9">
                     <p class="white-shadowed">
                         Passbolt in a nutshell
                     </p>
                 </h4>
             </section>
-            <section>
-                How the application looks like
+            <section data-background-video="https://www.passbolt.com/videos/product_tour/share_with_granularity.mp4"
+                 data-background-video-loop data-background-video-muted>
             </section>
             <section>
-                Sharing passwords
-            </section>
-            <section>
-                Admin section
-            </section>
-            <section>
-                The console
-            </section>
-            <section>
-                The community, the enterprise and the cloud
+                <h4>Community</h4>
+                <h4 class="fragment">Business</h4>
+                <h4 class="fragment">Cloud</h4>
                 <aside class="notes">
-                    The good, the bad and the lazy (or the smart).
+                    Passbolt API and in general is served with 3 different flavors.
+                    The community flavor is free and features all the functionalities described above.
+                    The business solution has additional features.
+                    The cloud solution as similar features as the business one, but it is hosted by us.
+                    This strongly shapes the architecture of our code. Some endpoints, therefore controllers
+                    and commands, will have to behave differently depending on the flavor. Yet we
+                    want the code to be unified: a controller should be identical through all solutions.
                 </aside>
             </section>
         </section>
@@ -184,6 +183,11 @@
                 <h2>
                     <a href="https://book.cakephp.org/4/en/development/dependency-injection.html" target="_blank">Dependency Injection</a>
                 </h2>
+                <p>
+                    <a href="https://vierge-noire.github.io/presentations/cakefest-2023.html" target="_blank">
+                        CakeFest 2023 - Luxembourg Satellite Event
+                    </a>
+                </p>
             </section>
             <section>
                 <h4>
@@ -199,8 +203,9 @@
         </section>
         <section>
             <section>
-                <h4>Dependency Injection</h4>
+                <h4>Dependency Injection Example</h4>
                 <h2>Image storage</h2>
+                <h2>&#x26c5;</h2>
             </section>
             <section>
                 <img src="assets/cakefest24/AvatarsViewController.png" height="100%">
@@ -215,7 +220,7 @@
                 </aside>
             </section>
             <section>
-                <pre>Application.php</pre>
+                <a href="https://github.com/passbolt/passbolt_api/blob/master/src/Application.php#L284" target="_blank"><pre>Application.php</pre></a>
                 <p><pre data-id="code-animation"><code class="c++">
 public function services(ContainerInterface $container): void
 {
@@ -238,7 +243,7 @@ public function services(ContainerInterface $container): void
                 </code></pre></p>
             </section>
             <section>
-                <pre>AvatarsIntegrationTestTrait.php</pre>
+                <a href="https://github.com/passbolt/passbolt_api/blob/master/tests/Lib/Model/AvatarsIntegrationTestTrait.php" target="_blank"><pre>AvatarsIntegrationTestTrait.php</pre></a>
                 <img src="assets/cakefest24/AvatarsIntegrationTestTrait.png" height="100%">
                 <aside class="notes">
                     The FilesystemAdapter is injected prior to the test setup to ensure that
@@ -249,9 +254,9 @@ public function services(ContainerInterface $container): void
         </section>
         <section>
             <section>
-                <h4>Dependency Injection</h4>
-                <h3>New Event &#129336;</h3>
-                <h4>Application.buildContainer</h4>
+                <h4>Dependency Injection Event</h4>
+                <h3>Application.buildContainer</h3>
+                <h1>&#129336;</h1>
                 <aside class="notes">
                     An event is triggered when the container is created.
                     Like all events, this should be handled with care. It might
@@ -261,9 +266,9 @@ public function services(ContainerInterface $container): void
             <section>
                 <pre>PassboltBuildCommandsListener.php</pre>
                 <img src="assets/cakefest24/PassboltBuildCommandsListener.png" height="100%">
-            </section>
-            <section>
-                TODO: add snapshots of the commands in CE and in EE.
+                <aside class="notes">
+
+                </aside>
             </section>
         </section>
         <section>
@@ -316,9 +321,8 @@ $query->formatResults(function (CollectionInterface $results) {
                 </code></pre></p>
             </section>
             <section>
-                <p>Calculate fields in SQL</p>
-                <pre data-id="code-animation"><code class="c++">
-$countSubQuery = $this->foldersRelationsTable->selectQuery();
+                <h4>Calculate fields in SQL</h4>
+                <pre data-id="code-animation"><code class="c++">$countSubQuery = $this->foldersRelationsTable->selectQuery();
 
 $personal = $query->expr()->case()
     ->when($query->expr()->eq('COUNT(*)', 1, 'integer'))
@@ -330,16 +334,14 @@ $countSubQuery->select([
     'is_personal' => $personal
 ])->where(['FoldersRelations.foreign_id' => $resourceId]);
 
-$selectTypeMap = $query->getSelectTypeMap();
-$selectTypeMap->addDefaults(['is_personal' => 'boolean']);
-
-return $query->selectAlso(['is_personal' => $countSubQuery]);
-                </code></pre>
+return $query->selectAlso(['is_personal' => $countSubQuery]);</code></pre>
                 &#129722;&#128668;
             </section>
             <section>
-                <p>PassboltBelongsToMany.php</p>
-                <p>unset <i>_joinData</i></p>
+                <h4>unset <i>_joinData</i></h4>
+                <pre>
+PassboltBelongsToMany.php
+                </pre>
                 <pre data-id="code-animation"><code class="c++">
 class PassboltBelongsToMany extends BelongsToMany
 {
@@ -394,9 +396,15 @@ class PassboltISOFormatDateTimeType extends DateTimeType
         <section>
             <section>
                 <h2>Test Fixture Factories</h2>
+                <p>
+                    <a target="_blank" href="https://github.com/vierge-noire/cakephp-fixture-factories">vierge-noire/cakephp-fixture-factories</a>
+                </p>
             </section>
             <section>
-                <pre>PasswordExpiryShareControllerTest.php</pre>
+                <h4>Test Fixture Factories</h4>
+                <a href="https://github.com/passbolt/passbolt_api/blob/master/plugins/PassboltCe/PasswordExpiry/tests/TestCase/Controller/Share/PasswordExpiryShareControllerTest.php#L43" target="_blank">
+                    <pre>PasswordExpiryShareControllerTest.php</pre>
+                </a>
                 <pre data-id="code-animation"><code class="c++">
 $allUsers = [$owner, $userLosingPermission] = UserFactory::make(2)
     ->user()->persist();
@@ -413,10 +421,58 @@ SecretAccessFactory::make()
 
 $this->logInAs($owner);
                 </code></pre>
+                <a href="https://github.com/passbolt/passbolt_api/blob/master/plugins/PassboltCe/Log/tests/Factory/SecretAccessFactory.php#L68" target="_blank">
+                    <small><pre>SecretAccessFactory.php</pre></small>
+                </a>
+            </section>
+            <section>
+                <h4>Test Fixture Factories</h4>
+                <pre>SelectQueryMocker.php</pre>
+<pre data-id="code-animation" data-line-numbers><code class="c++">
+$countryFactory = CountryFactory::make([['Foo'], ['Bar']]);
+SelectQueryMocker::mock($this, $countryFactory);
+$countries = TableRegistry::getTableLocator()->get('Countries')->find();
+$this->assertSame(2, $countries->count());
+$this->assertSame(0, CountryFactory::count());
+                </code></pre>
             </section>
         </section>
         <section>
-            <h2>Test Suite Light</h2>
+            <section>
+                <h2>Test Suite Light</h2>
+                <p>
+                    <a target="_blank" href="https://github.com/vierge-noire/cakephp-test-suite-light">vierge-noire/cakephp-test-suite-light</a>
+                </p>
+            </section>
+            <section>
+                <h4>Test Suite Light</h4>
+                <pre>AppIntegrationTestCase.php
+</pre>
+<pre data-id="code-animation" data-line-numbers><code class="c++">use Cake\TestSuite\TestCase;
+use CakephpTestSuiteLight\Fixture\TruncateDirtyTables;
+
+abstract class AppIntegrationTestCase extends TestCase
+{
+    use TruncateDirtyTables;
+
+    ...
+}</code></pre>
+            </section>
+            <section>
+                <h4>Test Suite Light</h4>
+                <img src="assets/cakefest24/UsersTableAfterTests.png" height="100%">
+                <aside class="notes">
+                    The users table is not emptied at the end of the test.
+                    This enables efficient debugging.
+                    It is also possible to insert dummy data in the test DB
+                    in order to perform performance measurements.
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h4>Thank you for the cake</h4>
+            </section>
         </section>
     </div>
 </div>
