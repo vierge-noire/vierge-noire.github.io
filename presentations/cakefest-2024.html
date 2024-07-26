@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Service injection</title>
+    <title>Passbolt CakeFest 2024</title>
 
     <link rel="stylesheet" href="dist/reset.css">
     <link rel="stylesheet" href="dist/reveal.css">
@@ -129,6 +129,7 @@
                 to be part of this event.
                 I am Juan Pablo, a backend software developer at Passbolt since almost four years
                 now.
+                The API is co-developed with Ishan Vyas, greetings to you!
             </aside>
             <p class="small">The CakePHP Conference - July 26th 2024</p>
             <p class="small">
@@ -164,6 +165,7 @@
                  data-background-video-loop data-background-video-muted>
             </section>
             <section>
+                <h2>Solutions</h2>
                 <h4>Community</h4>
                 <h4 class="fragment">Business</h4>
                 <h4 class="fragment">Cloud</h4>
@@ -281,13 +283,13 @@ public function services(ContainerInterface $container): void
             </section>
             <section>
                 <h4>Performance</h4>
-                <h2>Pagination</h2>
+                <h3>Pagination</h3>
                 <p>
                     <a href="" target="_blank">bcrowe/cakephp-api-pagination</a>
                 </p>
             </section>
             <section>
-                <pre>NumericCountAwarePaginator.php</pre>
+                <a target="_blank" href="https://github.com/passbolt/passbolt_api/blob/master/src/Datasource/Paging/NumericCountAwarePaginator.php"><pre>NumericCountAwarePaginator.php</pre></a>
                 <img src="assets/cakefest24/NumericCountAwarePaginator.png" height="100%">
             </section>
         </section>
@@ -374,6 +376,7 @@ class PassboltBelongsToMany extends BelongsToMany
             </section>
             <section>
                 <h4>Vanilla DateTime Type</h4>
+                <a href="https://github.com/passbolt/passbolt_api/blob/master/src/Database/Type/ISOFormatDateTimeType.php" target="_blank"><pre>ISOFormatDateTimeType.php</pre></a>
                 <pre data-id="code-animation"><code class="c++">
 class PassboltISOFormatDateTimeType extends DateTimeType
 {
@@ -471,7 +474,23 @@ abstract class AppIntegrationTestCase extends TestCase
         </section>
         <section>
             <section>
+                <a href="https://passbolt.com" target="_blank"><img style="height: 40px; margin: 40px 0" src="assets/passbolt-white.svg"></a>
                 <h4>Thank you for the cake</h4>
+                <p class="fragment"><a href="https://github.com/passbolt/passbolt_api" target="_blank">Passbolt API</a></p>
+                <p class="fragment"><a href="https://community.passbolt.com/" target="_blank">Community Forum</a></p>
+                <p class="fragment"><a target="_blank" href="https://github.com/vierge-noire/cakephp-fixture-factories">vierge-noire/cakephp-fixture-factories</a></p>
+                <p class="fragment"><a target="_blank" href="https://vierge-noire.github.io/presentations/cakefest-2024.html">
+                    https://vierge-noire.github.io/presentations/cakefest-2024.html
+                </a></p>
+                <p class="small">
+                    <img src="assets/cakephp_grey.svg" width="100px">
+                </p>
+            </section>
+            <section>
+                <a href="https://vierge-noire.github.io/presentations/cakefest-2024.html" target="_blank">
+                    <small>https://vierge-noire.github.io/presentations/cakefest-2024.html</small>
+                    <img src="assets/cakefest24/QR_code_presentation.png" height="500px">
+                </a>
             </section>
         </section>
     </div>
